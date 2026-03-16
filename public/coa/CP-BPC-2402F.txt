@@ -1,0 +1,9 @@
+Catalyst Peptides - Demo COA
+Compound: BPC-157
+Batch: CP-BPC-2402F
+Date Tested: 2026-01-24
+Purity: 99.0%
+Assay: HPLC
+Status: Released
+
+This is a demonstration placeholder file.
