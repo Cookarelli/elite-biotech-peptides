@@ -1,6 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
+import { products } from "@elite-biotech/shared";
+import { ProductVisual } from "@/components/ProductVisual";
 import { SiteShell } from "@/components/SiteShell";
-import { products } from "@/data/products";
 
 const popularSlugs = ["tirzepatide", "semaglutide", "cjc-1295-with-dac", "bpc157"];
 const popularProducts = popularSlugs
@@ -12,32 +14,65 @@ export default function Home() {
     <SiteShell>
       <section className="relative overflow-hidden rounded-3xl border border-neutral-800 bg-neutral-900/40 p-8 sm:p-10 lg:p-12">
         <div className="pointer-events-none absolute inset-0 opacity-60 [background:radial-gradient(circle_at_20%_20%,rgba(16,185,129,0.24),transparent_45%),radial-gradient(circle_at_80%_30%,rgba(59,130,246,0.20),transparent_55%)]" />
-        <div className="relative">
-          <p className="text-xs font-semibold tracking-[0.22em] text-emerald-300">CATALYST PEPTIDES</p>
-          <h1 className="mt-3 max-w-4xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-            A Cleaner, Premium Research Storefront
-          </h1>
-          <p className="mt-5 max-w-3xl text-base leading-relaxed text-neutral-300 sm:text-lg">
-            Built for serious buyers: standardized 10 mL formats, clear concentrations, and a
-            batch-ready COA workflow that feels investor-grade from first click.
-          </p>
+        <div className="relative grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-center">
+          <div>
+            <p className="text-xs font-semibold tracking-[0.22em] text-sky-300">ELITE BIOTECH PEPTIDES</p>
+            <h1 className="mt-3 max-w-4xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+              A Cleaner, Premium Research Storefront
+            </h1>
+            <p className="mt-5 max-w-3xl text-base leading-relaxed text-neutral-300 sm:text-lg">
+              Built for serious buyers: standardized 10 mL formats, clear concentrations, and a
+              batch-ready COA workflow that makes Elite Biotech Peptides feel investor-grade from first click.
+            </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href="/products"
-              className="rounded-xl bg-emerald-500 px-6 py-3 text-sm font-semibold text-neutral-950 transition-colors hover:bg-emerald-400"
-            >
-              Browse Compounds
-            </Link>
-            <Link
-              href="/coa"
-              className="rounded-xl border border-neutral-700 px-6 py-3 text-sm font-semibold text-neutral-100 transition-colors hover:border-neutral-600 hover:bg-neutral-900/60"
-            >
-              View COA Library
-            </Link>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href="/products"
+                className="rounded-xl bg-sky-400 px-6 py-3 text-sm font-semibold text-neutral-950 transition-colors hover:bg-cyan-300"
+              >
+                Browse Compounds
+              </Link>
+              <Link
+                href="/coa"
+                className="rounded-xl border border-neutral-700 px-6 py-3 text-sm font-semibold text-neutral-100 transition-colors hover:border-neutral-600 hover:bg-neutral-900/60"
+              >
+                View COA Library
+              </Link>
+            </div>
+
+            <div className="mt-6 flex flex-wrap gap-3 text-xs font-semibold">
+              <span className="rounded-full border border-sky-500/30 bg-sky-500/10 px-3 py-1.5 text-sky-200">
+                10% off orders over $100
+              </span>
+              <span className="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1.5 text-cyan-200">
+                25% off orders over $250
+              </span>
+              <span className="rounded-full border border-neutral-700 bg-neutral-950/60 px-3 py-1.5 text-neutral-300">
+                Free shipping on both tiers
+              </span>
+            </div>
           </div>
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+          <div className="rounded-[2rem] border border-neutral-800 bg-white/96 p-5 shadow-[0_30px_90px_rgba(0,0,0,0.35)]">
+            <Image
+              src="/brand/elite-biotech-peptides-logo.png"
+              alt="Elite Biotech Peptides logo"
+              width={420}
+              height={280}
+              className="h-auto w-full object-contain"
+              priority
+            />
+            <div className="mt-4 rounded-2xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-center">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sky-700">
+                Elite Biotech Peptides
+              </p>
+              <p className="mt-1 text-sm text-neutral-700">
+                Branded research catalog with standardized formats and COA-ready batches.
+              </p>
+            </div>
+          </div>
+
+          <div className="lg:col-span-2 mt-2 grid gap-4 sm:grid-cols-3">
             {[
               ["23", "Core catalog products"],
               ["10 mL", "Standardized vial format"],
@@ -66,6 +101,13 @@ export default function Home() {
           </Link>
         </div>
 
+        <div className="mt-5 rounded-2xl border border-neutral-800 bg-neutral-900/30 px-4 py-4 text-sm text-neutral-300">
+          High-intent buyers get rewarded fast: spend over <span className="font-semibold text-neutral-100">$100</span> for
+          <span className="font-semibold text-emerald-300"> 10% off + free shipping</span>, or go over
+          <span className="font-semibold text-neutral-100"> $250</span> for
+          <span className="font-semibold text-cyan-300"> 25% off + free shipping</span>.
+        </div>
+
         <div className="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
           {popularProducts.map((p) => (
             <Link
@@ -73,15 +115,7 @@ export default function Home() {
               href={`/products/${p.slug}`}
               className="group overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/40 transition-colors hover:border-neutral-700 hover:bg-neutral-900/70"
             >
-              <div className="relative h-36 overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={p.image}
-                  alt={p.name}
-                  className="h-full w-full object-cover opacity-80 transition-all duration-500 group-hover:scale-105 group-hover:opacity-95"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 to-transparent" />
-              </div>
+              <ProductVisual product={p} compact />
               <div className="p-4">
                 <div className="flex items-start justify-between gap-2">
                   <h3 className="text-sm font-semibold text-neutral-100">{p.name}</h3>
@@ -132,7 +166,7 @@ export default function Home() {
           <h2 className="text-2xl font-semibold tracking-tight">Why Buyers Switch</h2>
           <div className="mt-5 space-y-4 text-sm leading-relaxed text-neutral-300">
             <p>
-              Most peptide sites compete on discount noise. Catalyst competes on structure: clean
+              Most peptide sites compete on discount noise. Elite Biotech competes on structure: clean
               catalog logic, consistent concentrations, and a quality framework teams can verify.
             </p>
             <p>

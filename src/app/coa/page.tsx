@@ -8,7 +8,7 @@ export default function COA() {
         <div className="rounded-3xl border border-neutral-800 bg-neutral-900/40 p-8">
           <h1 className="text-3xl font-semibold">COA Library</h1>
           <p className="mt-3 text-neutral-300">
-            Demo certificate index with fake batch data and downloadable placeholder files.
+            Elite Biotech Peptides certificate index with branded batch data and downloadable placeholder files.
           </p>
 
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

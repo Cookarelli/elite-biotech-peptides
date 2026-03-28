@@ -1,9 +1,0 @@
-Catalyst Peptides - Demo COA
-Compound: CJC-1295 with DAC
-Batch: CP-CJC-2401A
-Date Tested: 2026-01-14
-Purity: 99.2%
-Assay: LC-MS + HPLC
-Status: Released
-
-This is a demonstration placeholder file.

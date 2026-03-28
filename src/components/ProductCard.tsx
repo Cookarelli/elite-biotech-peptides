@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import type { Product } from "@/data/products";
+import type { Product } from "@elite-biotech/shared";
+import { ProductVisual } from "@/components/ProductVisual";
 
 export function ProductCard({ p }: { p: Product }) {
   const [open, setOpen] = useState(false);
@@ -11,21 +12,7 @@ export function ProductCard({ p }: { p: Product }) {
     <>
       <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-neutral-800 bg-neutral-900/50 transition-all hover:-translate-y-0.5 hover:border-neutral-600 hover:bg-neutral-900/80">
         <Link href={`/products/${p.slug}`} className="block">
-          <div className="relative h-48 overflow-hidden">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={p.image}
-              alt={p.name}
-              className="h-full w-full object-cover opacity-80 transition-all duration-500 group-hover:scale-105 group-hover:opacity-95"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-transparent" />
-            <span className="absolute top-3 left-3 rounded-full border border-neutral-700 bg-neutral-950/80 px-2.5 py-1 text-[11px] font-semibold text-neutral-200">
-              {p.category}
-            </span>
-            <span className="absolute top-3 right-3 rounded-full border border-emerald-600/50 bg-emerald-500/10 px-2.5 py-1 text-[11px] font-semibold text-emerald-200">
-              In Stock
-            </span>
-          </div>
+          <ProductVisual product={p} compact />
         </Link>
 
         <div className="flex flex-1 flex-col p-5">
@@ -61,7 +48,7 @@ export function ProductCard({ p }: { p: Product }) {
             </button>
             <Link
               href={`/products/${p.slug}`}
-              className="rounded-lg border border-emerald-600/70 bg-emerald-500/10 px-3 py-2 font-semibold text-emerald-200 transition-colors hover:border-emerald-500 hover:bg-emerald-500/20"
+              className="rounded-lg border border-sky-500/40 bg-sky-500/10 px-3 py-2 font-semibold text-sky-100 transition-colors hover:border-sky-400 hover:bg-sky-500/20"
             >
               View Details
             </Link>
@@ -114,10 +101,17 @@ export function ProductCard({ p }: { p: Product }) {
             <div className="mt-6 flex flex-wrap gap-2">
               <Link
                 href={`/products/${p.slug}`}
-                className="rounded-xl bg-emerald-500 px-4 py-2 text-sm font-semibold text-neutral-950 transition-colors hover:bg-emerald-400"
+                className="rounded-xl bg-sky-400 px-4 py-2 text-sm font-semibold text-neutral-950 transition-colors hover:bg-cyan-300"
                 onClick={() => setOpen(false)}
               >
                 Open Product Page
+              </Link>
+              <Link
+                href={`/request-invoice?product=${p.slug}`}
+                className="rounded-xl border border-sky-500/40 bg-sky-500/10 px-4 py-2 text-sm font-semibold text-sky-100 transition-colors hover:border-sky-400 hover:bg-sky-500/20"
+                onClick={() => setOpen(false)}
+              >
+                Request Invoice
               </Link>
               <button
                 type="button"

@@ -1,0 +1,9 @@
+Elite Biotech Peptides - COA Placeholder
+Compound: NAD+
+Batch: EBP-NAD-2403C
+Date Tested: 2026-02-03
+Purity: 99.5%
+Assay: Enzymatic + HPLC
+Status: Released
+
+This is a branded demonstration placeholder file.

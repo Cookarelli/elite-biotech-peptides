@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+enum InvoiceStatus {
+  requested
+  reviewed
+  invoiced
+  completed
+  cancelled
+}
+
+model InvoiceRequest {
+  id               String        @id @default(cuid())
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+  status           InvoiceStatus @default(requested)
+  source           String        @default("web")
+  productSlug      String?
+  productName      String
+  productCategory  String?
+  priceShown       String?
+  strengthMg       Int?
+  volumeMl         Int?
+  quantity         Int           @default(1)
+  customerName     String
+  customerEmail    String
+  customerCompany  String?
+  shippingLocation String?
+  notes            String?
+}

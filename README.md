@@ -1,36 +1,126 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Elite Biotech Peptides
 
-## Getting Started
+Elite Biotech Peptides is a branded research storefront built with Next.js 16 and Tailwind CSS 4.
+The current launch flow is invoice-first: buyers browse the catalog, review product details, and
+submit a manual invoice request that routes to the procurement team for follow-up.
 
-First, run the development server:
+## Current Platform
+
+- Web storefront with Elite Biotech branding
+- Product catalog and detail pages
+- COA library placeholder and quality pages
+- Manual invoice request flow
+- Promo tiers for larger orders
+
+## Local Development
+
+Run the site locally:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Build and validate:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run lint
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Launch Model
 
-## Learn More
+The current storefront does not process checkout directly on-site. Instead, each product can route
+to a manual invoice request flow. That keeps launch operations simple while payment and fulfillment
+processes are finalized.
 
-To learn more about Next.js, take a look at the following resources:
+## Environment Variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Copy the example file before local work:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+cp .env.example .env.local
+cp apps/mobile/.env.example apps/mobile/.env
+```
 
-## Deploy on Vercel
+Core variables:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `DATABASE_URL`
+- `NEXT_PUBLIC_SITE_URL`
+- `NEXT_PUBLIC_COMPANY_NAME`
+- `NEXT_PUBLIC_SUPPORT_EMAIL`
+- `NEXT_PUBLIC_PROCUREMENT_EMAIL`
+- `EXPO_PUBLIC_API_BASE_URL`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Database Prep
+
+The repo includes a Prisma schema for invoice requests at `prisma/schema.prisma`.
+
+Useful commands:
+
+```bash
+npm run db:generate
+npm run db:init
+npm run db:push
+npm run db:studio
+```
+
+Notes:
+
+- Local development is set up for SQLite via `DATABASE_URL="file:./prisma/dev.db"`.
+- Prisma Client generation is working in this repo.
+- `npm run db:init` creates the local SQLite file and invoice-request table directly for development.
+- On this machine, `prisma db push` still returned a schema-engine error, so `db:init` is the reliable local fallback right now.
+- For production, this schema is intended to move to hosted Postgres rather than stay on local SQLite.
+
+## Invoice API
+
+The web and mobile invoice flows now post to:
+
+- `GET /api/invoice-requests`
+- `POST /api/invoice-requests`
+
+Both clients still fall back to opening a manual email draft after submission, so launch-time ops stay unchanged while requests can also be captured server-side.
+
+## Mobile API Base URL
+
+For local mobile testing on a physical phone, `EXPO_PUBLIC_API_BASE_URL` should point to a reachable host such as your Mac's LAN IP or a deployed Vercel URL. `http://localhost:3000` only works from the simulator or the same machine.
+
+## Deploying To Vercel
+
+1. Push the repo to GitHub.
+2. Import the repo into Vercel.
+3. Keep the project root at the repository root.
+4. Add production env vars in Vercel:
+   - `DATABASE_URL`
+   - `NEXT_PUBLIC_SITE_URL`
+   - `NEXT_PUBLIC_COMPANY_NAME`
+   - `NEXT_PUBLIC_SUPPORT_EMAIL`
+   - `NEXT_PUBLIC_PROCUREMENT_EMAIL`
+5. Deploy the web app.
+6. Add your custom domain and update DNS in Vercel.
+7. Set the mobile app `EXPO_PUBLIC_API_BASE_URL` to the deployed production URL so the app talks to the same invoice API.
+
+Recommended production direction:
+
+- Keep local SQLite only for development.
+- Move production invoice data to hosted Postgres.
+- Use the deployed Vercel URL as the mobile API base until a separate API domain is needed.
+
+## Recommended Multi-Platform Architecture
+
+To support web, iPhone, and Android without maintaining separate catalogs by hand:
+
+1. Keep this Next.js app as the main web storefront.
+2. Add an Expo app for iOS and Android in the same repository.
+3. Move shared catalog, branding, and invoice-flow logic into shared modules.
+4. Point both the web app and mobile app at the same data and backend endpoints.
+5. Roll out native checkout later only if the business/payment workflow supports it.
+
+This is the safest way to make updates once and have both the website and mobile apps stay aligned.
+
+## Next Build-Out
+
+- Convert the invoice request into a fully server-backed submission flow
+- Add invoice history/status reads from the database
+- Prepare Vercel deployment and production domain setup
+- Add App Store / Play Store icon and splash assets

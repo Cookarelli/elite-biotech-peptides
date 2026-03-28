@@ -1,8 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import type { Product } from "@elite-biotech/shared";
 import { ProductCard } from "@/components/ProductCard";
-import type { Product } from "@/data/products";
 
 type SortKey = "featured" | "price-low" | "price-high" | "name";
 

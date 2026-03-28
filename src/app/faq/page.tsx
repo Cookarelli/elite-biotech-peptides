@@ -7,7 +7,7 @@ const faqs = [
   },
   {
     q: "Who is this catalog for?",
-    a: "The catalog is presented for laboratory researchers and procurement teams evaluating research materials.",
+    a: "The Elite Biotech Peptides catalog is presented for laboratory researchers and procurement teams evaluating research materials.",
   },
   {
     q: "Are products standardized?",

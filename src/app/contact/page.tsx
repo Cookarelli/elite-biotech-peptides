@@ -15,12 +15,12 @@ export default function Contact() {
         <div className="grid gap-4 md:grid-cols-3">
           <Card
             title="General Inquiries"
-            value="support@catalystpeptides.com"
+            value="support@elitebiotechpeptides.com"
             note="Catalog questions, account setup, and order workflow."
           />
           <Card
             title="Procurement Desk"
-            value="procurement@catalystpeptides.com"
+            value="procurement@elitebiotechpeptides.com"
             note="Bulk quotes, batch requests, and COA documentation."
           />
           <Card

@@ -1,9 +1,0 @@
-Catalyst Peptides - Demo COA
-Compound: Ipamorelin
-Batch: CP-IPA-2402B
-Date Tested: 2026-01-19
-Purity: 98.7%
-Assay: LC-MS + HPLC
-Status: Released
-
-This is a demonstration placeholder file.

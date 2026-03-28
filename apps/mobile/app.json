@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "Elite Biotech",
+    "slug": "elite-biotech-peptides-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/elite-biotech-logo.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/elite-biotech-logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#050816"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#050816",
+        "foregroundImage": "./assets/elite-biotech-logo.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/elite-biotech-logo.png"
+    }
+  }
+}

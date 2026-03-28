@@ -1,9 +1,0 @@
-Catalyst Peptides - Demo COA
-Compound: NAD+
-Batch: CP-NAD-2403C
-Date Tested: 2026-02-03
-Purity: 99.5%
-Assay: Enzymatic + HPLC
-Status: Released
-
-This is a demonstration placeholder file.

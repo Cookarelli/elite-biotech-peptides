@@ -1,15 +1,33 @@
 {
-  "name": "catalyst-peptides",
+  "name": "elite-biotech-peptides",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "postinstall": "prisma generate",
+    "lint": "eslint",
+    "db:generate": "prisma generate",
+    "db:init": "node scripts/init-sqlite-db.mjs",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio",
+    "mobile": "npm run start --workspace mobile-app",
+    "ios": "npm run ios --workspace mobile-app",
+    "android": "npm run android --workspace mobile-app",
+    "mobile:web": "npm run web --workspace mobile-app"
   },
   "dependencies": {
+    "@elite-biotech/shared": "*",
+    "@prisma/adapter-better-sqlite3": "^7.5.0",
+    "@prisma/client": "^7.5.0",
+    "better-sqlite3": "^12.8.0",
     "next": "16.1.6",
+    "prisma": "^7.5.0",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },

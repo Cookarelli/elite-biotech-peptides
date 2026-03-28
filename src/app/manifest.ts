@@ -1,0 +1,26 @@
+import type { MetadataRoute } from "next";
+
+export default function manifest(): MetadataRoute.Manifest {
+  return {
+    name: "Elite Biotech Peptides",
+    short_name: "Elite Biotech",
+    description:
+      "Elite Biotech Peptides research catalog with COA-ready batches, standardized vial formats, and invoice-first ordering.",
+    start_url: "/",
+    display: "standalone",
+    background_color: "#020617",
+    theme_color: "#020617",
+    icons: [
+      {
+        src: "/pwa-192.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+      {
+        src: "/pwa-512.png",
+        sizes: "512x512",
+        type: "image/png",
+      },
+    ],
+  };
+}
