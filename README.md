@@ -45,6 +45,7 @@ cp apps/mobile/.env.example apps/mobile/.env
 Core variables:
 
 - `DATABASE_URL`
+- `DIRECT_URL`
 - `NEXT_PUBLIC_SITE_URL`
 - `NEXT_PUBLIC_COMPANY_NAME`
 - `NEXT_PUBLIC_SUPPORT_EMAIL`
@@ -59,18 +60,17 @@ Useful commands:
 
 ```bash
 npm run db:generate
-npm run db:init
 npm run db:push
 npm run db:studio
 ```
 
 Notes:
 
-- Local development is set up for SQLite via `DATABASE_URL="file:./prisma/dev.db"`.
+- The production target is PostgreSQL.
+- `DATABASE_URL` should be your pooled/runtime connection string.
+- `DIRECT_URL` should be the direct connection string used by Prisma CLI operations.
 - Prisma Client generation is working in this repo.
-- `npm run db:init` creates the local SQLite file and invoice-request table directly for development.
-- On this machine, `prisma db push` still returned a schema-engine error, so `db:init` is the reliable local fallback right now.
-- For production, this schema is intended to move to hosted Postgres rather than stay on local SQLite.
+- For Vercel production, a hosted Postgres provider is the recommended path.
 
 ## Invoice API
 
@@ -92,6 +92,7 @@ For local mobile testing on a physical phone, `EXPO_PUBLIC_API_BASE_URL` should 
 3. Keep the project root at the repository root.
 4. Add production env vars in Vercel:
    - `DATABASE_URL`
+   - `DIRECT_URL`
    - `NEXT_PUBLIC_SITE_URL`
    - `NEXT_PUBLIC_COMPANY_NAME`
    - `NEXT_PUBLIC_SUPPORT_EMAIL`
@@ -102,8 +103,7 @@ For local mobile testing on a physical phone, `EXPO_PUBLIC_API_BASE_URL` should 
 
 Recommended production direction:
 
-- Keep local SQLite only for development.
-- Move production invoice data to hosted Postgres.
+- Use hosted Postgres for both development and production if possible.
 - Use the deployed Vercel URL as the mobile API base until a separate API domain is needed.
 
 ## Recommended Multi-Platform Architecture

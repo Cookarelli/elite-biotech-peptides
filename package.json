@@ -13,7 +13,6 @@
     "postinstall": "prisma generate",
     "lint": "eslint",
     "db:generate": "prisma generate",
-    "db:init": "node scripts/init-sqlite-db.mjs",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
     "mobile": "npm run start --workspace mobile-app",
@@ -23,10 +22,10 @@
   },
   "dependencies": {
     "@elite-biotech/shared": "*",
-    "@prisma/adapter-better-sqlite3": "^7.5.0",
+    "@prisma/adapter-pg": "^7.6.0",
     "@prisma/client": "^7.5.0",
-    "better-sqlite3": "^12.8.0",
     "next": "16.1.6",
+    "pg": "^8.20.0",
     "prisma": "^7.5.0",
     "react": "19.2.3",
     "react-dom": "19.2.3"
