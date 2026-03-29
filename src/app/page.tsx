@@ -18,11 +18,12 @@ export default function Home() {
           <div>
             <p className="text-xs font-semibold tracking-[0.22em] text-sky-300">ELITE BIOTECH PEPTIDES</p>
             <h1 className="mt-3 max-w-4xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-              A Cleaner, Premium Research Storefront
+              Trusted Elite Research Peptides
             </h1>
             <p className="mt-5 max-w-3xl text-base leading-relaxed text-neutral-300 sm:text-lg">
-              Built for serious buyers: standardized 10 mL formats, clear concentrations, and a
-              batch-ready COA workflow that makes Elite Biotech Peptides feel investor-grade from first click.
+              Premium research peptides for serious buyers: standardized 10 mL formats, clear
+              concentrations, and a batch-ready COA workflow built to make Elite Biotech Peptides
+              feel credible from first click.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
