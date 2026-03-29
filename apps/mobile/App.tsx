@@ -14,6 +14,7 @@ import {
 import {
   buildInvoiceDraft,
   buildInvoiceRequestPayload,
+  getProductFormat,
   getProductBySlug,
   products,
   PROCUREMENT_EMAIL,
@@ -71,7 +72,7 @@ export default function App() {
 
     return products.filter((product) => {
       const haystack =
-        `${product.name} ${product.category} ${product.description} ${product.aliases?.join(" ") ?? ""}`.toLowerCase();
+        `${product.name} ${product.category} ${product.description} ${getProductFormat(product)} ${product.aliases?.join(" ") ?? ""}`.toLowerCase();
       return haystack.includes(normalized);
     });
   }, [query]);
@@ -317,9 +318,7 @@ function ProductBrowser({
               >
                 <Text style={styles.productCategory}>{product.category}</Text>
                 <Text style={styles.productName}>{product.name}</Text>
-                <Text style={styles.productMeta}>
-                  {product.strengthMg} mg / {product.volumeMl} mL
-                </Text>
+                <Text style={styles.productMeta}>{getProductFormat(product)}</Text>
                 <Text style={styles.productPrice}>{product.price}</Text>
               </Pressable>
             );
@@ -395,7 +394,7 @@ function InvoicesTab({
             <Text style={styles.invoiceSelectedLabel}>Current selection</Text>
             <Text style={styles.invoiceSelectedName}>{selectedProduct.name}</Text>
             <Text style={styles.invoiceSelectedMeta}>
-              {selectedProduct.strengthMg} mg / {selectedProduct.volumeMl} mL · {selectedProduct.price}
+              {getProductFormat(selectedProduct)} · {selectedProduct.price}
             </Text>
           </View>
         ) : null}
@@ -499,9 +498,7 @@ function SelectedProductCard({ product }: { product: Product }) {
       <Text style={styles.sectionTitle}>Selected product</Text>
       <Text style={styles.selectedName}>{product.name}</Text>
       <Text style={styles.selectedPrice}>{product.price}</Text>
-      <Text style={styles.selectedMeta}>
-        {product.strengthMg} mg / {product.volumeMl} mL · {product.category}
-      </Text>
+      <Text style={styles.selectedMeta}>{getProductFormat(product)} · {product.category}</Text>
       <Text style={styles.selectedDescription}>{product.description}</Text>
     </View>
   );

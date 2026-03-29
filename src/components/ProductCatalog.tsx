@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { Product } from "@elite-biotech/shared";
+import { getProductFormat, type Product } from "@elite-biotech/shared";
 import { ProductCard } from "@/components/ProductCard";
 
 type SortKey = "featured" | "price-low" | "price-high" | "name";
@@ -31,7 +31,7 @@ export function ProductCatalog({ products }: { products: Product[] }) {
       const matchesCategory =
         activeCategory === "All" ? true : p.category === activeCategory;
 
-      const haystack = `${p.name} ${p.category} ${p.description} ${p.strengthMg}mg ${p.aliases?.join(" ") ?? ""}`.toLowerCase();
+      const haystack = `${p.name} ${p.category} ${p.description} ${getProductFormat(p)} ${p.aliases?.join(" ") ?? ""}`.toLowerCase();
       const matchesQuery = normalized.length === 0 ? true : haystack.includes(normalized);
 
       return matchesCategory && matchesQuery;
@@ -56,13 +56,22 @@ export function ProductCatalog({ products }: { products: Product[] }) {
     <div className="mt-8 space-y-6">
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <Metric label="Compounds" value={`${products.length}`} />
-        <Metric label="Format" value="10 mL standard" />
+        <Metric label="Pricing" value="25%+ under key retail" />
         <Metric label="Categories" value={`${categories.length - 1}`} />
-        <Metric label="Status" value="Catalog live" />
+        <Metric label="Ordering" value="Manual invoice launch" />
       </section>
 
       <section className="grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
-        <aside className="h-fit rounded-3xl border border-neutral-800 bg-neutral-900/40 p-5 lg:sticky lg:top-24">
+        <aside className="h-fit rounded-3xl border border-neutral-800 bg-gradient-to-b from-neutral-900/80 to-neutral-950/80 p-5 lg:sticky lg:top-24">
+          <div className="rounded-2xl border border-sky-500/20 bg-sky-500/10 p-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-200">
+              Price check
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-neutral-200">
+              Mirrored products are priced at least 25% below the current Super Human shop retail.
+            </p>
+          </div>
+
           <label htmlFor="catalog-search" className="text-xs font-semibold tracking-wide text-neutral-400">
             Search compounds
           </label>
@@ -71,8 +80,8 @@ export function ProductCatalog({ products }: { products: Product[] }) {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Try: ipamorelin, mitochondrial..."
-            className="mt-2 w-full rounded-xl border border-neutral-700 bg-neutral-950 px-4 py-3 text-sm text-neutral-100 outline-none transition-colors placeholder:text-neutral-500 focus:border-emerald-400"
+            placeholder="Try: tirzepatide, capsules, recovery..."
+            className="mt-2 w-full rounded-xl border border-neutral-700 bg-neutral-950 px-4 py-3 text-sm text-neutral-100 outline-none transition-colors placeholder:text-neutral-500 focus:border-sky-400"
           />
 
           <div className="mt-4">
@@ -83,7 +92,7 @@ export function ProductCatalog({ products }: { products: Product[] }) {
               id="catalog-sort"
               value={sortKey}
               onChange={(e) => setSortKey(e.target.value as SortKey)}
-              className="mt-2 w-full rounded-xl border border-neutral-700 bg-neutral-950 px-3 py-3 text-sm text-neutral-100 outline-none transition-colors focus:border-emerald-400"
+              className="mt-2 w-full rounded-xl border border-neutral-700 bg-neutral-950 px-3 py-3 text-sm text-neutral-100 outline-none transition-colors focus:border-sky-400"
             >
               <option value="featured">Featured</option>
               <option value="price-low">Price: Low to High</option>
@@ -105,7 +114,7 @@ export function ProductCatalog({ products }: { products: Product[] }) {
                     onClick={() => setActiveCategory(category)}
                     className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors ${
                       isActive
-                        ? "border-emerald-400 bg-emerald-400/15 text-emerald-200"
+                        ? "border-sky-400 bg-sky-400/15 text-sky-100"
                         : "border-neutral-700 bg-neutral-950 text-neutral-300 hover:border-neutral-600"
                     }`}
                   >
@@ -146,6 +155,21 @@ export function ProductCatalog({ products }: { products: Product[] }) {
             ) : null}
           </div>
 
+          <div className="grid gap-3 md:grid-cols-3">
+            <GuideCard
+              title="People-first catalog"
+              body="Fewer dead ends, friendlier cards, and simpler next steps than the average peptide storefront."
+            />
+            <GuideCard
+              title="Mirrored assortment"
+              body="Expanded with the most visible Super Human catalog items so buyers can compare without leaving the site."
+            />
+            <GuideCard
+              title="Invoice launch flow"
+              body="Browse, verify the format, then request a manual invoice while payment ops stay off-site."
+            />
+          </div>
+
           {filtered.length > 0 ? (
             <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
               {filtered.map((p) => (
@@ -171,6 +195,15 @@ function Metric({ label, value }: { label: string; value: string }) {
     <div className="rounded-2xl border border-neutral-800 bg-neutral-900/30 p-4">
       <p className="text-xs font-semibold uppercase tracking-wide text-neutral-500">{label}</p>
       <p className="mt-2 text-lg font-semibold text-neutral-100">{value}</p>
+    </div>
+  );
+}
+
+function GuideCard({ title, body }: { title: string; body: string }) {
+  return (
+    <div className="rounded-2xl border border-neutral-800 bg-neutral-900/30 p-4">
+      <p className="text-sm font-semibold text-neutral-100">{title}</p>
+      <p className="mt-2 text-sm leading-relaxed text-neutral-400">{body}</p>
     </div>
   );
 }

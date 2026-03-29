@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getProductBySlug } from "@elite-biotech/shared";
+import { getProductBySlug, getProductFormat } from "@elite-biotech/shared";
 import { InvoiceRequestForm } from "@/components/InvoiceRequestForm";
 import { ProductVisual } from "@/components/ProductVisual";
 import { SiteShell } from "@/components/SiteShell";
@@ -107,10 +107,7 @@ export default async function RequestInvoicePage({
 
                 <div className="mt-5 flex flex-wrap gap-2">
                   <span className="rounded-full border border-neutral-700 bg-neutral-950/60 px-3 py-1 text-xs font-semibold text-neutral-200">
-                    {product.strengthMg} mg
-                  </span>
-                  <span className="rounded-full border border-neutral-700 bg-neutral-950/60 px-3 py-1 text-xs font-semibold text-neutral-200">
-                    {product.volumeMl} mL vial
+                    {getProductFormat(product)}
                   </span>
                   <span className="rounded-full border border-neutral-700 bg-neutral-950/60 px-3 py-1 text-xs font-semibold text-neutral-200">
                     {product.category}

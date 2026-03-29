@@ -1,4 +1,4 @@
-import type { Product } from "./catalog";
+import { getProductFormat, type Product } from "./catalog";
 
 export const PROCUREMENT_EMAIL = "procurement@elitebiotechpeptides.com";
 
@@ -23,9 +23,7 @@ export type InvoiceRequestPayload = {
   notes?: string;
 };
 
-export function getProductFormat(product?: Product) {
-  return product ? `${product.strengthMg} mg / ${product.volumeMl} mL` : "To be confirmed";
-}
+export { getProductFormat };
 
 export function buildInvoiceDraft(input: InvoiceRequestInput) {
   const productName = input.product?.name ?? "General catalog inquiry";

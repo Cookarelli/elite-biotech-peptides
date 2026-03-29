@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { products } from "@elite-biotech/shared";
+import { getProductFormat, products } from "@elite-biotech/shared";
 import { ProductVisual } from "@/components/ProductVisual";
 import { SiteShell } from "@/components/SiteShell";
 
@@ -17,7 +17,7 @@ export default async function ProductDetail({
     <SiteShell>
       <div className="mb-6 flex flex-wrap items-center gap-2 text-sm text-neutral-500">
         <Link href="/products" className="transition-colors hover:text-neutral-200">
-          Compounds
+          Products
         </Link>
         <span>/</span>
         <span className="text-neutral-300">{p.name}</span>
@@ -28,46 +28,61 @@ export default async function ProductDetail({
           <div className="p-4">
             <ProductVisual product={p} />
           </div>
-          <div className="p-7">
-            <h1 className="text-3xl font-semibold">{p.name}</h1>
-            <p className="mt-2 text-sm text-neutral-400">{p.category}</p>
+          <div className="border-t border-neutral-800 p-7">
+            <div className="flex flex-wrap items-start justify-between gap-4">
+              <div>
+                <h1 className="text-3xl font-semibold">{p.name}</h1>
+                <p className="mt-2 text-sm text-neutral-400">{p.category}</p>
+              </div>
+              <div className="text-right">
+                {p.benchmarkRetailPrice ? (
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-300">
+                    Mirrored retail benchmark
+                  </p>
+                ) : null}
+                {p.benchmarkRetailPrice ? (
+                  <p className="mt-1 text-sm text-neutral-500 line-through">{p.benchmarkRetailPrice}</p>
+                ) : null}
+                <p className="mt-1 text-2xl font-semibold text-neutral-100">{p.price}</p>
+              </div>
+            </div>
+
             <div className="mt-4 flex flex-wrap gap-2">
               <span className="rounded-full border border-neutral-700 bg-neutral-950/60 px-3 py-1 text-xs font-semibold text-neutral-200">
-                {p.strengthMg} mg
-              </span>
-              <span className="rounded-full border border-neutral-700 bg-neutral-950/60 px-3 py-1 text-xs font-semibold text-neutral-200">
-                {p.volumeMl} mL vial
+                {getProductFormat(p)}
               </span>
               <span className="rounded-full border border-sky-500/30 bg-sky-500/10 px-3 py-1 text-xs font-semibold text-sky-200">
                 Elite Biotech label
               </span>
+              <span className="rounded-full border border-neutral-700 bg-neutral-950/60 px-3 py-1 text-xs font-semibold text-neutral-200">
+                Research use only
+              </span>
             </div>
-            <p className="mt-4 text-neutral-300">{p.description}</p>
+
+            <p className="mt-5 text-neutral-300">{p.description}</p>
 
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
-              <InfoChip label="Format" value={`${p.strengthMg} mg / ${p.volumeMl} mL`} />
-              <InfoChip label="Fulfillment" value="US-based" />
-              <InfoChip label="Discount Tier" value="$100 / $250" />
+              <InfoChip label="Format" value={getProductFormat(p)} />
+              <InfoChip label="Fulfillment" value="US-based manual review" />
+              <InfoChip label="Promo Tiers" value="$100 / $250" />
             </div>
           </div>
         </div>
 
         <div className="space-y-4">
-          <div className="rounded-3xl border border-neutral-800 bg-neutral-900/40 p-7">
+          <div className="rounded-3xl border border-neutral-800 bg-gradient-to-b from-sky-500/10 to-neutral-900/40 p-7">
             <div className="flex items-center justify-between">
-              <p className="text-sm font-semibold text-neutral-200">Procurement</p>
+              <p className="text-sm font-semibold text-neutral-200">Ready to order?</p>
               <span className="rounded-full border border-neutral-700 bg-neutral-950/60 px-3 py-1 text-xs font-semibold text-neutral-200">
                 {p.price}
               </span>
             </div>
 
-            <p className="mt-3 text-sm text-neutral-400">
-              Elite Biotech Peptides is launching with a manual invoice workflow. Request the item
-              here and we can review the order details before sending a PayPal invoice separately.
+            <p className="mt-3 text-sm leading-relaxed text-neutral-300">
+              Elite launches with a manual invoice flow. Submit the request here and we will confirm
+              the details before sending a PayPal invoice from the business side.
             </p>
-            <p className="mt-3 text-sm text-neutral-300">
-              Selected format: {p.strengthMg} mg in {p.volumeMl} mL.
-            </p>
+            <p className="mt-3 text-sm text-neutral-300">Selected format: {getProductFormat(p)}.</p>
 
             <div className="mt-5 space-y-3">
               <Link
@@ -77,23 +92,19 @@ export default async function ProductDetail({
                 Request Invoice
               </Link>
               <Link
-                href="/coa"
+                href="/products"
                 className="block w-full rounded-xl border border-neutral-700 px-4 py-3 text-center text-sm font-semibold text-neutral-100 transition-colors hover:border-neutral-600 hover:bg-neutral-900/60"
               >
-                View COA Library
+                Keep Browsing
               </Link>
             </div>
 
             <div className="mt-5 rounded-2xl border border-neutral-800 bg-neutral-950/50 p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-300">
-                Order Incentives
+                Order incentives
               </p>
-              <p className="mt-2 text-sm text-neutral-300">
-                10% off orders over $100 with free shipping.
-              </p>
-              <p className="mt-1 text-sm text-neutral-300">
-                25% off orders over $250 with free shipping.
-              </p>
+              <p className="mt-2 text-sm text-neutral-300">10% off orders over $100 with free shipping.</p>
+              <p className="mt-1 text-sm text-neutral-300">25% off orders over $250 with free shipping.</p>
             </div>
           </div>
 
@@ -105,10 +116,11 @@ export default async function ProductDetail({
           </div>
 
           <div className="rounded-3xl border border-neutral-800 bg-neutral-900/40 p-7">
-            <p className="text-sm font-semibold text-neutral-200">COA</p>
-            <p className="mt-2 text-sm text-neutral-400">
-              Branded batch library is in place. Production can swap in lot-specific PDFs and
-              testing metadata.
+            <p className="text-sm font-semibold text-neutral-200">Catalog accuracy note</p>
+            <p className="mt-2 text-sm leading-relaxed text-neutral-400">
+              Pricing and format details are aligned to Elite’s current catalog. Where a public Super
+              Human comparison exists, mirrored items are benchmarked below that listed retail price.
+              Potency claims beyond the storefront still need supplier-side COA confirmation.
             </p>
           </div>
         </div>

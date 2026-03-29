@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { Product } from "@elite-biotech/shared";
+import { getProductFormat, type Product } from "@elite-biotech/shared";
 
 const tones: Record<string, string> = {
   "Growth Hormone Axis":
@@ -55,10 +55,7 @@ export function ProductVisual({
           </h3>
           <div className="mt-3 flex flex-wrap gap-2 text-[11px] font-semibold">
             <span className="rounded-full border border-white/12 bg-white/6 px-2.5 py-1 text-white/85">
-              {product.strengthMg} mg
-            </span>
-            <span className="rounded-full border border-white/12 bg-white/6 px-2.5 py-1 text-white/85">
-              {product.volumeMl} mL
+              {getProductFormat(product)}
             </span>
           </div>
         </div>

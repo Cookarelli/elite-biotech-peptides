@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import type { Product } from "@elite-biotech/shared";
+import { getProductFormat, type Product } from "@elite-biotech/shared";
 import { ProductVisual } from "@/components/ProductVisual";
 
 export function ProductCard({ p }: { p: Product }) {
@@ -16,6 +16,15 @@ export function ProductCard({ p }: { p: Product }) {
         </Link>
 
         <div className="flex flex-1 flex-col p-5">
+          {p.benchmarkRetailPrice ? (
+            <div className="mb-3 flex flex-wrap items-center gap-2 text-[11px] font-semibold">
+              <span className="rounded-full border border-sky-500/30 bg-sky-500/10 px-2.5 py-1 text-sky-100">
+                25%+ under retail
+              </span>
+              <span className="text-neutral-500 line-through">{p.benchmarkRetailPrice}</span>
+            </div>
+          ) : null}
+
           <div className="flex items-start justify-between gap-3">
             <Link href={`/products/${p.slug}`} className="text-base font-semibold text-neutral-100 transition-colors hover:text-white">
               {p.name}
@@ -28,10 +37,7 @@ export function ProductCard({ p }: { p: Product }) {
 
           <div className="mt-4 flex flex-wrap gap-2 text-xs">
             <span className="rounded-full border border-neutral-700 bg-neutral-950/70 px-2.5 py-1 text-neutral-300">
-              {p.strengthMg} mg
-            </span>
-            <span className="rounded-full border border-neutral-700 bg-neutral-950/70 px-2.5 py-1 text-neutral-300">
-              {p.volumeMl} mL
+              {getProductFormat(p)}
             </span>
             <span className="rounded-full border border-neutral-700 bg-neutral-950/70 px-2.5 py-1 text-neutral-300">
               Batch tracked
@@ -84,15 +90,18 @@ export function ProductCard({ p }: { p: Product }) {
 
             <div className="mt-4 flex flex-wrap gap-2">
               <span className="rounded-full border border-neutral-700 bg-neutral-900 px-3 py-1 text-xs text-neutral-300">
-                {p.strengthMg} mg
+                {getProductFormat(p)}
               </span>
               <span className="rounded-full border border-neutral-700 bg-neutral-900 px-3 py-1 text-xs text-neutral-300">
-                {p.volumeMl} mL vial
-              </span>
-              <span className="rounded-full border border-neutral-700 bg-neutral-900 px-3 py-1 text-xs text-neutral-300">
-                COA-ready (demo)
+                COA-ready
               </span>
             </div>
+
+            {p.benchmarkRetailPrice ? (
+              <p className="mt-4 text-xs text-sky-200">
+                Retail benchmark: <span className="line-through">{p.benchmarkRetailPrice}</span>
+              </p>
+            ) : null}
 
             <p className="mt-4 text-xs text-neutral-500">
               Research use only. Not for human consumption. No medical claims.
