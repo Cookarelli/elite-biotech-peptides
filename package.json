@@ -18,7 +18,13 @@
     "mobile": "npm run start --workspace mobile-app",
     "ios": "npm run ios --workspace mobile-app",
     "android": "npm run android --workspace mobile-app",
-    "mobile:web": "npm run web --workspace mobile-app"
+    "mobile:web": "npm run web --workspace mobile-app",
+    "mobile:testflight": "npm run eas:testflight --workspace mobile-app",
+    "mobile:ios:build": "npm run eas:build:ios --workspace mobile-app",
+    "mobile:ios:submit": "npm run eas:submit:ios --workspace mobile-app",
+    "mobile:android:build": "npm run eas:build:android --workspace mobile-app",
+    "mobile:android:internal": "npm run eas:android:internal --workspace mobile-app",
+    "mobile:android:submit:internal": "npm run eas:submit:android:internal --workspace mobile-app"
   },
   "dependencies": {
     "@elite-biotech/shared": "*",

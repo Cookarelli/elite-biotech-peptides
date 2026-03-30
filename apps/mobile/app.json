@@ -1,9 +1,10 @@
 {
   "expo": {
-    "name": "Elite Biotech",
+    "name": "Elite Biotech Peptides",
     "slug": "elite-biotech-peptides-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
+    "scheme": "elitebiotechpeptides",
     "icon": "./assets/elite-biotech-logo.png",
     "userInterfaceStyle": "dark",
     "splash": {
@@ -12,9 +13,13 @@
       "backgroundColor": "#050816"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.elitebiotech.peptides",
+      "buildNumber": "1.0.0"
     },
     "android": {
+      "package": "com.elitebiotech.peptides",
+      "versionCode": 1,
       "adaptiveIcon": {
         "backgroundColor": "#050816",
         "foregroundImage": "./assets/elite-biotech-logo.png",

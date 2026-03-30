@@ -6,7 +6,13 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "eas:build:ios": "npx eas-cli build --platform ios --profile production",
+    "eas:submit:ios": "npx eas-cli submit --platform ios --profile testflight --latest",
+    "eas:testflight": "npx eas-cli build --platform ios --profile production --auto-submit",
+    "eas:build:android": "npx eas-cli build --platform android --profile production",
+    "eas:submit:android:internal": "npx eas-cli submit --platform android --profile android-internal --latest",
+    "eas:android:internal": "npx eas-cli build --platform android --profile production --auto-submit"
   },
   "dependencies": {
     "@elite-biotech/shared": "*",
