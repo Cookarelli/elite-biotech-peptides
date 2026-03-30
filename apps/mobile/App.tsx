@@ -42,7 +42,7 @@ const demoInvoices = [
   {
     id: "INV-24003",
     status: "Follow-up needed",
-    detail: "Buyer requested COA detail before invoice issuance",
+    detail: "Buyer requested additional documentation before invoice issuance",
   },
 ];
 

@@ -1,17 +1,33 @@
+import Image from "next/image";
 import { SiteShell } from "@/components/SiteShell";
+
+const qualityImage =
+  "https://images.pexels.com/photos/3735709/pexels-photo-3735709.jpeg?cs=srgb&dl=pexels-polina-tankilevitch-3735709.jpg&fm=jpg";
 
 export default function About() {
   return (
     <SiteShell>
       <div className="space-y-6">
-        <div className="rounded-3xl border border-neutral-800 bg-neutral-900/40 p-8">
-          <h1 className="text-3xl font-semibold">Quality Framework</h1>
-          <p className="mt-3 text-neutral-300">
-            Elite Biotech Peptides is designed to lead with transparent quality operations instead
-            of generic marketing claims. This page is built as a founder-ready framework you can
-            present to partners and cofounders.
-          </p>
-        </div>
+        <section className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-center">
+          <div className="rounded-3xl border border-neutral-800 bg-neutral-900/40 p-8">
+            <h1 className="text-3xl font-semibold">Quality Framework</h1>
+            <p className="mt-3 max-w-2xl text-neutral-300">
+              Elite Biotech Peptides is positioned around clean operations, consistent product
+              presentation, and responsive procurement support instead of overloaded technical pages.
+            </p>
+          </div>
+
+          <div className="relative overflow-hidden rounded-[2rem] border border-neutral-800 min-h-[280px]">
+            <Image
+              src={qualityImage}
+              alt="Laboratory workflow and sample preparation"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 360px, 100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-transparent" />
+          </div>
+        </section>
 
         <div className="grid gap-4 md:grid-cols-2">
           {[
@@ -24,16 +40,16 @@ export default function About() {
               "Use standardized handling and temperature guidance by product format to reduce process drift.",
             ],
             [
-              "3. Batch Traceability",
-              "Assign internal batch IDs that map directly to COA entries and procurement records.",
+              "3. Inventory Traceability",
+              "Keep internal lot mapping organized so support questions can be answered quickly during procurement review.",
             ],
             [
-              "4. COA Publication",
-              "Publish lot-level COA files with test date, assay method, and reporting lab metadata.",
+              "4. Documentation Requests",
+              "Provide documentation during procurement conversations when buyers need batch or supplier support.",
             ],
             [
               "5. Customer Communication",
-              "Keep labeling and policy language consistent across product, COA, and support pages.",
+              "Keep labeling and policy language consistent across product, support, and invoice pages.",
             ],
             [
               "6. Compliance Guardrails",

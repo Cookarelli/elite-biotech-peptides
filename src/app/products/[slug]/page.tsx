@@ -116,11 +116,11 @@ export default async function ProductDetail({
           </div>
 
           <div className="rounded-3xl border border-neutral-800 bg-neutral-900/40 p-7">
-            <p className="text-sm font-semibold text-neutral-200">Catalog accuracy note</p>
+            <p className="text-sm font-semibold text-neutral-200">Documentation note</p>
             <p className="mt-2 text-sm leading-relaxed text-neutral-400">
-              Pricing and format details are aligned to Elite’s current catalog. Where a public Super
-              Human comparison exists, mirrored items are benchmarked below that listed retail price.
-              Potency claims beyond the storefront still need supplier-side COA confirmation.
+              Pricing and format details are aligned to Elite’s current catalog. Documentation and
+              batch-level support are handled through procurement review instead of being pushed into
+              the product page experience.
             </p>
           </div>
         </div>

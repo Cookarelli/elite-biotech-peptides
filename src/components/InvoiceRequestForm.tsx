@@ -124,7 +124,7 @@ export function InvoiceRequestForm({ product }: { product?: Product }) {
           value={notes}
           onChange={(event) => setNotes(event.target.value)}
           rows={5}
-          placeholder="Batch preferences, COA requests, timing, or anything else we should know."
+          placeholder="Product preferences, shipping details, timeline, or anything else we should know."
           className="w-full rounded-2xl border border-neutral-700 bg-neutral-950 px-4 py-3 text-sm text-neutral-100 outline-none transition-colors placeholder:text-neutral-500 focus:border-sky-400"
         />
       </label>

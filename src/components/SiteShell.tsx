@@ -15,7 +15,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
           <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-2 text-xs font-semibold tracking-wide text-neutral-200">
             <p className="text-sky-200">10% off orders over $100 + free shipping</p>
             <p className="text-neutral-300">25% off orders over $250 + free shipping</p>
-            <p className="text-neutral-300">Expanded catalog, invoice-first checkout</p>
+            <p className="text-neutral-300">Documentation available upon request</p>
           </div>
         </div>
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
@@ -38,7 +38,6 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
 
           <nav className="hidden items-center gap-6 md:flex">
             <NavLink href="/products">Compounds</NavLink>
-            <NavLink href="/coa">COA Library</NavLink>
             <NavLink href="/about">Quality</NavLink>
             <NavLink href="/faq">FAQ</NavLink>
             <NavLink href="/request-invoice">Invoices</NavLink>

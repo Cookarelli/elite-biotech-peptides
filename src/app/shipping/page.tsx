@@ -40,7 +40,7 @@ export default function Shipping() {
           <h2 className="text-xl font-semibold">Returns & Resolution</h2>
           <div className="mt-4 space-y-3 text-sm text-neutral-300">
             <p>Report shipping damage within 48 hours of delivery with photos.</p>
-            <p>Batch or documentation issues are reviewed against COA and fulfillment records.</p>
+            <p>Batch or documentation issues are reviewed through procurement support and fulfillment records.</p>
             <p>Replacement and credit decisions are handled by the procurement support desk.</p>
           </div>
           <p className="mt-5 text-xs text-neutral-500">

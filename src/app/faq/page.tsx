@@ -11,15 +11,15 @@ const faqs = [
   },
   {
     q: "Are products standardized?",
-    a: "Yes. This founder demo is standardized to one flagship concentration per item in a 10 mL vial format.",
+    a: "Most live products are presented with one primary format per listing so the storefront stays easier to browse and compare.",
   },
   {
-    q: "Do you provide COA documentation?",
-    a: "The COA library is structured by batch and includes downloadable demo files. Production can use signed PDFs.",
+    q: "Is documentation available?",
+    a: "Yes. Documentation can be provided upon request during procurement review rather than being pushed into every product page.",
   },
   {
-    q: "Can I place an order on this site?",
-    a: "Current checkout is intentionally disabled in this demo build. Procurement and inquiry flow can be enabled next.",
+    q: "How do I place an order?",
+    a: "Launch ordering is handled through the invoice request flow. Submit the product details and Elite can follow up with a PayPal invoice separately.",
   },
   {
     q: "Are any medical claims made on this website?",

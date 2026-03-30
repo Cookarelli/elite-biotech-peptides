@@ -7,7 +7,7 @@ import { PwaRegistrar } from "@/components/PwaRegistrar";
 export const metadata: Metadata = {
   title: "Elite Biotech Peptides",
   description:
-    "Elite Biotech Peptides research catalog with COA-ready batches, standardized vial formats, and procurement support.",
+    "Elite Biotech Peptides research catalog with competitive pricing, approachable product browsing, and procurement support.",
   manifest: "/manifest.webmanifest",
   icons: {
     apple: "/apple-touch-icon.png",

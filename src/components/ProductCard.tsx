@@ -89,7 +89,7 @@ export function ProductCard({ p }: { p: Product }) {
             <div className="mt-4 flex flex-wrap items-center gap-3 border-y border-neutral-800 py-3 text-xs">
               <span className="font-medium text-neutral-300">{getProductFormat(p)}</span>
               <span className="h-3.5 w-px bg-neutral-700" aria-hidden="true" />
-              <span className="text-neutral-400">COA-ready</span>
+              <span className="text-neutral-400">Documentation on request</span>
             </div>
 
             {p.benchmarkRetailPrice ? (

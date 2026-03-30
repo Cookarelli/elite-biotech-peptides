@@ -1,9 +1,0 @@
-Elite Biotech Peptides - COA Placeholder
-Compound: Ipamorelin
-Batch: EBP-IPA-2403D
-Date Tested: 2026-02-09
-Purity: 98.9%
-Assay: LC-MS
-Status: Pending
-
-This is a branded demonstration placeholder file.
