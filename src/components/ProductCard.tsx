@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { getProductFormat, type Product } from "@elite-biotech/shared";
+import { AddToCartButton } from "@/components/AddToCartButton";
 import { ProductVisual } from "@/components/ProductVisual";
 
 export function ProductCard({ p }: { p: Product }) {
@@ -39,10 +40,11 @@ export function ProductCard({ p }: { p: Product }) {
           <div className="mt-4 flex flex-wrap items-center gap-3 border-y border-neutral-800 py-3 text-xs">
             <span className="font-medium text-neutral-300">{getProductFormat(p)}</span>
             <span className="h-3.5 w-px bg-neutral-700" aria-hidden="true" />
-            <span className="text-neutral-400">Batch tracked</span>
+            <span className="text-neutral-400">COA on request</span>
           </div>
 
-          <div className="mt-4 flex items-center gap-2 border-t border-neutral-800 pt-4 text-xs">
+          <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-neutral-800 pt-4 text-xs">
+            <AddToCartButton product={p} />
             <button
               type="button"
               onClick={() => setOpen(true)}
@@ -89,7 +91,7 @@ export function ProductCard({ p }: { p: Product }) {
             <div className="mt-4 flex flex-wrap items-center gap-3 border-y border-neutral-800 py-3 text-xs">
               <span className="font-medium text-neutral-300">{getProductFormat(p)}</span>
               <span className="h-3.5 w-px bg-neutral-700" aria-hidden="true" />
-              <span className="text-neutral-400">Documentation on request</span>
+              <span className="text-neutral-400">COA on request</span>
             </div>
 
             {p.benchmarkRetailPrice ? (
@@ -103,6 +105,7 @@ export function ProductCard({ p }: { p: Product }) {
             </p>
 
             <div className="mt-6 flex flex-wrap gap-2">
+              <AddToCartButton product={p} />
               <Link
                 href={`/products/${p.slug}`}
                 className="rounded-xl bg-sky-400 px-4 py-2 text-sm font-semibold text-neutral-950 transition-colors hover:bg-cyan-300"
@@ -111,11 +114,11 @@ export function ProductCard({ p }: { p: Product }) {
                 Open Product Page
               </Link>
               <Link
-                href={`/request-invoice?product=${p.slug}`}
+                href={`/request-documentation?product=${p.slug}`}
                 className="rounded-xl border border-sky-500/40 bg-sky-500/10 px-4 py-2 text-sm font-semibold text-sky-100 transition-colors hover:border-sky-400 hover:bg-sky-500/20"
                 onClick={() => setOpen(false)}
               >
-                Request Invoice
+                Request COA Info
               </Link>
               <button
                 type="button"

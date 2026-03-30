@@ -58,7 +58,7 @@ export function ProductCatalog({ products }: { products: Product[] }) {
         <Metric label="Compounds" value={`${products.length}`} />
         <Metric label="Pricing" value="25%+ under key retail" />
         <Metric label="Categories" value={`${categories.length - 1}`} />
-        <Metric label="Ordering" value="Manual invoice launch" />
+        <Metric label="Ordering" value="Cart + PayPal checkout" />
       </section>
 
       <section className="grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
@@ -72,7 +72,7 @@ export function ProductCatalog({ products }: { products: Product[] }) {
             </p>
           </div>
 
-          <label htmlFor="catalog-search" className="text-xs font-semibold tracking-wide text-neutral-400">
+          <label htmlFor="catalog-search" className="mt-5 block text-xs font-semibold tracking-wide text-neutral-400">
             Search compounds
           </label>
           <input
@@ -141,8 +141,7 @@ export function ProductCatalog({ products }: { products: Product[] }) {
         <div className="space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-neutral-800 bg-neutral-900/30 px-4 py-3">
             <p className="text-sm text-neutral-300">
-              Showing{" "}
-              <span className="font-semibold text-neutral-100">{filtered.length}</span>{" "}
+              Showing <span className="font-semibold text-neutral-100">{filtered.length}</span>{" "}
               result{filtered.length === 1 ? "" : "s"}
               {activeCategory !== "All" ? (
                 <span className="text-neutral-400"> in {activeCategory}</span>
@@ -165,8 +164,8 @@ export function ProductCatalog({ products }: { products: Product[] }) {
               body="Expanded with the most visible Super Human catalog items so buyers can compare without leaving the site."
             />
             <GuideCard
-              title="Invoice launch flow"
-              body="Browse, verify the format, then request a manual invoice while payment ops stay off-site."
+              title="Checkout-ready flow"
+              body="Add products to cart, apply the active discount tier automatically, and finish in PayPal."
             />
           </div>
 

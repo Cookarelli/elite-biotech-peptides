@@ -37,7 +37,7 @@ export default function Contact() {
           <Card
             title="Procurement Desk"
             value="procurement@elitebiotechpeptides.com"
-            note="Bulk quotes, documentation requests, and invoice support."
+            note="Bulk quotes, documentation requests, and checkout support."
           />
           <Card
             title="Response Window"

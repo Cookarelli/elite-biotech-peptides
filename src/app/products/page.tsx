@@ -25,16 +25,16 @@ export default function ProductsPage() {
 
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
-                href="/request-invoice"
+                href="/cart"
                 className="rounded-xl bg-sky-400 px-5 py-2.5 text-sm font-semibold text-neutral-950 transition-colors hover:bg-cyan-300"
               >
-                Request Invoice
+                View Cart
               </Link>
               <Link
-                href="/contact"
+                href="/request-documentation"
                 className="rounded-xl border border-neutral-700 px-5 py-2.5 text-sm font-semibold text-neutral-100 transition-colors hover:border-neutral-600 hover:bg-neutral-900"
               >
-                Contact Procurement
+                Request COA Info
               </Link>
             </div>
 

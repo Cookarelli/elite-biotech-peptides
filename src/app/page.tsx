@@ -50,8 +50,8 @@ export default function Home() {
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-neutral-300 sm:text-lg">
               A cleaner, more inviting peptide storefront for repeat buyers: better product browsing,
-              stronger pricing, and manual invoice ordering that keeps launch simple without making
-              the site feel unfinished.
+              stronger pricing, and real cart checkout that keeps launch simple without making the
+              site feel unfinished.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -62,17 +62,17 @@ export default function Home() {
                 Shop Products
               </Link>
               <Link
-                href="/request-invoice"
+                href="/cart"
                 className="rounded-xl border border-neutral-700 px-6 py-3 text-sm font-semibold text-neutral-100 transition-colors hover:border-neutral-600 hover:bg-neutral-900/60"
               >
-                Request Invoice
+                View Cart
               </Link>
             </div>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-3">
               <ValueCard label="Pricing" value="25%+ under key retail" />
-              <ValueCard label="Ordering" value="Manual invoice launch" />
-              <ValueCard label="Support" value="Documentation on request" />
+              <ValueCard label="Ordering" value="Cart + PayPal checkout" />
+              <ValueCard label="Support" value="COA info on request" />
             </div>
           </div>
         </div>
@@ -130,8 +130,8 @@ export default function Home() {
           <p className="text-xs font-semibold tracking-[0.18em] text-sky-300">HOW ORDERING WORKS</p>
           <div className="mt-4 space-y-4">
             <StepCard number="01" title="Browse the catalog" body="Compare products without needing an account wall before buyers can evaluate the lineup." />
-            <StepCard number="02" title="Choose your products" body="Review the current format and pricing, then submit the request through one simple invoice flow." />
-            <StepCard number="03" title="Review and pay" body="Elite confirms the request and sends the PayPal invoice separately while shipping is handled manually." />
+            <StepCard number="02" title="Build your cart" body="Add products directly from the catalog or product pages and let the active discount tier apply automatically." />
+            <StepCard number="03" title="Pay in PayPal" body="Checkout finishes in PayPal while shipping and post-purchase support stay handled from the business side." />
           </div>
         </div>
       </section>
@@ -176,17 +176,17 @@ export default function Home() {
           <p className="text-xs font-semibold tracking-[0.18em] text-sky-300">RESEARCH SUPPORT</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight">Support that feels human, not hidden</h2>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-neutral-300">
-            Instead of pushing technical documentation in front of every product, the site now keeps
-            the catalog clean and makes support available when it is actually needed. Buyers can ask
-            for documentation, shipping clarification, or procurement help directly through the
-            invoice and contact flow.
+            Instead of pushing technical documentation in front of every product, the site keeps the
+            catalog clean and makes support available when it is actually needed. Buyers can request
+            COA information, shipping clarification, or procurement help directly without leaving
+            the cart-first shopping flow.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
-              href="/contact"
+              href="/request-documentation"
               className="rounded-xl bg-sky-400 px-5 py-2.5 text-sm font-semibold text-neutral-950 transition-colors hover:bg-cyan-300"
             >
-              Contact Procurement
+              Request COA Info
             </Link>
             <Link
               href="/faq"

@@ -6,6 +6,10 @@ function required(name: string, fallback?: string) {
   return value;
 }
 
+function optional(name: string, fallback?: string) {
+  return process.env[name] ?? fallback;
+}
+
 export const env = {
   DATABASE_URL: required("DATABASE_URL", "file:./prisma/dev.db"),
   NEXT_PUBLIC_SITE_URL: required("NEXT_PUBLIC_SITE_URL", "http://localhost:3000"),
@@ -21,4 +25,8 @@ export const env = {
     "NEXT_PUBLIC_PROCUREMENT_EMAIL",
     "procurement@elitebiotechpeptides.com"
   ),
+  NEXT_PUBLIC_PAYPAL_CLIENT_ID: optional("NEXT_PUBLIC_PAYPAL_CLIENT_ID"),
+  PAYPAL_CLIENT_ID: optional("PAYPAL_CLIENT_ID"),
+  PAYPAL_CLIENT_SECRET: optional("PAYPAL_CLIENT_SECRET"),
+  PAYPAL_ENVIRONMENT: optional("PAYPAL_ENVIRONMENT", "sandbox"),
 };

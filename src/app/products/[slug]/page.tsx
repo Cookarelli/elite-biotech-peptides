@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProductFormat, products } from "@elite-biotech/shared";
+import { AddToCartButton } from "@/components/AddToCartButton";
 import { ProductVisual } from "@/components/ProductVisual";
 import { SiteShell } from "@/components/SiteShell";
 
@@ -63,7 +64,7 @@ export default async function ProductDetail({
 
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               <InfoChip label="Format" value={getProductFormat(p)} />
-              <InfoChip label="Fulfillment" value="US-based manual review" />
+              <InfoChip label="Fulfillment" value="US shipping handled manually" />
               <InfoChip label="Promo Tiers" value="$100 / $250" />
             </div>
           </div>
@@ -79,23 +80,24 @@ export default async function ProductDetail({
             </div>
 
             <p className="mt-3 text-sm leading-relaxed text-neutral-300">
-              Elite launches with a manual invoice flow. Submit the request here and we will confirm
-              the details before sending a PayPal invoice from the business side.
+              Add this item to cart and finish payment in PayPal. COA information stays available as
+              a separate support request when buyers need it before checkout.
             </p>
             <p className="mt-3 text-sm text-neutral-300">Selected format: {getProductFormat(p)}.</p>
 
             <div className="mt-5 space-y-3">
-              <Link
-                href={`/request-invoice?product=${p.slug}`}
-                className="block w-full rounded-xl bg-sky-400 px-4 py-3 text-center text-sm font-semibold text-neutral-950 transition-colors hover:bg-cyan-300"
-              >
-                Request Invoice
-              </Link>
+              <AddToCartButton product={p} fullWidth />
               <Link
                 href="/products"
                 className="block w-full rounded-xl border border-neutral-700 px-4 py-3 text-center text-sm font-semibold text-neutral-100 transition-colors hover:border-neutral-600 hover:bg-neutral-900/60"
               >
                 Keep Browsing
+              </Link>
+              <Link
+                href={`/request-documentation?product=${p.slug}`}
+                className="block w-full rounded-xl border border-sky-500/40 bg-sky-500/10 px-4 py-3 text-center text-sm font-semibold text-sky-100 transition-colors hover:border-sky-400 hover:bg-sky-500/20"
+              >
+                Request COA Info
               </Link>
             </div>
 
@@ -118,9 +120,8 @@ export default async function ProductDetail({
           <div className="rounded-3xl border border-neutral-800 bg-neutral-900/40 p-7">
             <p className="text-sm font-semibold text-neutral-200">Documentation note</p>
             <p className="mt-2 text-sm leading-relaxed text-neutral-400">
-              Pricing and format details are aligned to Elite’s current catalog. Documentation and
-              batch-level support are handled through procurement review instead of being pushed into
-              the product page experience.
+              Pricing and format details are aligned to Elite’s current catalog. COA information is
+              available on request instead of crowding the main buying path.
             </p>
           </div>
         </div>

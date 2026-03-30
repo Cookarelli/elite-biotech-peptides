@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Elite Biotech Peptides",
     short_name: "Elite Biotech",
     description:
-      "Elite Biotech Peptides research catalog with competitive pricing, approachable browsing, and invoice-first ordering.",
+      "Elite Biotech Peptides research catalog with competitive pricing, approachable browsing, and PayPal checkout.",
     start_url: "/",
     display: "standalone",
     background_color: "#020617",

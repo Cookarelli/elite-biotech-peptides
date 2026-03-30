@@ -49,7 +49,7 @@ export default function About() {
             ],
             [
               "5. Customer Communication",
-              "Keep labeling and policy language consistent across product, support, and invoice pages.",
+              "Keep labeling and policy language consistent across product, support, cart, and checkout pages.",
             ],
             [
               "6. Compliance Guardrails",

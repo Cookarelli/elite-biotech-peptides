@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CartLink } from "@/components/CartLink";
 
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
-  <Link href={href} className="text-sm font-medium text-neutral-300 transition-colors hover:text-sky-100">
+  <Link href={href} className="whitespace-nowrap text-sm font-medium text-neutral-300 transition-colors hover:text-sky-100">
     {children}
   </Link>
 );
@@ -15,11 +16,12 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
           <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-2 text-xs font-semibold tracking-wide text-neutral-200">
             <p className="text-sky-200">10% off orders over $100 + free shipping</p>
             <p className="text-neutral-300">25% off orders over $250 + free shipping</p>
-            <p className="text-neutral-300">Documentation available upon request</p>
+            <p className="text-neutral-300">COA information available upon request</p>
           </div>
         </div>
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
-          <Link href="/" className="flex items-center gap-3">
+
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4">
+          <Link href="/" className="flex min-w-0 items-center gap-3">
             <span className="rounded-2xl border border-neutral-800 bg-white/95 p-2 shadow-[0_10px_40px_rgba(0,0,0,0.35)]">
               <Image
                 src="/brand/elite-biotech-peptides-logo.png"
@@ -30,26 +32,40 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
                 priority
               />
             </span>
-            <div className="leading-tight">
-              <div className="text-sm font-semibold tracking-tight">Elite Biotech Peptides</div>
+            <div className="min-w-0 leading-tight">
+              <div className="truncate text-sm font-semibold tracking-tight">Elite Biotech Peptides</div>
               <div className="text-[11px] text-neutral-400">Research use only - US fulfillment</div>
             </div>
           </Link>
 
           <nav className="hidden items-center gap-6 md:flex">
             <NavLink href="/products">Compounds</NavLink>
+            <NavLink href="/cart">Cart</NavLink>
             <NavLink href="/about">Quality</NavLink>
             <NavLink href="/faq">FAQ</NavLink>
-            <NavLink href="/request-invoice">Invoices</NavLink>
+            <NavLink href="/request-documentation">COA Request</NavLink>
             <NavLink href="/contact">Contact</NavLink>
           </nav>
 
-          <Link
-            href="/products"
-            className="rounded-xl bg-sky-400 px-4 py-2 text-sm font-semibold text-neutral-950 transition-colors hover:bg-cyan-300"
-          >
-            View Catalog
-          </Link>
+          <div className="flex items-center gap-3">
+            <CartLink />
+            <Link
+              href="/products"
+              className="hidden rounded-xl bg-sky-400 px-4 py-2 text-sm font-semibold text-neutral-950 transition-colors hover:bg-cyan-300 sm:inline-flex"
+            >
+              View Catalog
+            </Link>
+          </div>
+        </div>
+
+        <div className="border-t border-neutral-800/60 md:hidden">
+          <div className="mx-auto flex max-w-7xl gap-4 overflow-x-auto px-4 py-3">
+            <NavLink href="/products">Compounds</NavLink>
+            <NavLink href="/cart">Cart</NavLink>
+            <NavLink href="/request-documentation">COA Request</NavLink>
+            <NavLink href="/faq">FAQ</NavLink>
+            <NavLink href="/contact">Contact</NavLink>
+          </div>
         </div>
       </header>
 

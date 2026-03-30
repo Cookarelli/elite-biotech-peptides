@@ -2,16 +2,18 @@ import Image from "next/image";
 import { getProductFormat, type Product } from "@elite-biotech/shared";
 
 const tones: Record<string, string> = {
-  "Growth Hormone Axis":
+  "Growth Hormone":
     "from-sky-500/22 via-blue-500/10 to-amber-400/12 border-sky-400/20",
-  "Metabolic Signaling":
+  "GLP & Metabolic":
     "from-cyan-500/22 via-sky-500/10 to-blue-500/12 border-cyan-400/20",
-  "Repair / Recovery":
+  "Repair & Recovery":
     "from-amber-400/18 via-sky-500/10 to-cyan-500/12 border-amber-300/20",
-  "Specialty Signaling":
-    "from-blue-500/22 via-indigo-500/10 to-amber-400/10 border-blue-400/20",
   Neuromodulation:
     "from-indigo-500/22 via-sky-500/10 to-cyan-500/12 border-indigo-400/20",
+  "Sexual Wellness":
+    "from-fuchsia-500/18 via-sky-500/10 to-amber-400/10 border-fuchsia-400/20",
+  "Support Supplies":
+    "from-emerald-500/18 via-sky-500/10 to-cyan-500/12 border-emerald-400/20",
 };
 
 export function ProductVisual({
@@ -28,7 +30,7 @@ export function ProductVisual({
   return (
     <div
       className={`relative overflow-hidden border bg-neutral-950 ${tone} ${
-        compact ? "h-48 rounded-t-3xl" : "h-[26rem] rounded-3xl"
+        compact ? "h-52 rounded-t-3xl" : "h-[26rem] rounded-3xl"
       }`}
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.14),transparent_22%),radial-gradient(circle_at_82%_25%,rgba(125,211,252,0.18),transparent_26%),linear-gradient(135deg,rgba(255,255,255,0.05),transparent_42%)]" />
@@ -44,7 +46,7 @@ export function ProductVisual({
       </div>
 
       <div className="absolute left-5 right-5 bottom-5">
-        <div className="max-w-[74%] rounded-2xl border border-white/10 bg-black/45 p-4 backdrop-blur-sm">
+        <div className="max-w-[70%] rounded-2xl border border-white/10 bg-black/45 p-4 backdrop-blur-sm sm:max-w-[72%]">
           <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-sky-200/90">
             {product.category}
           </p>
@@ -63,12 +65,12 @@ export function ProductVisual({
         </div>
       </div>
 
-      <div className="absolute right-4 top-4 rounded-2xl border border-white/10 bg-black/35 p-2 backdrop-blur-sm shadow-[0_20px_60px_rgba(0,0,0,0.18)]">
+      <div className="absolute right-4 top-4 rounded-2xl border border-white/10 bg-white/92 p-1.5 shadow-[0_20px_60px_rgba(0,0,0,0.18)] sm:p-2">
         <Image
           src="/brand/elite-biotech-peptides-logo.png"
           alt="Elite Biotech Peptides"
-          width={compact ? 46 : 64}
-          height={compact ? 30 : 42}
+          width={compact ? 36 : 52}
+          height={compact ? 24 : 34}
           className="h-auto w-auto rounded-md"
           priority={false}
         />
