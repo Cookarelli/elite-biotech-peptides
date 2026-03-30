@@ -17,11 +17,12 @@ export function ProductCard({ p }: { p: Product }) {
 
         <div className="flex flex-1 flex-col p-5">
           {p.benchmarkRetailPrice ? (
-            <div className="mb-3 flex flex-wrap items-center gap-2 text-[11px] font-semibold">
-              <span className="rounded-full border border-sky-500/30 bg-sky-500/10 px-2.5 py-1 text-sky-100">
-                25%+ under retail
+            <div className="mb-3 flex flex-wrap items-center gap-3 border-b border-neutral-800 pb-3 text-[11px] font-semibold uppercase tracking-[0.16em]">
+              <span className="text-sky-200">25%+ under retail</span>
+              <span className="h-3.5 w-px bg-neutral-700" aria-hidden="true" />
+              <span className="tracking-normal normal-case text-neutral-500 line-through">
+                {p.benchmarkRetailPrice}
               </span>
-              <span className="text-neutral-500 line-through">{p.benchmarkRetailPrice}</span>
             </div>
           ) : null}
 
@@ -35,13 +36,10 @@ export function ProductCard({ p }: { p: Product }) {
           </div>
           <p className="mt-2 line-clamp-2 text-sm text-neutral-400">{p.description}</p>
 
-          <div className="mt-4 flex flex-wrap gap-2 text-xs">
-            <span className="rounded-full border border-neutral-700 bg-neutral-950/70 px-2.5 py-1 text-neutral-300">
-              {getProductFormat(p)}
-            </span>
-            <span className="rounded-full border border-neutral-700 bg-neutral-950/70 px-2.5 py-1 text-neutral-300">
-              Batch tracked
-            </span>
+          <div className="mt-4 flex flex-wrap items-center gap-3 border-y border-neutral-800 py-3 text-xs">
+            <span className="font-medium text-neutral-300">{getProductFormat(p)}</span>
+            <span className="h-3.5 w-px bg-neutral-700" aria-hidden="true" />
+            <span className="text-neutral-400">Batch tracked</span>
           </div>
 
           <div className="mt-4 flex items-center gap-2 border-t border-neutral-800 pt-4 text-xs">
@@ -88,13 +86,10 @@ export function ProductCard({ p }: { p: Product }) {
 
             <p className="mt-4 text-sm leading-relaxed text-neutral-300">{p.description}</p>
 
-            <div className="mt-4 flex flex-wrap gap-2">
-              <span className="rounded-full border border-neutral-700 bg-neutral-900 px-3 py-1 text-xs text-neutral-300">
-                {getProductFormat(p)}
-              </span>
-              <span className="rounded-full border border-neutral-700 bg-neutral-900 px-3 py-1 text-xs text-neutral-300">
-                COA-ready
-              </span>
+            <div className="mt-4 flex flex-wrap items-center gap-3 border-y border-neutral-800 py-3 text-xs">
+              <span className="font-medium text-neutral-300">{getProductFormat(p)}</span>
+              <span className="h-3.5 w-px bg-neutral-700" aria-hidden="true" />
+              <span className="text-neutral-400">COA-ready</span>
             </div>
 
             {p.benchmarkRetailPrice ? (
