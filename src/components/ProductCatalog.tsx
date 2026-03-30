@@ -62,7 +62,7 @@ export function ProductCatalog({ products }: { products: Product[] }) {
       </section>
 
       <section className="grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
-        <aside className="h-fit rounded-3xl border border-neutral-800 bg-gradient-to-b from-neutral-900/80 to-neutral-950/80 p-5 lg:sticky lg:top-24">
+        <aside className="h-fit rounded-3xl border border-neutral-800 bg-neutral-900 p-5 lg:sticky lg:top-24">
           <div className="rounded-2xl border border-sky-500/20 bg-sky-500/10 p-4">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-200">
               Pricing note
@@ -156,16 +156,16 @@ export function ProductCatalog({ products }: { products: Product[] }) {
 
           <div className="grid gap-3 md:grid-cols-3">
             <GuideCard
-              title="People-first catalog"
-              body="Fewer dead ends, friendlier cards, and simpler next steps than the average peptide storefront."
+              title="Friendly layout"
+              body="Cleaner product cards and clearer next steps from browse to checkout."
             />
             <GuideCard
               title="Broader selection"
               body="Expanded to a 100-product lineup built around the compounds buyers search for most often."
             />
             <GuideCard
-              title="Checkout-ready flow"
-              body="Add products to cart, apply the active discount tier automatically, and finish in PayPal."
+              title="Fast checkout"
+              body="Add products to cart, let discounts apply automatically, and finish in PayPal."
             />
           </div>
 
@@ -191,7 +191,7 @@ export function ProductCatalog({ products }: { products: Product[] }) {
 
 function Metric({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-neutral-800 bg-neutral-900/30 p-4">
+    <div className="rounded-2xl border border-neutral-800 bg-neutral-900 p-4">
       <p className="text-xs font-semibold uppercase tracking-wide text-neutral-500">{label}</p>
       <p className="mt-2 text-lg font-semibold text-neutral-100">{value}</p>
     </div>
@@ -200,7 +200,7 @@ function Metric({ label, value }: { label: string; value: string }) {
 
 function GuideCard({ title, body }: { title: string; body: string }) {
   return (
-    <div className="rounded-2xl border border-neutral-800 bg-neutral-900/30 p-4">
+    <div className="rounded-2xl border border-neutral-800 bg-neutral-900 p-4">
       <p className="text-sm font-semibold text-neutral-100">{title}</p>
       <p className="mt-2 text-sm leading-relaxed text-neutral-400">{body}</p>
     </div>

@@ -11,16 +11,15 @@ export default function ProductsPage() {
   return (
     <SiteShell>
       <section className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-center">
-        <div className="relative overflow-hidden rounded-[2rem] border border-neutral-800 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.16),transparent_30%),linear-gradient(140deg,#0b1326_0%,#09111f_52%,#050916_100%)] p-8 sm:p-10">
+        <div className="rounded-[2rem] border border-neutral-800 bg-neutral-900 p-8 sm:p-10">
           <div className="relative max-w-4xl">
             <p className="text-xs font-semibold tracking-[0.2em] text-sky-300">PRODUCTS</p>
             <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-              Clean catalog browsing, broader selection, stronger pricing
+              Shop the full Elite Biotech catalog
             </h1>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-neutral-300 sm:text-base">
-              A broader catalog with a friendlier browse-first flow, cleaner product cards, and
-              pricing set to stay meaningfully below major online retailers without turning the site
-              into a comparison chart.
+              Built to feel more like a familiar peptide storefront: cleaner product cards,
+              straightforward pricing, and a full catalog that is easier to scan from first visit to repeat order.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
@@ -65,9 +64,9 @@ export default function ProductsPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-transparent" />
           <div className="absolute bottom-0 left-0 p-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-300">Approachable storefront</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-300">Storefront refresh</p>
             <p className="mt-2 max-w-xs text-sm leading-relaxed text-neutral-200">
-              Cleaner product cards, clearer click targets, and less technical clutter competing for attention.
+              Cleaner product cards, clearer click targets, and a more familiar shop layout.
             </p>
           </div>
         </div>

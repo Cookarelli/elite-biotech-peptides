@@ -29,54 +29,55 @@ export function ProductVisual({
 
   return (
     <div
-      className={`relative overflow-hidden border bg-neutral-950 ${tone} ${
-        compact ? "h-52 rounded-t-3xl" : "h-[26rem] rounded-3xl"
+      className={`relative overflow-hidden border bg-[linear-gradient(180deg,#fcfdff_0%,#f3f7fb_100%)] ${tone} ${
+        compact ? "h-56 rounded-t-3xl" : "h-[28rem] rounded-3xl"
       }`}
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.14),transparent_22%),radial-gradient(circle_at_82%_25%,rgba(125,211,252,0.18),transparent_26%),linear-gradient(135deg,rgba(255,255,255,0.05),transparent_42%)]" />
-      <div className="absolute inset-y-0 right-[12%] w-px bg-white/8" />
-      <div className="absolute inset-y-0 right-[17%] w-px bg-white/6" />
-      <div className="absolute left-6 top-6 h-24 w-24 rounded-full bg-sky-400/10 blur-3xl" />
-      <div className="absolute right-10 bottom-10 h-20 w-20 rounded-full bg-cyan-300/10 blur-3xl" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(56,189,248,0.12),transparent_24%),radial-gradient(circle_at_82%_25%,rgba(59,130,246,0.1),transparent_24%),linear-gradient(180deg,rgba(255,255,255,0.8),rgba(241,245,249,0.35))]" />
+      <div className="absolute inset-y-0 right-[12%] w-px bg-neutral-200" />
+      <div className="absolute inset-y-0 right-[17%] w-px bg-neutral-100" />
+      <div className="absolute left-6 top-6 h-24 w-24 rounded-full bg-sky-200/40 blur-3xl" />
+      <div className="absolute right-10 bottom-10 h-20 w-20 rounded-full bg-cyan-200/30 blur-3xl" />
 
       <div className="absolute left-5 top-5">
-        <div className="inline-flex items-center rounded-full border border-white/10 bg-black/35 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-white/80 backdrop-blur-sm">
+        <div className="inline-flex items-center rounded-full border border-neutral-200 bg-white/85 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-neutral-700 backdrop-blur-sm">
           Elite Biotech
         </div>
       </div>
 
+      <div className="absolute inset-x-0 top-[4.8rem] flex justify-center">
+        <div className="rounded-[2rem] border border-neutral-200 bg-white px-5 py-4 shadow-[0_20px_60px_rgba(15,23,42,0.16)]">
+          <Image
+            src="/brand/elite-biotech-peptides-logo.png"
+            alt="Elite Biotech Peptides"
+            width={compact ? 150 : 190}
+            height={compact ? 95 : 120}
+            className="h-auto w-auto"
+            priority={false}
+          />
+        </div>
+      </div>
+
       <div className="absolute left-5 right-5 bottom-5">
-        <div className="max-w-[70%] rounded-2xl border border-white/10 bg-black/45 p-4 backdrop-blur-sm sm:max-w-[72%]">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-sky-200/90">
+        <div className="max-w-[78%] rounded-2xl border border-neutral-200 bg-white/92 p-4 shadow-[0_12px_30px_rgba(15,23,42,0.08)] backdrop-blur-sm sm:max-w-[75%]">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-sky-700">
             {product.category}
           </p>
           <h3
-            className={`mt-2 font-semibold text-white ${
+            className={`mt-2 font-semibold text-neutral-900 ${
               compact ? "text-lg leading-tight" : "text-2xl leading-tight"
             }`}
           >
             {product.name}
           </h3>
           <div className="mt-3 flex flex-wrap gap-2 text-[11px] font-semibold">
-            <span className="rounded-full border border-white/12 bg-white/6 px-2.5 py-1 text-white/85">
+            <span className="rounded-full border border-neutral-200 bg-neutral-50 px-2.5 py-1 text-neutral-700">
               {getProductFormat(product)}
             </span>
           </div>
         </div>
       </div>
-
-      <div className="absolute right-4 top-4 rounded-2xl border border-white/10 bg-white/92 p-1.5 shadow-[0_20px_60px_rgba(0,0,0,0.18)] sm:p-2">
-        <Image
-          src="/brand/elite-biotech-peptides-logo.png"
-          alt="Elite Biotech Peptides"
-          width={compact ? 36 : 52}
-          height={compact ? 24 : 34}
-          className="h-auto w-auto rounded-md"
-          priority={false}
-        />
-      </div>
-
-      <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/35 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white/10 to-transparent" />
     </div>
   );
 }

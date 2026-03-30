@@ -25,7 +25,7 @@ export default async function ProductDetail({
       </div>
 
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_420px]">
-        <div className="overflow-hidden rounded-3xl border border-neutral-800 bg-neutral-900/40">
+        <div className="overflow-hidden rounded-3xl border border-neutral-800 bg-neutral-900">
           <div className="p-4">
             <ProductVisual product={p} />
           </div>
@@ -44,13 +44,13 @@ export default async function ProductDetail({
             </div>
 
             <div className="mt-4 flex flex-wrap gap-2">
-              <span className="rounded-full border border-neutral-700 bg-neutral-950/60 px-3 py-1 text-xs font-semibold text-neutral-200">
+              <span className="rounded-full border border-neutral-700 bg-neutral-950 px-3 py-1 text-xs font-semibold text-neutral-200">
                 {getProductFormat(p)}
               </span>
               <span className="rounded-full border border-sky-500/30 bg-sky-500/10 px-3 py-1 text-xs font-semibold text-sky-200">
                 Elite Biotech label
               </span>
-              <span className="rounded-full border border-neutral-700 bg-neutral-950/60 px-3 py-1 text-xs font-semibold text-neutral-200">
+              <span className="rounded-full border border-neutral-700 bg-neutral-950 px-3 py-1 text-xs font-semibold text-neutral-200">
                 Research use only
               </span>
             </div>
@@ -66,10 +66,10 @@ export default async function ProductDetail({
         </div>
 
         <div className="space-y-4">
-          <div className="rounded-3xl border border-neutral-800 bg-gradient-to-b from-sky-500/10 to-neutral-900/40 p-7">
+          <div className="rounded-3xl border border-neutral-800 bg-neutral-900 p-7">
             <div className="flex items-center justify-between">
               <p className="text-sm font-semibold text-neutral-200">Ready to order?</p>
-              <span className="rounded-full border border-neutral-700 bg-neutral-950/60 px-3 py-1 text-xs font-semibold text-neutral-200">
+              <span className="rounded-full border border-neutral-700 bg-neutral-950 px-3 py-1 text-xs font-semibold text-neutral-200">
                 {p.price}
               </span>
             </div>
@@ -105,14 +105,14 @@ export default async function ProductDetail({
             </div>
           </div>
 
-          <div className="rounded-3xl border border-neutral-800 bg-neutral-900/40 p-7">
+          <div className="rounded-3xl border border-neutral-800 bg-neutral-900 p-7">
             <p className="text-sm font-semibold text-neutral-200">Handling and Storage</p>
             <p className="mt-2 text-sm text-neutral-300">
               {p.storage ?? "Store refrigerated. Protect from light."}
             </p>
           </div>
 
-          <div className="rounded-3xl border border-neutral-800 bg-neutral-900/40 p-7">
+          <div className="rounded-3xl border border-neutral-800 bg-neutral-900 p-7">
             <p className="text-sm font-semibold text-neutral-200">Documentation note</p>
             <p className="mt-2 text-sm leading-relaxed text-neutral-400">
               Pricing and format details are aligned to Elite’s current catalog. COA information is
