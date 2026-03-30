@@ -18,9 +18,9 @@ export default function ProductsPage() {
               Clean catalog browsing, broader selection, stronger pricing
             </h1>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-neutral-300 sm:text-base">
-              The catalog now mirrors the visible competitor assortment more closely while keeping a
-              friendlier browse-first flow. Mirrored products are set at least 25% below current
-              Super Human retail where a direct public match exists.
+              A broader catalog with a friendlier browse-first flow, cleaner product cards, and
+              pricing set to stay meaningfully below major online retailers without turning the site
+              into a comparison chart.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
@@ -41,7 +41,7 @@ export default function ProductsPage() {
             <div className="mt-6 grid gap-3 md:grid-cols-3">
               <div className="rounded-2xl border border-sky-500/20 bg-sky-500/10 p-4">
                 <p className="text-xs font-semibold tracking-wide text-sky-200">PRICING RULE</p>
-                <p className="mt-2 text-sm text-neutral-200">25%+ under mirrored retail products.</p>
+                <p className="mt-2 text-sm text-neutral-200">Core products run about 10-15% below major online pricing.</p>
               </div>
               <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/10 p-4">
                 <p className="text-xs font-semibold tracking-wide text-cyan-200">ORDER TIER 1</p>
@@ -49,7 +49,7 @@ export default function ProductsPage() {
               </div>
               <div className="rounded-2xl border border-neutral-700 bg-neutral-950/60 p-4">
                 <p className="text-xs font-semibold tracking-wide text-neutral-300">ORDER TIER 2</p>
-                <p className="mt-2 text-sm text-neutral-200">25% off orders over $250 plus free shipping.</p>
+                <p className="mt-2 text-sm text-neutral-200">15% off orders over $250 plus free shipping.</p>
               </div>
             </div>
           </div>

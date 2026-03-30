@@ -36,14 +36,9 @@ export default async function ProductDetail({
                 <p className="mt-2 text-sm text-neutral-400">{p.category}</p>
               </div>
               <div className="text-right">
-                {p.benchmarkRetailPrice ? (
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-300">
-                    Mirrored retail benchmark
-                  </p>
-                ) : null}
-                {p.benchmarkRetailPrice ? (
-                  <p className="mt-1 text-sm text-neutral-500 line-through">{p.benchmarkRetailPrice}</p>
-                ) : null}
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-300">
+                  Elite pricing
+                </p>
                 <p className="mt-1 text-2xl font-semibold text-neutral-100">{p.price}</p>
               </div>
             </div>
@@ -106,7 +101,7 @@ export default async function ProductDetail({
                 Order incentives
               </p>
               <p className="mt-2 text-sm text-neutral-300">10% off orders over $100 with free shipping.</p>
-              <p className="mt-1 text-sm text-neutral-300">25% off orders over $250 with free shipping.</p>
+              <p className="mt-1 text-sm text-neutral-300">15% off orders over $250 with free shipping.</p>
             </div>
           </div>
 

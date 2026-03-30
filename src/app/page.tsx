@@ -70,7 +70,7 @@ export default function Home() {
             </div>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-3">
-              <ValueCard label="Pricing" value="25%+ under key retail" />
+              <ValueCard label="Pricing" value="10-15% below major online pricing" />
               <ValueCard label="Ordering" value="Cart + PayPal checkout" />
               <ValueCard label="Support" value="COA info on request" />
             </div>
@@ -205,7 +205,7 @@ export default function Home() {
             <h2 className="mt-2 text-3xl font-semibold tracking-tight">Popular Right Now</h2>
           </div>
           <div className="rounded-full border border-neutral-700 bg-neutral-900/50 px-4 py-2 text-xs font-semibold text-neutral-300">
-            Mirrored products benchmarked below current Super Human retail
+            100 products with low-friction pricing and fast checkout
           </div>
         </div>
 
@@ -225,11 +225,7 @@ export default function Home() {
                   </span>
                 </div>
                 <p className="mt-2 text-xs text-neutral-400">{getProductFormat(p)} · {p.category}</p>
-                {p.benchmarkRetailPrice ? (
-                  <p className="mt-2 text-xs text-sky-200">
-                    Benchmark retail <span className="line-through">{p.benchmarkRetailPrice}</span>
-                  </p>
-                ) : null}
+                <p className="mt-2 text-xs text-sky-200">Documentation available on request</p>
               </div>
             </Link>
           ))}

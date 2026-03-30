@@ -17,15 +17,11 @@ export function ProductCard({ p }: { p: Product }) {
         </Link>
 
         <div className="flex flex-1 flex-col p-5">
-          {p.benchmarkRetailPrice ? (
-            <div className="mb-3 flex flex-wrap items-center gap-3 border-b border-neutral-800 pb-3 text-[11px] font-semibold uppercase tracking-[0.16em]">
-              <span className="text-sky-200">25%+ under retail</span>
-              <span className="h-3.5 w-px bg-neutral-700" aria-hidden="true" />
-              <span className="tracking-normal normal-case text-neutral-500 line-through">
-                {p.benchmarkRetailPrice}
-              </span>
-            </div>
-          ) : null}
+          <div className="mb-3 flex flex-wrap items-center gap-3 border-b border-neutral-800 pb-3 text-[11px] font-semibold uppercase tracking-[0.16em]">
+            <span className="text-sky-200">Elite pricing</span>
+            <span className="h-3.5 w-px bg-neutral-700" aria-hidden="true" />
+            <span className="tracking-normal normal-case text-neutral-400">Fast reorder friendly</span>
+          </div>
 
           <div className="flex items-start justify-between gap-3">
             <Link href={`/products/${p.slug}`} className="text-base font-semibold text-neutral-100 transition-colors hover:text-white">
@@ -93,12 +89,6 @@ export function ProductCard({ p }: { p: Product }) {
               <span className="h-3.5 w-px bg-neutral-700" aria-hidden="true" />
               <span className="text-neutral-400">COA on request</span>
             </div>
-
-            {p.benchmarkRetailPrice ? (
-              <p className="mt-4 text-xs text-sky-200">
-                Retail benchmark: <span className="line-through">{p.benchmarkRetailPrice}</span>
-              </p>
-            ) : null}
 
             <p className="mt-4 text-xs text-neutral-500">
               Research use only. Not for human consumption. No medical claims.

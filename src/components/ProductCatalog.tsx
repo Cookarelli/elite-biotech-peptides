@@ -56,7 +56,7 @@ export function ProductCatalog({ products }: { products: Product[] }) {
     <div className="mt-8 space-y-6">
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <Metric label="Compounds" value={`${products.length}`} />
-        <Metric label="Pricing" value="25%+ under key retail" />
+        <Metric label="Pricing" value="10-15% below major online pricing" />
         <Metric label="Categories" value={`${categories.length - 1}`} />
         <Metric label="Ordering" value="Cart + PayPal checkout" />
       </section>
@@ -65,10 +65,10 @@ export function ProductCatalog({ products }: { products: Product[] }) {
         <aside className="h-fit rounded-3xl border border-neutral-800 bg-gradient-to-b from-neutral-900/80 to-neutral-950/80 p-5 lg:sticky lg:top-24">
           <div className="rounded-2xl border border-sky-500/20 bg-sky-500/10 p-4">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-200">
-              Price check
+              Pricing note
             </p>
             <p className="mt-2 text-sm leading-relaxed text-neutral-200">
-              Mirrored products are priced at least 25% below the current Super Human shop retail.
+              Pricing is tuned to stay competitive with major online peptide retailers while keeping the catalog straightforward to shop.
             </p>
           </div>
 
@@ -160,8 +160,8 @@ export function ProductCatalog({ products }: { products: Product[] }) {
               body="Fewer dead ends, friendlier cards, and simpler next steps than the average peptide storefront."
             />
             <GuideCard
-              title="Mirrored assortment"
-              body="Expanded with the most visible Super Human catalog items so buyers can compare without leaving the site."
+              title="Broader selection"
+              body="Expanded to a 100-product lineup built around the compounds buyers search for most often."
             />
             <GuideCard
               title="Checkout-ready flow"

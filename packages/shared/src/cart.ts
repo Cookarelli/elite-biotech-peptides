@@ -63,8 +63,8 @@ export function getCartSummary(items: CartItem[]): CartSummary {
   let discountLabel: string | null = null;
 
   if (subtotal >= 250) {
-    discountRate = 0.25;
-    discountLabel = "25% off orders over $250";
+    discountRate = 0.15;
+    discountLabel = "15% off orders over $250";
   } else if (subtotal >= 100) {
     discountRate = 0.1;
     discountLabel = "10% off orders over $100";

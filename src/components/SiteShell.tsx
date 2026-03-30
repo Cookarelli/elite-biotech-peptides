@@ -15,7 +15,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         <div className="border-b border-neutral-800/80 bg-gradient-to-r from-sky-500/14 via-cyan-500/10 to-transparent">
           <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-2 text-xs font-semibold tracking-wide text-neutral-200">
             <p className="text-sky-200">10% off orders over $100 + free shipping</p>
-            <p className="text-neutral-300">25% off orders over $250 + free shipping</p>
+            <p className="text-neutral-300">15% off orders over $250 + free shipping</p>
             <p className="text-neutral-300">COA information available upon request</p>
           </div>
         </div>
