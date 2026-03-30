@@ -118,6 +118,17 @@ export function PayPalCheckout({
         Checkout runs through PayPal. Shipping stays free and your automatic order discount is
         applied before payment.
       </p>
+      <div className="mt-4 flex flex-wrap items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-400">
+        <span className="rounded-full border border-neutral-700 bg-neutral-950/60 px-3 py-1">
+          Encrypted checkout
+        </span>
+        <span className="rounded-full border border-neutral-700 bg-neutral-950/60 px-3 py-1">
+          PayPal buyer protection
+        </span>
+        <span className="rounded-full border border-neutral-700 bg-neutral-950/60 px-3 py-1">
+          Instant confirmation
+        </span>
+      </div>
 
       {!clientId ? (
         <div className="mt-4 rounded-2xl border border-amber-400/20 bg-amber-400/10 p-4 text-sm text-amber-100">
@@ -132,7 +143,7 @@ export function PayPalCheckout({
             strategy="afterInteractive"
             onLoad={() => setScriptReady(true)}
           />
-          <div ref={containerRef} className="mt-5 min-h-12" />
+          <div ref={containerRef} className="mt-5 min-h-12 overflow-hidden rounded-2xl" />
         </>
       )}
 

@@ -24,6 +24,17 @@ export default function CartPage() {
             Your cart applies the same order incentives shown across the site. Documentation stays
             available on request, but the storefront now supports a real checkout path for launch.
           </p>
+          <div className="mt-6 flex flex-wrap gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-200">
+            <span className="rounded-full border border-white/10 bg-white/8 px-3 py-1">
+              Secure PayPal checkout
+            </span>
+            <span className="rounded-full border border-white/10 bg-white/8 px-3 py-1">
+              Free shipping built in
+            </span>
+            <span className="rounded-full border border-white/10 bg-white/8 px-3 py-1">
+              COA information on request
+            </span>
+          </div>
         </div>
       </section>
 

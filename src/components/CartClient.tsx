@@ -57,10 +57,10 @@ export function CartClient({ clientId }: { clientId?: string }) {
             {summary.lines.map((line) => (
               <div
                 key={line.product.slug}
-                className="rounded-2xl border border-neutral-800 bg-neutral-950/60 p-4"
+                className="rounded-2xl border border-neutral-800 bg-neutral-950/60 p-4 sm:p-5"
               >
-                <div className="flex flex-wrap items-start justify-between gap-4">
-                  <div>
+                <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
+                  <div className="min-w-0 flex-1">
                     <p className="text-base font-semibold text-neutral-100">
                       {line.product.name}
                     </p>
@@ -83,9 +83,11 @@ export function CartClient({ clientId }: { clientId?: string }) {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3">
+                  <div className="grid gap-3 rounded-2xl border border-neutral-800 bg-neutral-900/60 p-3 sm:grid-cols-[92px_minmax(0,1fr)_auto] sm:items-end sm:p-4 lg:min-w-[290px]">
                     <label className="text-xs text-neutral-400">
-                      Qty
+                      <span className="font-medium uppercase tracking-[0.16em] text-neutral-500">
+                        Qty
+                      </span>
                       <input
                         type="number"
                         min={1}
@@ -97,19 +99,22 @@ export function CartClient({ clientId }: { clientId?: string }) {
                             Number.parseInt(e.target.value, 10) || 1
                           )
                         }
-                        className="mt-1 block w-20 rounded-xl border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 outline-none transition-colors focus:border-sky-400"
+                        className="mt-2 block w-full rounded-xl border border-neutral-700 bg-neutral-950 px-3 py-2.5 text-sm text-neutral-100 outline-none transition-colors focus:border-sky-400"
                       />
                     </label>
-                    <div className="text-right">
-                      <p className="text-sm text-neutral-400">{line.product.price} each</p>
-                      <p className="mt-1 text-base font-semibold text-neutral-100">
+                    <div className="sm:text-right">
+                      <p className="text-xs uppercase tracking-[0.16em] text-neutral-500">
+                        Item total
+                      </p>
+                      <p className="mt-2 text-sm text-neutral-400">{line.product.price} each</p>
+                      <p className="mt-1 text-xl font-semibold text-neutral-100">
                         {formatUsd(line.lineTotal)}
                       </p>
                     </div>
                     <button
                       type="button"
                       onClick={() => removeItem(line.product.slug)}
-                      className="rounded-xl border border-neutral-700 px-3 py-2 text-sm font-semibold text-neutral-200 transition-colors hover:border-neutral-600 hover:bg-neutral-900"
+                      className="rounded-xl border border-neutral-700 px-4 py-2.5 text-sm font-semibold text-neutral-200 transition-colors hover:border-neutral-600 hover:bg-neutral-900"
                     >
                       Remove
                     </button>
@@ -150,6 +155,21 @@ export function CartClient({ clientId }: { clientId?: string }) {
               <dd>{formatUsd(summary.total)}</dd>
             </div>
           </dl>
+
+          <div className="mt-5 grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+            <TrustNote
+              title="Secure payment"
+              body="Checkout is handled by PayPal with card and wallet options."
+            />
+            <TrustNote
+              title="Promo logic applied"
+              body="Discount tiers are already reflected in the total shown here."
+            />
+            <TrustNote
+              title="Manual fulfillment"
+              body="Shipping and post-purchase support are handled directly by Elite Biotech."
+            />
+          </div>
         </div>
 
         <PayPalCheckout items={items} clientId={clientId} />
@@ -171,5 +191,14 @@ export function CartClient({ clientId }: { clientId?: string }) {
         </div>
       </div>
     </section>
+  );
+}
+
+function TrustNote({ title, body }: { title: string; body: string }) {
+  return (
+    <div className="rounded-2xl border border-neutral-800 bg-neutral-950/50 p-3">
+      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-300">{title}</p>
+      <p className="mt-2 text-sm leading-relaxed text-neutral-300">{body}</p>
+    </div>
   );
 }
