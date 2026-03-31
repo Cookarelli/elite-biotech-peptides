@@ -14,8 +14,8 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       <header className="sticky top-0 z-50 border-b border-neutral-800 bg-neutral-950/95 backdrop-blur">
         <div className="border-b border-neutral-800 bg-neutral-900">
           <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-300">
+            <p>Free shipping on all orders</p>
             <p className="text-sky-200">10% off orders over $100</p>
-            <p>15% off orders over $250</p>
             <p>COA information available on request</p>
           </div>
         </div>

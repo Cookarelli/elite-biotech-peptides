@@ -56,7 +56,7 @@ export function ProductCatalog({ products }: { products: Product[] }) {
     <div className="mt-8 space-y-6">
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <Metric label="Compounds" value={`${products.length}`} />
-        <Metric label="Pricing" value="10-15% below major online pricing" />
+        <Metric label="Pricing" value="About 10% below major online pricing" />
         <Metric label="Categories" value={`${categories.length - 1}`} />
         <Metric label="Ordering" value="Cart + PayPal checkout" />
       </section>
@@ -68,7 +68,7 @@ export function ProductCatalog({ products }: { products: Product[] }) {
               Pricing note
             </p>
             <p className="mt-2 text-sm leading-relaxed text-neutral-200">
-              Pricing is tuned to stay competitive with major online peptide retailers while keeping the catalog straightforward to shop.
+              Pricing is tuned to stay around 10% below major online pricing on matched items while keeping the catalog straightforward to shop.
             </p>
           </div>
 
@@ -161,7 +161,7 @@ export function ProductCatalog({ products }: { products: Product[] }) {
             />
             <GuideCard
               title="Broader selection"
-              body="Expanded to a 100-product lineup built around the compounds buyers search for most often."
+              body={`${products.length}-product lineup built around the compounds buyers search for most often.`}
             />
             <GuideCard
               title="Fast checkout"

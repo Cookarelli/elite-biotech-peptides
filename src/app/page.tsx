@@ -4,7 +4,7 @@ import { products, getProductFormat } from "@elite-biotech/shared";
 import { ProductVisual } from "@/components/ProductVisual";
 import { SiteShell } from "@/components/SiteShell";
 
-const popularSlugs = ["tirzepatide", "retatrutide", "ipamorelin", "bpc-157"];
+const popularSlugs = ["tirzepatide", "retatrutide", "semaglutide", "bpc-157"];
 const popularProducts = popularSlugs
   .map((slug) => products.find((p) => p.slug === slug))
   .filter((p): p is NonNullable<typeof p> => Boolean(p));
@@ -33,12 +33,14 @@ const collections = [
     body: "Neuro and nootropic compounds with cleaner naming, friendlier product cards, and consistent call-to-action flow.",
   },
   {
-    title: "Growth Hormone",
-    body: "Core GH-axis products structured for side-by-side review instead of buried inside a crowded catalog.",
+    title: "Specialty Research",
+    body: "High-interest specialty compounds and blends grouped into a cleaner section for repeat buyers.",
   },
 ];
 
 export default function Home() {
+  const productCountLabel = `${products.length} products`;
+
   return (
     <SiteShell>
       <section className="grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_420px] lg:items-stretch">
@@ -68,7 +70,7 @@ export default function Home() {
           </div>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
-            <ValueCard label="Pricing" value="10-15% below major online pricing" />
+            <ValueCard label="Pricing" value="About 10% below major online pricing" />
             <ValueCard label="Checkout" value="PayPal and card ready" />
             <ValueCard label="Support" value="COA info on request" />
           </div>
@@ -92,7 +94,7 @@ export default function Home() {
             </div>
           </div>
           <div className="grid gap-3 sm:grid-cols-3">
-            <MetricBox title="100 products" body="Broader catalog coverage." />
+            <MetricBox title={productCountLabel} body="Broader catalog coverage." />
             <MetricBox title="US fulfillment" body="Handled from the business side." />
             <MetricBox title="Documentation" body="Available on request." />
           </div>
@@ -106,7 +108,7 @@ export default function Home() {
             <h2 className="mt-2 text-3xl font-semibold tracking-tight">Popular Right Now</h2>
           </div>
           <div className="rounded-full border border-neutral-700 bg-neutral-900/50 px-4 py-2 text-xs font-semibold text-neutral-300">
-            100 products with low-friction pricing and fast checkout
+            {productCountLabel} with low-friction pricing and fast checkout
           </div>
         </div>
 

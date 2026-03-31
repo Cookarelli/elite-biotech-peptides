@@ -2,16 +2,16 @@ import Image from "next/image";
 import { getProductFormat, type Product } from "@elite-biotech/shared";
 
 const tones: Record<string, string> = {
-  "Growth Hormone":
-    "from-sky-500/22 via-blue-500/10 to-amber-400/12 border-sky-400/20",
   "GLP & Metabolic":
     "from-cyan-500/22 via-sky-500/10 to-blue-500/12 border-cyan-400/20",
-  "Repair & Recovery":
+  "Recovery & Repair":
     "from-amber-400/18 via-sky-500/10 to-cyan-500/12 border-amber-300/20",
-  Neuromodulation:
+  "Cognitive & Focus":
     "from-indigo-500/22 via-sky-500/10 to-cyan-500/12 border-indigo-400/20",
-  "Sexual Wellness":
+  "Longevity & Immune":
     "from-fuchsia-500/18 via-sky-500/10 to-amber-400/10 border-fuchsia-400/20",
+  "Specialty Research":
+    "from-violet-500/18 via-sky-500/10 to-cyan-500/12 border-violet-400/20",
   "Support Supplies":
     "from-emerald-500/18 via-sky-500/10 to-cyan-500/12 border-emerald-400/20",
 };

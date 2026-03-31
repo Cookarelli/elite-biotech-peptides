@@ -40,15 +40,15 @@ export default function ProductsPage() {
             <div className="mt-6 grid gap-3 md:grid-cols-3">
               <div className="rounded-2xl border border-sky-500/20 bg-sky-500/10 p-4">
                 <p className="text-xs font-semibold tracking-wide text-sky-200">PRICING RULE</p>
-                <p className="mt-2 text-sm text-neutral-200">Core products run about 10-15% below major online pricing.</p>
+                <p className="mt-2 text-sm text-neutral-200">Matched products run about 10% below major online pricing.</p>
               </div>
               <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/10 p-4">
                 <p className="text-xs font-semibold tracking-wide text-cyan-200">ORDER TIER 1</p>
                 <p className="mt-2 text-sm text-neutral-200">10% off orders over $100 plus free shipping.</p>
               </div>
               <div className="rounded-2xl border border-neutral-700 bg-neutral-950/60 p-4">
-                <p className="text-xs font-semibold tracking-wide text-neutral-300">ORDER TIER 2</p>
-                <p className="mt-2 text-sm text-neutral-200">15% off orders over $250 plus free shipping.</p>
+                <p className="text-xs font-semibold tracking-wide text-neutral-300">SHIPPING</p>
+                <p className="mt-2 text-sm text-neutral-200">Free shipping stays active across the storefront.</p>
               </div>
             </div>
           </div>

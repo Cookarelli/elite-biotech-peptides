@@ -60,7 +60,8 @@ export default async function ProductDetail({
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               <InfoChip label="Format" value={getProductFormat(p)} />
               <InfoChip label="Fulfillment" value="US shipping handled manually" />
-              <InfoChip label="Promo Tiers" value="$100 / $250" />
+              <InfoChip label="Order Benefit" value="10% off over $100" />
+              <InfoChip label="Shipping" value="Free shipping" />
             </div>
           </div>
         </div>
@@ -101,7 +102,6 @@ export default async function ProductDetail({
                 Order incentives
               </p>
               <p className="mt-2 text-sm text-neutral-300">10% off orders over $100 with free shipping.</p>
-              <p className="mt-1 text-sm text-neutral-300">15% off orders over $250 with free shipping.</p>
             </div>
           </div>
 
