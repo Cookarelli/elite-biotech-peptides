@@ -11,7 +11,7 @@ Use the product slug as the filename:
 Examples:
 
 - `public/products/labeled-bottles/semaglutide.webp`
-- `public/products/labeled-bottles/trizepatide.webp`
+- `public/products/labeled-bottles/tirzepatide.webp`
 - `public/products/labeled-bottles/reta.webp`
 - `public/products/labeled-bottles/bacteriostatic-water.webp`
 

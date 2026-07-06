@@ -5,7 +5,7 @@ import { ProductVisual } from "@/components/ProductVisual";
 import { SiteShell } from "@/components/SiteShell";
 import { SpecialsSignupForm } from "@/components/SpecialsSignupForm";
 
-const popularSlugs = ["trizepatide", "reta", "semaglutide", "bpc-157"];
+const popularSlugs = ["tirzepatide", "reta", "semaglutide", "bpc-157"];
 const popularProducts = popularSlugs
   .map((slug) => products.find((p) => p.slug === slug))
   .filter((p): p is NonNullable<typeof p> => Boolean(p));
