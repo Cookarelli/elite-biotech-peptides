@@ -7,8 +7,8 @@ export default function Shipping() {
         <div className="rounded-3xl border border-neutral-800 bg-neutral-900/40 p-8">
           <h1 className="text-3xl font-semibold">Shipping & Handling</h1>
           <p className="mt-3 max-w-2xl text-neutral-300">
-            Founder-ready shipping framework for research procurement. Final carrier rates and
-            timelines can be added after operations sign-off.
+            Standard US shipping is $10.95 for orders under $150 and free at $150 or more.
+            Timelines can be refined after operations sign-off.
           </p>
         </div>
 
@@ -30,6 +30,8 @@ export default function Shipping() {
         <div className="rounded-3xl border border-neutral-800 bg-neutral-900/40 p-8">
           <h2 className="text-xl font-semibold">Shipping Coverage (Demo Policy)</h2>
           <div className="mt-4 space-y-3 text-sm text-neutral-300">
+            <p>$10.95 standard shipping applies to orders under $150.</p>
+            <p>Shipping is free for orders at $150 or more.</p>
             <p>Domestic US shipping with standard and expedited options.</p>
             <p>International requests handled through procurement review and destination checks.</p>
             <p>Cold-chain or specialty handling is disclosed per product as needed.</p>

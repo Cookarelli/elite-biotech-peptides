@@ -625,36 +625,8 @@ export type InvoiceRequestSumOrderByAggregateInput = {
   quantity?: Prisma.SortOrder
 }
 
-export type StringFieldUpdateOperationsInput = {
-  set?: string
-}
-
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
-}
-
 export type EnumInvoiceStatusFieldUpdateOperationsInput = {
   set?: $Enums.InvoiceStatus
-}
-
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
-export type NullableIntFieldUpdateOperationsInput = {
-  set?: number | null
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
 }
 
 
@@ -1412,6 +1384,7 @@ export type InvoiceRequestCreateManyArgs<ExtArgs extends runtime.Types.Extension
    * The data used to create many InvoiceRequests.
    */
   data: Prisma.InvoiceRequestCreateManyInput | Prisma.InvoiceRequestCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
@@ -1430,6 +1403,7 @@ export type InvoiceRequestCreateManyAndReturnArgs<ExtArgs extends runtime.Types.
    * The data used to create many InvoiceRequests.
    */
   data: Prisma.InvoiceRequestCreateManyInput | Prisma.InvoiceRequestCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**

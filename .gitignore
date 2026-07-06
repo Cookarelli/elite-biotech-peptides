@@ -11,3 +11,5 @@ apps/mobile/.env
 .DS_Store
 prisma/dev.db
 prisma/dev.db-journal
+.vercel
+.env*.local

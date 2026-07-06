@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import {
   ActivityIndicator,
   Image,
@@ -29,14 +29,6 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [canGoBack, setCanGoBack] = useState(false);
-
-  const hostname = useMemo(() => {
-    try {
-      return new URL(APP_URL).hostname;
-    } catch {
-      return "www.elitebiotechpeptides.com";
-    }
-  }, []);
 
   const handleNavigationStateChange = useCallback((navState: WebViewNavigation) => {
     setCurrentUrl(navState.url);
@@ -117,8 +109,8 @@ export default function App() {
 
       <View style={styles.noticeBar}>
         <Text style={styles.noticeText}>Shop the live storefront</Text>
-        <Text style={styles.noticeText}>10% off $100+</Text>
-        <Text style={styles.noticeText}>15% off $250+</Text>
+        <Text style={styles.noticeText}>3+ vial discount</Text>
+        <Text style={styles.noticeText}>15% off eligible vials</Text>
       </View>
 
       <View style={styles.webviewFrame}>

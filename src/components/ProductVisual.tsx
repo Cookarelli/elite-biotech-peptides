@@ -1,5 +1,10 @@
 import Image from "next/image";
-import { getProductFormat, type Product } from "@elite-biotech/shared";
+import {
+  getProductFormat,
+  getProductImage,
+  getProductImageAlt,
+  type Product,
+} from "@elite-biotech/shared";
 
 const tones: Record<string, string> = {
   "GLP & Metabolic":
@@ -26,9 +31,32 @@ export function ProductVisual({
   const tone =
     tones[product.category] ??
     "from-sky-500/20 via-cyan-500/10 to-amber-400/10 border-sky-400/20";
+  const productImage = getProductImage(product);
+  const productImageAlt = productImage?.alt ?? getProductImageAlt(product);
+
+  if (productImage) {
+    return (
+      <div
+        className={`relative overflow-hidden border bg-neutral-950 ${tone} ${
+          compact ? "aspect-[4/3] rounded-t-3xl" : "aspect-[4/3] rounded-3xl"
+        }`}
+      >
+        <Image
+          src={productImage.src}
+          alt={productImageAlt}
+          fill
+          sizes={compact ? "(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw" : "(min-width: 1024px) 60vw, 100vw"}
+          className="object-contain p-5"
+          priority={false}
+        />
+      </div>
+    );
+  }
 
   return (
     <div
+      role="img"
+      aria-label={productImageAlt}
       className={`relative overflow-hidden border bg-[linear-gradient(180deg,#fcfdff_0%,#f3f7fb_100%)] ${tone} ${
         compact ? "h-56 rounded-t-3xl" : "h-[28rem] rounded-3xl"
       }`}
@@ -49,7 +77,7 @@ export function ProductVisual({
         <div className="rounded-[2rem] border border-neutral-200 bg-white px-5 py-4 shadow-[0_20px_60px_rgba(15,23,42,0.16)]">
           <Image
             src="/brand/elite-biotech-peptides-logo.png"
-            alt="Elite Biotech Peptides"
+            alt=""
             width={compact ? 150 : 190}
             height={compact ? 95 : 120}
             className="h-auto w-auto"

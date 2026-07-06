@@ -29,7 +29,7 @@ export default function CartPage() {
               Secure PayPal checkout
             </span>
             <span className="rounded-full border border-white/10 bg-white/8 px-3 py-1">
-              Free shipping built in
+              Free shipping at $150+
             </span>
             <span className="rounded-full border border-white/10 bg-white/8 px-3 py-1">
               COA information on request

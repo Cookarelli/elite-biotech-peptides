@@ -8,9 +8,15 @@
   ],
   "scripts": {
     "dev": "next dev",
+    "dashboard:dev": "npm run dev --workspace @elite-biotech/dashboard",
+    "dashboard:build": "npm run build --workspace @elite-biotech/dashboard",
+    "api:dev": "npm run dev --workspace @elite-biotech/api",
+    "worker:dev": "npm run dev --workspace @elite-biotech/worker",
+    "worker:start": "npm run start --workspace @elite-biotech/worker",
+    "seed": "node --import tsx scripts/seed-growth-os.ts",
     "build": "next build",
     "start": "next start",
-    "postinstall": "prisma generate",
+    "postinstall": "prisma generate && node scripts/link-prisma-client.js",
     "lint": "eslint",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
@@ -30,6 +36,7 @@
     "@elite-biotech/shared": "*",
     "@prisma/adapter-pg": "^7.6.0",
     "@prisma/client": "^7.5.0",
+    "@supabase/supabase-js": "^2.101.1",
     "next": "16.1.6",
     "pg": "^8.20.0",
     "prisma": "^7.5.0",
@@ -38,6 +45,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/cors": "^2.8.19",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -45,6 +53,8 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
     "tailwindcss": "^4",
+    "ts-node": "^10.9.1",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }

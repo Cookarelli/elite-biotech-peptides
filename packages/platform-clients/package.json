@@ -1,0 +1,12 @@
+{
+  "name": "@elite-biotech/platform-clients",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "type": "module",
+  "dependencies": {
+    "@elite-biotech/db": "file:../db",
+    "axios": "^1.7.0"
+  }
+}

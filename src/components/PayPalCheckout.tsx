@@ -23,9 +23,11 @@ declare global {
 export function PayPalCheckout({
   items,
   clientId,
+  referralCode,
 }: {
   items: CartItem[];
   clientId?: string;
+  referralCode?: string;
 }) {
   const router = useRouter();
   const { summary, clearCart } = useCart();
@@ -34,8 +36,12 @@ export function PayPalCheckout({
   const [error, setError] = useState<string | null>(null);
 
   const payload = useMemo(
-    () => JSON.stringify(items.map((item) => ({ slug: item.slug, quantity: item.quantity }))),
-    [items]
+    () =>
+      JSON.stringify({
+        items: items.map((item) => ({ slug: item.slug, quantity: item.quantity })),
+        referralCode,
+      }),
+    [items, referralCode]
   );
 
   useEffect(() => {
@@ -56,7 +62,7 @@ export function PayPalCheckout({
               headers: {
                 "Content-Type": "application/json",
               },
-              body: JSON.stringify({ items }),
+              body: payload,
             });
 
             const data = (await response.json()) as { id?: string; error?: string };
@@ -73,7 +79,7 @@ export function PayPalCheckout({
               headers: {
                 "Content-Type": "application/json",
               },
-              body: JSON.stringify({ orderId: data.orderID }),
+              body: JSON.stringify({ orderId: data.orderID, items, referralCode }),
             });
 
             const payload = (await response.json()) as { error?: string };
@@ -103,7 +109,7 @@ export function PayPalCheckout({
           : "PayPal checkout could not be loaded."
       );
     });
-  }, [clearCart, clientId, items, payload, router, scriptReady]);
+  }, [clearCart, clientId, items, payload, referralCode, router, scriptReady]);
 
   if (summary.lines.length === 0) {
     return null;
@@ -115,7 +121,7 @@ export function PayPalCheckout({
         Pay securely with PayPal
       </p>
       <p className="mt-3 text-sm leading-relaxed text-neutral-300">
-        Checkout runs through PayPal. Shipping stays free and your automatic order discount is
+        Checkout runs through PayPal. Shipping is included in the total, and any 3+ vial discount is
         applied before payment.
       </p>
       <div className="mt-4 flex flex-wrap items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-400">
@@ -128,6 +134,11 @@ export function PayPalCheckout({
         <span className="rounded-full border border-neutral-700 bg-neutral-950/60 px-3 py-1">
           Instant confirmation
         </span>
+        {referralCode ? (
+          <span className="rounded-full border border-sky-500/30 bg-sky-500/10 px-3 py-1 text-sky-200">
+            Referral {referralCode}
+          </span>
+        ) : null}
       </div>
 
       {!clientId ? (

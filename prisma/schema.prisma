@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  output   = "../node_modules/.prisma/client"
 }
 
 datasource db {
@@ -15,8 +15,283 @@ enum InvoiceStatus {
   cancelled
 }
 
+enum ProductStatus {
+  active
+  inactive
+}
+
+enum Platform {
+  instagram
+  youtube
+  tiktok
+  linkedin
+}
+
+enum IdeaStatus {
+  draft
+  pending
+  approved
+  scheduled
+  published
+  archived
+}
+
+enum QueueStatus {
+  pending
+  scheduled
+  sent
+  failed
+  cancelled
+}
+
+enum EngagementType {
+  reply
+  comment
+  dm
+}
+
+enum EngagementStatus {
+  pending
+  approved
+  completed
+  failed
+  archived
+}
+
+enum ApprovalDecision {
+  pending
+  approved
+  rejected
+}
+
+enum AgentName {
+  content_planner
+  script_writer
+  product_mapper
+  publisher
+  engagement_assistant
+  analytics_summarizer
+  compliance_checker
+}
+
+model Product {
+  id           String        @id @default(uuid())
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  name         String
+  slug         String        @unique
+  canonicalUrl String
+  collection   String?
+  status       ProductStatus @default(active)
+  contentIdeas ContentIdea[]
+  contentAssets ContentAsset[]
+  topProductReports TopProductReport[]
+}
+
+model ContentIdea {
+  id                    String          @id @default(uuid())
+  createdAt             DateTime        @default(now())
+  updatedAt             DateTime        @updatedAt
+  title                 String
+  angle                 String
+  platform              Platform
+  status                IdeaStatus      @default(draft)
+  riskScore             Int             @default(1)
+  productName           String
+  productSlug           String
+  collection            String?
+  contentCategory       String?
+  collectionCanonicalUrl String?
+  approvalRequired      Boolean         @default(true)
+  approvalDecision      ApprovalDecision @default(pending)
+  approvedBy            String?
+  approvedAt            DateTime?
+  complianceCheckPassed Boolean         @default(false)
+  humanNotes            String?
+  product               Product?        @relation(fields: [productId], references: [id])
+  productId             String?
+  productCanonicalUrl   String?
+  promptVersion         PromptVersion?  @relation(fields: [promptVersionId], references: [id])
+  promptVersionId       String?
+  contentAssets         ContentAsset[]
+  analyticsDaily        AnalyticsDaily[]
+  topHookReports        TopHookReport[]
+  underperformingReports UnderperformingContentReport[]
+  @@index([status, platform])
+  @@index([productSlug])
+}
+
+model ContentAsset {
+  id               String         @id @default(uuid())
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+  mediaType        String
+  copy             String
+  angle            String
+  platform         Platform
+  canonicalUrl     String?
+  assetVersion     String?
+  confidenceScore  Int            @default(0)
+  agentNotes       String?
+  product          Product?       @relation(fields: [productId], references: [id])
+  productId        String?
+  contentIdea      ContentIdea    @relation(fields: [contentIdeaId], references: [id])
+  contentIdeaId    String
+  agentRun         AgentRun?      @relation(fields: [agentRunId], references: [id])
+  agentRunId       String?
+  publishQueue     PublishQueue[]
+}
+
+model PublishQueue {
+  id                     String        @id @default(uuid())
+  createdAt              DateTime      @default(now())
+  updatedAt              DateTime      @updatedAt
+  platform               Platform
+  scheduledAt            DateTime
+  status                 QueueStatus   @default(pending)
+  approvalRequired       Boolean       @default(true)
+  approvalDecision       ApprovalDecision @default(pending)
+  approvedBy             String?
+  approvedAt             DateTime?
+  complianceCheckPassed  Boolean       @default(false)
+  retryCount             Int           @default(0)
+  failureReason          String?
+  failurePayload         Json?
+  lastFailureAt          DateTime?
+  externalId             String?
+  externalUrl            String?
+  attemptDetails         Json?
+  contentAsset          ContentAsset   @relation(fields: [contentAssetId], references: [id])
+  contentAssetId        String
+  agentRun              AgentRun?      @relation(fields: [agentRunId], references: [id])
+  agentRunId            String?
+  @@index([platform, status, scheduledAt])
+}
+
+model EngagementTask {
+  id                     String           @id @default(uuid())
+  createdAt              DateTime         @default(now())
+  updatedAt              DateTime         @updatedAt
+  inboundThreadId        String
+  type                   EngagementType
+  status                 EngagementStatus @default(pending)
+  draftCopy              String
+  riskScore              Int              @default(3)
+  approvalRequired       Boolean          @default(true)
+  approvalDecision       ApprovalDecision @default(pending)
+  approvedBy             String?
+  approvedAt             DateTime?
+  complianceCheckPassed  Boolean          @default(false)
+  complianceNotes        String?
+  responseChannel        String?
+  promptVersion          PromptVersion?   @relation(fields: [promptVersionId], references: [id])
+  promptVersionId        String?
+  agentRun               AgentRun?        @relation(fields: [agentRunId], references: [id])
+  agentRunId             String?
+  completedAt            DateTime?
+  @@index([status, type])
+}
+
+model AnalyticsDaily {
+  id              String    @id @default(uuid())
+  date            DateTime
+  platform        Platform
+  contentIdea     ContentIdea? @relation(fields: [contentIdeaId], references: [id])
+  contentIdeaId   String?
+  views           Int       @default(0)
+  likes           Int       @default(0)
+  comments        Int       @default(0)
+  shares          Int       @default(0)
+  profileVisits   Int       @default(0)
+  linkClicks      Int       @default(0)
+  ctr             Float     @default(0)
+  conversions     Int       @default(0)
+  revenue         Decimal   @default(0)
+  createdAt       DateTime  @default(now())
+  @@index([date, platform])
+}
+
+model AgentRun {
+  id              String            @id @default(uuid())
+  createdAt       DateTime          @default(now())
+  agentName       AgentName
+  promptVersion   PromptVersion?    @relation(fields: [promptVersionId], references: [id])
+  promptVersionId String?
+  payload         Json
+  output          Json
+  summary         String
+  dryRun          Boolean           @default(false)
+  riskScore       Int?
+  artifacts       Json?
+  status          String?
+  source          String?
+  contentAssets   ContentAsset[]
+  publishQueues   PublishQueue[]
+  engagementTasks EngagementTask[]
+  @@index([agentName, createdAt])
+}
+
+model PromptVersion {
+  id            String     @id @default(uuid())
+  createdAt     DateTime   @default(now())
+  agentName     AgentName
+  versionLabel  String
+  content       String
+  active        Boolean    @default(false)
+  notes         String?
+  contentIdeas   ContentIdea[]
+  engagementTasks EngagementTask[]
+  runs          AgentRun[]
+  @@index([agentName, active])
+}
+
+model TopHookReport {
+  id            String    @id @default(uuid())
+  generatedAt   DateTime  @default(now())
+  date          DateTime
+  contentIdea   ContentIdea? @relation(fields: [contentIdeaId], references: [id])
+  contentIdeaId String?
+  hook          String
+  metricValue   Int
+  platform      Platform
+  @@index([date])
+}
+
+model TopProductReport {
+  id          String    @id @default(uuid())
+  generatedAt DateTime  @default(now())
+  date        DateTime
+  product     Product?  @relation(fields: [productId], references: [id])
+  productId   String?
+  metricName  String
+  metricValue Int
+  @@index([date])
+}
+
+model TopPlatformReport {
+  id          String    @id @default(uuid())
+  generatedAt DateTime  @default(now())
+  date        DateTime
+  platform    Platform
+  metricName  String
+  metricValue Int
+  @@index([date])
+}
+
+model UnderperformingContentReport {
+  id            String    @id @default(uuid())
+  generatedAt   DateTime  @default(now())
+  date          DateTime
+  contentIdea   ContentIdea? @relation(fields: [contentIdeaId], references: [id])
+  contentIdeaId String?
+  metricName    String
+  metricValue   Int
+  threshold     Int
+  @@index([date])
+}
+
 model InvoiceRequest {
-  id               String        @id @default(cuid())
+  id               String        @id @default(uuid())
   createdAt        DateTime      @default(now())
   updatedAt        DateTime      @updatedAt
   status           InvoiceStatus @default(requested)

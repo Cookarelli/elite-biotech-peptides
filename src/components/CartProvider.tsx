@@ -11,6 +11,7 @@ import {
 import {
   clampQuantity,
   getCartSummary,
+  normalizeReferralCode,
   type CartItem,
   type CartSummary,
   type Product,
@@ -19,18 +20,22 @@ import {
 type CartContextValue = {
   items: CartItem[];
   summary: CartSummary;
+  referralCode: string;
   addItem: (product: Product, quantity?: number) => void;
   updateItem: (slug: string, quantity: number) => void;
   removeItem: (slug: string) => void;
+  setReferralCode: (code: string) => void;
   clearCart: () => void;
 };
 
 const STORAGE_KEY = "elite-biotech-cart";
+const REFERRAL_STORAGE_KEY = "elite-biotech-referral-code";
 
 const CartContext = createContext<CartContextValue | null>(null);
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
+  const [referralCode, setReferralCodeState] = useState("");
 
   useEffect(() => {
     try {
@@ -58,8 +63,31 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
+    try {
+      const stored = window.localStorage.getItem(REFERRAL_STORAGE_KEY);
+      if (stored) {
+        const timer = window.setTimeout(() => {
+          setReferralCodeState(normalizeReferralCode(stored));
+        }, 0);
+
+        return () => window.clearTimeout(timer);
+      }
+    } catch {
+      window.localStorage.removeItem(REFERRAL_STORAGE_KEY);
+    }
+  }, []);
+
+  useEffect(() => {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
   }, [items]);
+
+  useEffect(() => {
+    if (referralCode) {
+      window.localStorage.setItem(REFERRAL_STORAGE_KEY, referralCode);
+    } else {
+      window.localStorage.removeItem(REFERRAL_STORAGE_KEY);
+    }
+  }, [referralCode]);
 
   const value = useMemo<CartContextValue>(() => {
     const addItem = (product: Product, quantity = 1) => {
@@ -99,17 +127,26 @@ export function CartProvider({ children }: { children: ReactNode }) {
       setItems((current) => current.filter((item) => item.slug !== slug));
     };
 
-    const clearCart = () => setItems([]);
+    const setReferralCode = (code: string) => {
+      setReferralCodeState(normalizeReferralCode(code));
+    };
+
+    const clearCart = () => {
+      setItems([]);
+      setReferralCodeState("");
+    };
 
     return {
       items,
       summary: getCartSummary(items),
+      referralCode,
       addItem,
       updateItem,
       removeItem,
+      setReferralCode,
       clearCart,
     };
-  }, [items]);
+  }, [items, referralCode]);
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }

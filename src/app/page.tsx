@@ -3,8 +3,9 @@ import Link from "next/link";
 import { products, getProductFormat } from "@elite-biotech/shared";
 import { ProductVisual } from "@/components/ProductVisual";
 import { SiteShell } from "@/components/SiteShell";
+import { SpecialsSignupForm } from "@/components/SpecialsSignupForm";
 
-const popularSlugs = ["tirzepatide", "retatrutide", "semaglutide", "bpc-157"];
+const popularSlugs = ["trizepatide", "reta", "semaglutide", "bpc-157"];
 const popularProducts = popularSlugs
   .map((slug) => products.find((p) => p.slug === slug))
   .filter((p): p is NonNullable<typeof p> => Boolean(p));
@@ -251,6 +252,30 @@ export default function Home() {
             <StepCard number="02" title="Build your cart" body="Add products from the catalog or product page and let discounts apply automatically." />
             <StepCard number="03" title="Pay with PayPal" body="Checkout finishes in PayPal while fulfillment and support stay handled from the business side." />
           </div>
+        </div>
+      </section>
+
+      <section className="mt-12 grid gap-6 rounded-[2rem] border border-neutral-800 bg-neutral-900 p-6 sm:p-8 lg:grid-cols-[minmax(0,1fr)_460px] lg:items-start">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-300">
+            Birthday and Specials
+          </p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight">
+            Get optional updates without changing checkout
+          </h2>
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-neutral-300 sm:text-base">
+            Join the interest list for birthday notes, occasional specials, and product updates.
+            Signup is optional and never required to browse, cart, or purchase.
+          </p>
+          <div className="mt-6 grid gap-3 sm:grid-cols-3">
+            <ValueCard label="Optional" value="Purchase flow stays open" />
+            <ValueCard label="Birthday" value="Month and day only" />
+            <ValueCard label="Consent" value="Promos require opt-in" />
+          </div>
+        </div>
+
+        <div className="rounded-3xl border border-neutral-800 bg-neutral-950/50 p-5 sm:p-6">
+          <SpecialsSignupForm />
         </div>
       </section>
     </SiteShell>

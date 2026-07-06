@@ -15,7 +15,10 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.elitebiotech.peptides",
-      "buildNumber": "1.0.0"
+      "buildNumber": "1.0.0",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "package": "com.elitebiotech.peptides",
@@ -30,6 +33,11 @@
     },
     "web": {
       "favicon": "./assets/elite-biotech-logo.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "5653ba99-34b4-4e8b-a471-a3f704d9a610"
+      }
     }
   }
 }

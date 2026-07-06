@@ -18,3 +18,86 @@ export const InvoiceStatus = {
 } as const
 
 export type InvoiceStatus = (typeof InvoiceStatus)[keyof typeof InvoiceStatus]
+
+
+export const ProductStatus = {
+  active: 'active',
+  inactive: 'inactive'
+} as const
+
+export type ProductStatus = (typeof ProductStatus)[keyof typeof ProductStatus]
+
+
+export const Platform = {
+  instagram: 'instagram',
+  youtube: 'youtube',
+  tiktok: 'tiktok',
+  linkedin: 'linkedin'
+} as const
+
+export type Platform = (typeof Platform)[keyof typeof Platform]
+
+
+export const IdeaStatus = {
+  draft: 'draft',
+  pending: 'pending',
+  approved: 'approved',
+  scheduled: 'scheduled',
+  published: 'published',
+  archived: 'archived'
+} as const
+
+export type IdeaStatus = (typeof IdeaStatus)[keyof typeof IdeaStatus]
+
+
+export const QueueStatus = {
+  pending: 'pending',
+  scheduled: 'scheduled',
+  sent: 'sent',
+  failed: 'failed',
+  cancelled: 'cancelled'
+} as const
+
+export type QueueStatus = (typeof QueueStatus)[keyof typeof QueueStatus]
+
+
+export const EngagementType = {
+  reply: 'reply',
+  comment: 'comment',
+  dm: 'dm'
+} as const
+
+export type EngagementType = (typeof EngagementType)[keyof typeof EngagementType]
+
+
+export const EngagementStatus = {
+  pending: 'pending',
+  approved: 'approved',
+  completed: 'completed',
+  failed: 'failed',
+  archived: 'archived'
+} as const
+
+export type EngagementStatus = (typeof EngagementStatus)[keyof typeof EngagementStatus]
+
+
+export const ApprovalDecision = {
+  pending: 'pending',
+  approved: 'approved',
+  rejected: 'rejected'
+} as const
+
+export type ApprovalDecision = (typeof ApprovalDecision)[keyof typeof ApprovalDecision]
+
+
+export const AgentName = {
+  content_planner: 'content_planner',
+  script_writer: 'script_writer',
+  product_mapper: 'product_mapper',
+  publisher: 'publisher',
+  engagement_assistant: 'engagement_assistant',
+  analytics_summarizer: 'analytics_summarizer',
+  compliance_checker: 'compliance_checker'
+} as const
+
+export type AgentName = (typeof AgentName)[keyof typeof AgentName]

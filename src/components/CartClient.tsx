@@ -1,12 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { formatUsd } from "@elite-biotech/shared";
+import { SHIPPING_RATE, VIAL_BUNDLE_DISCOUNT, formatUsd } from "@elite-biotech/shared";
 import { PayPalCheckout } from "@/components/PayPalCheckout";
 import { useCart } from "@/components/CartProvider";
 
 export function CartClient({ clientId }: { clientId?: string }) {
-  const { items, summary, updateItem, removeItem, clearCart } = useCart();
+  const {
+    items,
+    summary,
+    referralCode,
+    updateItem,
+    removeItem,
+    setReferralCode,
+    clearCart,
+  } = useCart();
+  const remainingEligibleVials = Math.max(
+    0,
+    VIAL_BUNDLE_DISCOUNT.minimumEligibleQuantity - summary.eligibleVialCount
+  );
 
   if (summary.lines.length === 0) {
     return (
@@ -137,7 +149,7 @@ export function CartClient({ clientId }: { clientId?: string }) {
             </div>
             <div className="flex items-center justify-between text-neutral-300">
               <dt>Shipping</dt>
-              <dd>Free</dd>
+              <dd>{summary.shipping > 0 ? formatUsd(summary.shipping) : "Free"}</dd>
             </div>
             {summary.discountAmount > 0 ? (
               <div className="flex items-center justify-between text-sky-200">
@@ -146,8 +158,8 @@ export function CartClient({ clientId }: { clientId?: string }) {
               </div>
             ) : (
               <div className="rounded-2xl border border-neutral-800 bg-neutral-950/50 p-3 text-neutral-400">
-                Spend {formatUsd(Math.max(0, 100 - summary.subtotal))} more to unlock 10% off and
-                free shipping.
+                Add {remainingEligibleVials} more eligible vial
+                {remainingEligibleVials === 1 ? "" : "s"} to unlock 15% off eligible vial items.
               </div>
             )}
             <div className="flex items-center justify-between border-t border-neutral-800 pt-3 text-base font-semibold text-neutral-100">
@@ -155,6 +167,31 @@ export function CartClient({ clientId }: { clientId?: string }) {
               <dd>{formatUsd(summary.total)}</dd>
             </div>
           </dl>
+          <p className="mt-3 text-xs text-neutral-500">
+            {summary.shipping > 0
+              ? `${SHIPPING_RATE.label}; ${SHIPPING_RATE.freeLabel.toLowerCase()}.`
+              : SHIPPING_RATE.freeLabel}
+          </p>
+
+          <div className="mt-5 rounded-2xl border border-neutral-800 bg-neutral-950/50 p-4">
+            <label htmlFor="referral-code" className="block">
+              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-300">
+                Referral code
+              </span>
+              <input
+                id="referral-code"
+                type="text"
+                value={referralCode}
+                onChange={(event) => setReferralCode(event.target.value)}
+                placeholder="Optional code"
+                autoComplete="off"
+                className="mt-3 w-full rounded-xl border border-neutral-700 bg-neutral-950 px-3 py-2.5 text-sm uppercase text-neutral-100 outline-none transition-colors placeholder:normal-case placeholder:text-neutral-500 focus:border-sky-400"
+              />
+            </label>
+            <p className="mt-2 text-xs leading-relaxed text-neutral-500">
+              Referral codes are recorded for order follow-up and do not change the cart total yet.
+            </p>
+          </div>
 
           <div className="mt-5 grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
             <TrustNote
@@ -163,16 +200,16 @@ export function CartClient({ clientId }: { clientId?: string }) {
             />
             <TrustNote
               title="Promo logic applied"
-              body="Discount tiers are already reflected in the total shown here."
+              body="Eligible vial discounts are already reflected in the total shown here."
             />
             <TrustNote
               title="Manual fulfillment"
-              body="Shipping and post-purchase support are handled directly by Elite Biotech."
+              body="$10.95 standard shipping applies under $150; orders at $150+ ship free."
             />
           </div>
         </div>
 
-        <PayPalCheckout items={items} clientId={clientId} />
+        <PayPalCheckout items={items} clientId={clientId} referralCode={referralCode} />
 
         <div className="rounded-3xl border border-neutral-800 bg-neutral-900/40 p-5">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-300">

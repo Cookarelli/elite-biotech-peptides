@@ -51,6 +51,18 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  Product: 'Product',
+  ContentIdea: 'ContentIdea',
+  ContentAsset: 'ContentAsset',
+  PublishQueue: 'PublishQueue',
+  EngagementTask: 'EngagementTask',
+  AnalyticsDaily: 'AnalyticsDaily',
+  AgentRun: 'AgentRun',
+  PromptVersion: 'PromptVersion',
+  TopHookReport: 'TopHookReport',
+  TopProductReport: 'TopProductReport',
+  TopPlatformReport: 'TopPlatformReport',
+  UnderperformingContentReport: 'UnderperformingContentReport',
   InvoiceRequest: 'InvoiceRequest'
 } as const
 
@@ -61,10 +73,224 @@ export type ModelName = (typeof ModelName)[keyof typeof ModelName]
  */
 
 export const TransactionIsolationLevel = runtime.makeStrictEnum({
+  ReadUncommitted: 'ReadUncommitted',
+  ReadCommitted: 'ReadCommitted',
+  RepeatableRead: 'RepeatableRead',
   Serializable: 'Serializable'
 } as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+export const ProductScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  name: 'name',
+  slug: 'slug',
+  canonicalUrl: 'canonicalUrl',
+  collection: 'collection',
+  status: 'status'
+} as const
+
+export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
+
+
+export const ContentIdeaScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  title: 'title',
+  angle: 'angle',
+  platform: 'platform',
+  status: 'status',
+  riskScore: 'riskScore',
+  productName: 'productName',
+  productSlug: 'productSlug',
+  collection: 'collection',
+  contentCategory: 'contentCategory',
+  approvalRequired: 'approvalRequired',
+  approvalDecision: 'approvalDecision',
+  approvedBy: 'approvedBy',
+  approvedAt: 'approvedAt',
+  complianceCheckPassed: 'complianceCheckPassed',
+  humanNotes: 'humanNotes',
+  productId: 'productId',
+  promptVersionId: 'promptVersionId'
+} as const
+
+export type ContentIdeaScalarFieldEnum = (typeof ContentIdeaScalarFieldEnum)[keyof typeof ContentIdeaScalarFieldEnum]
+
+
+export const ContentAssetScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  mediaType: 'mediaType',
+  copy: 'copy',
+  angle: 'angle',
+  platform: 'platform',
+  canonicalUrl: 'canonicalUrl',
+  assetVersion: 'assetVersion',
+  confidenceScore: 'confidenceScore',
+  agentNotes: 'agentNotes',
+  productId: 'productId',
+  contentIdeaId: 'contentIdeaId',
+  agentRunId: 'agentRunId'
+} as const
+
+export type ContentAssetScalarFieldEnum = (typeof ContentAssetScalarFieldEnum)[keyof typeof ContentAssetScalarFieldEnum]
+
+
+export const PublishQueueScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  platform: 'platform',
+  scheduledAt: 'scheduledAt',
+  status: 'status',
+  approvalRequired: 'approvalRequired',
+  approvalDecision: 'approvalDecision',
+  approvedBy: 'approvedBy',
+  approvedAt: 'approvedAt',
+  complianceCheckPassed: 'complianceCheckPassed',
+  retryCount: 'retryCount',
+  failureReason: 'failureReason',
+  failurePayload: 'failurePayload',
+  lastFailureAt: 'lastFailureAt',
+  externalId: 'externalId',
+  externalUrl: 'externalUrl',
+  attemptDetails: 'attemptDetails',
+  contentAssetId: 'contentAssetId',
+  agentRunId: 'agentRunId'
+} as const
+
+export type PublishQueueScalarFieldEnum = (typeof PublishQueueScalarFieldEnum)[keyof typeof PublishQueueScalarFieldEnum]
+
+
+export const EngagementTaskScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  inboundThreadId: 'inboundThreadId',
+  type: 'type',
+  status: 'status',
+  draftCopy: 'draftCopy',
+  riskScore: 'riskScore',
+  approvalRequired: 'approvalRequired',
+  approvalDecision: 'approvalDecision',
+  approvedBy: 'approvedBy',
+  approvedAt: 'approvedAt',
+  complianceCheckPassed: 'complianceCheckPassed',
+  complianceNotes: 'complianceNotes',
+  responseChannel: 'responseChannel',
+  promptVersionId: 'promptVersionId',
+  agentRunId: 'agentRunId',
+  completedAt: 'completedAt'
+} as const
+
+export type EngagementTaskScalarFieldEnum = (typeof EngagementTaskScalarFieldEnum)[keyof typeof EngagementTaskScalarFieldEnum]
+
+
+export const AnalyticsDailyScalarFieldEnum = {
+  id: 'id',
+  date: 'date',
+  platform: 'platform',
+  contentIdeaId: 'contentIdeaId',
+  views: 'views',
+  likes: 'likes',
+  comments: 'comments',
+  shares: 'shares',
+  profileVisits: 'profileVisits',
+  linkClicks: 'linkClicks',
+  ctr: 'ctr',
+  conversions: 'conversions',
+  revenue: 'revenue',
+  createdAt: 'createdAt'
+} as const
+
+export type AnalyticsDailyScalarFieldEnum = (typeof AnalyticsDailyScalarFieldEnum)[keyof typeof AnalyticsDailyScalarFieldEnum]
+
+
+export const AgentRunScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  agentName: 'agentName',
+  promptVersionId: 'promptVersionId',
+  payload: 'payload',
+  output: 'output',
+  summary: 'summary',
+  dryRun: 'dryRun',
+  riskScore: 'riskScore',
+  artifacts: 'artifacts',
+  status: 'status',
+  source: 'source'
+} as const
+
+export type AgentRunScalarFieldEnum = (typeof AgentRunScalarFieldEnum)[keyof typeof AgentRunScalarFieldEnum]
+
+
+export const PromptVersionScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  agentName: 'agentName',
+  versionLabel: 'versionLabel',
+  content: 'content',
+  active: 'active',
+  notes: 'notes'
+} as const
+
+export type PromptVersionScalarFieldEnum = (typeof PromptVersionScalarFieldEnum)[keyof typeof PromptVersionScalarFieldEnum]
+
+
+export const TopHookReportScalarFieldEnum = {
+  id: 'id',
+  generatedAt: 'generatedAt',
+  date: 'date',
+  contentIdeaId: 'contentIdeaId',
+  hook: 'hook',
+  metricValue: 'metricValue',
+  platform: 'platform'
+} as const
+
+export type TopHookReportScalarFieldEnum = (typeof TopHookReportScalarFieldEnum)[keyof typeof TopHookReportScalarFieldEnum]
+
+
+export const TopProductReportScalarFieldEnum = {
+  id: 'id',
+  generatedAt: 'generatedAt',
+  date: 'date',
+  productId: 'productId',
+  metricName: 'metricName',
+  metricValue: 'metricValue'
+} as const
+
+export type TopProductReportScalarFieldEnum = (typeof TopProductReportScalarFieldEnum)[keyof typeof TopProductReportScalarFieldEnum]
+
+
+export const TopPlatformReportScalarFieldEnum = {
+  id: 'id',
+  generatedAt: 'generatedAt',
+  date: 'date',
+  platform: 'platform',
+  metricName: 'metricName',
+  metricValue: 'metricValue'
+} as const
+
+export type TopPlatformReportScalarFieldEnum = (typeof TopPlatformReportScalarFieldEnum)[keyof typeof TopPlatformReportScalarFieldEnum]
+
+
+export const UnderperformingContentReportScalarFieldEnum = {
+  id: 'id',
+  generatedAt: 'generatedAt',
+  date: 'date',
+  contentIdeaId: 'contentIdeaId',
+  metricName: 'metricName',
+  metricValue: 'metricValue',
+  threshold: 'threshold'
+} as const
+
+export type UnderperformingContentReportScalarFieldEnum = (typeof UnderperformingContentReportScalarFieldEnum)[keyof typeof UnderperformingContentReportScalarFieldEnum]
 
 
 export const InvoiceRequestScalarFieldEnum = {
@@ -98,10 +324,42 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
+  JsonNull: JsonNull
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
+export const QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+} as const
+
+export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
 export const NullsOrder = {
   first: 'first',
   last: 'last'
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 

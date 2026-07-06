@@ -14,8 +14,8 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       <header className="sticky top-0 z-50 border-b border-neutral-800 bg-neutral-950/95 backdrop-blur">
         <div className="border-b border-neutral-800 bg-neutral-900">
           <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-300">
-            <p>Free shipping on all orders</p>
-            <p className="text-sky-200">10% off orders over $100</p>
+            <p>$10.95 shipping under $150</p>
+            <p className="text-sky-200">3+ Vial Discount – 15% Off</p>
             <p>COA information available on request</p>
           </div>
         </div>
@@ -46,6 +46,9 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
             <NavLink href="/faq">FAQ</NavLink>
             <NavLink href="/request-documentation">COA Request</NavLink>
             <NavLink href="/contact">Contact</NavLink>
+            <NavLink href="/privacy-policy">Privacy</NavLink>
+            <NavLink href="/data-deletion">Data Deletion</NavLink>
+            <NavLink href="/terms-of-service">Terms</NavLink>
           </nav>
 
           <div className="flex items-center gap-3">
@@ -67,6 +70,9 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
             <NavLink href="/request-documentation">COA Request</NavLink>
             <NavLink href="/faq">FAQ</NavLink>
             <NavLink href="/contact">Contact</NavLink>
+            <NavLink href="/privacy-policy">Privacy</NavLink>
+            <NavLink href="/data-deletion">Data Deletion</NavLink>
+            <NavLink href="/terms-of-service">Terms</NavLink>
           </div>
         </div>
       </header>
@@ -89,6 +95,19 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
             <p className="mt-2 max-w-3xl">
               Products are intended for laboratory research purposes only and are not for human
               consumption. No medical claims are made.
+            </p>
+            <p className="mt-3">
+              <Link href="/privacy-policy" className="text-sky-300 transition-colors hover:text-sky-200">
+                Privacy Policy
+              </Link>
+              {" · "}
+              <Link href="/data-deletion" className="text-sky-300 transition-colors hover:text-sky-200">
+                Data Deletion
+              </Link>
+              {" · "}
+              <Link href="/terms-of-service" className="text-sky-300 transition-colors hover:text-sky-200">
+                Terms of Service
+              </Link>
             </p>
           </div>
         </div>

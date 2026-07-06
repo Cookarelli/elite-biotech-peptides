@@ -15,8 +15,12 @@ export type PayPalLineItem = {
 };
 
 export async function getPayPalAccessToken() {
-  if (!env.PAYPAL_CLIENT_ID || !env.PAYPAL_CLIENT_SECRET) {
-    throw new Error("PayPal credentials are not configured.");
+  const missing: string[] = [];
+  if (!env.PAYPAL_CLIENT_ID) missing.push("PAYPAL_CLIENT_ID");
+  if (!env.PAYPAL_CLIENT_SECRET) missing.push("PAYPAL_CLIENT_SECRET");
+
+  if (missing.length > 0) {
+    throw new Error(`PayPal credentials are not configured: ${missing.join(", ")}.`);
   }
 
   const auth = Buffer.from(
@@ -46,7 +50,9 @@ export async function createPayPalOrder(payload: {
   items: PayPalLineItem[];
   subtotal: string;
   discount: string;
+  shipping: string;
   total: string;
+  referralCode?: string;
 }) {
   const accessToken = await getPayPalAccessToken();
 
@@ -63,6 +69,9 @@ export async function createPayPalOrder(payload: {
       purchase_units: [
         {
           description: "Elite Biotech Peptides order",
+          ...(payload.referralCode
+            ? { custom_id: `REF:${payload.referralCode}` }
+            : {}),
           amount: {
             currency_code: "USD",
             value: payload.total,
@@ -74,6 +83,10 @@ export async function createPayPalOrder(payload: {
               discount: {
                 currency_code: "USD",
                 value: payload.discount,
+              },
+              shipping: {
+                currency_code: "USD",
+                value: payload.shipping,
               },
             },
           },

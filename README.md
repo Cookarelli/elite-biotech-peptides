@@ -1,126 +1,84 @@
-# Elite Biotech Peptides
+# elite-growth-os
 
-Elite Biotech Peptides is a branded research storefront built with Next.js 16 and Tailwind CSS 4.
-The current launch flow is invoice-first: buyers browse the catalog, review product details, and
-submit a manual invoice request that routes to the procurement team for follow-up.
+A production-ready growth operations system for EliteBiotechPeptides.com. This monorepo stitches together a Next.js dashboard, API surface, worker runtime, observability tooling, and modular agents that cover content planning, publishing, engagement, analytics, and product mapping while keeping humans in the loop.
 
-## Current Platform
+## Tech stack
+- **Monorepo** orchestrated via npm workspaces (`apps/*`, `packages/*`).
+- **Apps**: Dashboard (Next.js 16), API (Express + Prisma), Worker (ts-node + cron-style ticks).
+- **Packages**: Shared utilities, Prisma-backed DB helpers, agent contracts, platform adapters, prompt registry.
+- **Database**: PostgreSQL via Prisma with schema/migrations for products, content ideas/assets, publish queue, analytics, prompt versions, engagement tasks, and agent runs.
 
-- Web storefront with Elite Biotech branding
-- Product catalog and detail pages
-- COA library placeholder and quality pages
-- Manual invoice request flow
-- Promo tiers for larger orders
+## Repo layout
+- `apps/dashboard` – internal admin cockpit for KPIs, approvals, prompts, and audit logs.
+- `apps/api` – REST surface for queueing agent runs, fetching analytics, managing prompts, and exposing publish/engagement APIs.
+- `apps/worker` – scheduled/background orchestrator for agent execution, analytics ingestion, and retry-safe queue polling.
+- `packages/agents` – strongly typed agent contracts, run helpers, risk metadata, dry-run support.
+- `packages/db` – Prisma client exports, typed seed helpers, and helpers for product/content lookups.
+- `packages/platform-clients` – stubbed platform adapters that can be replaced by TikTok/IG/YT clients.
+- `packages/prompt-registry` – utilities for prompt versioning, activation toggles, and rollbacks.
+- `packages/shared` – pre-existing billing/catalog helpers shared with the storefront experience.
+- `prisma` – schema + migrations for content, analytics, prompts, and audit logs.
+- `scripts/seed-growth-os.ts` – sample seed data for products and content ideas.
+- `docs/` – living documentation for architecture, agents, compliance, setup, and deployments.
 
-## Local Development
+## Getting started (local)
+1. `npm install`
+2. `cp .env.example .env.local`
+3. `npm run db:generate`
+4. `npm run db:push` (or `prisma migrate dev` if a dev database is attached)
+5. `npm run seed`
+6. Run the apps you need:
+   - `npm run dashboard:dev`
+   - `npm run api:dev`
+   - `npm run worker:dev`
 
-Run the site locally:
+## Key scripts
+- `npm run dev` – legacy storefront dev server.
+- `npm run dashboard:dev` – growth ops dashboard.
+- `npm run api:dev` – Express API for queues and prompts.
+- `npm run worker:dev` – long-running worker tick.
+- `npm run seed` – seed products + content ideas into the new schema.
+- `npm run lint` – repo linting (includes dashboard + api directories).
+- `npm run db:*` – Prisma helpers.
 
-```bash
-npm run dev
-```
+## Environment variables
+Keep `.env.local` out of source control and populate the list below:
 
-Build and validate:
-
-```bash
-npm run lint
-npm run build
-```
-
-## Launch Model
-
-The current storefront does not process checkout directly on-site. Instead, each product can route
-to a manual invoice request flow. That keeps launch operations simple while payment and fulfillment
-processes are finalized.
-
-## Environment Variables
-
-Copy the example file before local work:
-
-```bash
-cp .env.example .env.local
-cp apps/mobile/.env.example apps/mobile/.env
-```
-
-Core variables:
-
-- `DATABASE_URL`
-- `DIRECT_URL`
-- `NEXT_PUBLIC_SITE_URL`
-- `NEXT_PUBLIC_COMPANY_NAME`
-- `NEXT_PUBLIC_SUPPORT_EMAIL`
-- `NEXT_PUBLIC_PROCUREMENT_EMAIL`
-- `EXPO_PUBLIC_API_BASE_URL`
-
-## Database Prep
-
-The repo includes a Prisma schema for invoice requests at `prisma/schema.prisma`.
-
-Useful commands:
-
-```bash
-npm run db:generate
-npm run db:push
-npm run db:studio
-```
+| Name | Description |
+| --- | --- |
+| `DATABASE_URL` | Postgres URL used by Prisma (read-write). |
+| `DIRECT_URL` | Dedicated URL for Prisma CLI tasks if different (migration/seed). |
+| `SUPABASE_URL` | Optional Supabase project for ingest/analytics streaming. |
+| `SUPABASE_ANON_KEY` | Supabase anon key for dashboard reads (if used). |
+| `NEXT_PUBLIC_SUPABASE_URL` | Optional browser-safe Supabase project URL for dashboard integrations. |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY` | Optional browser-safe Supabase publishable key. |
+| `SUPABASE_SERVICE_ROLE_KEY` | Service role key for worker writes/ingestion. |
+| `NEXT_PUBLIC_SITE_URL` | Public storefront URL (used by prompts for canonical links). |
+| `NEXT_PUBLIC_COMPANY_NAME` | Brand name for UI/analytics contexts. |
+| `NEXT_PUBLIC_SUPPORT_EMAIL` | Support email for dashboards/alerts. |
+| `NEXT_PUBLIC_PROCUREMENT_EMAIL` | Procurement contact referenced by content/product teams. |
+| `GROWTH_API_PORT` | Express API port (defaults to `4000`). |
+| `GROWTH_API_KEY` | Optional key to authenticate internal automation calls. |
+| `WORKER_INTERVAL_MS` | Milliseconds between worker ticks (default `60000`). |
+| `WORKER_LOG_LEVEL` | Worker logger level (`info`, `warn`, `debug`). |
+| `HUMAN_APPROVER_EMAILS` | CSV of allowed approvers for risky content. |
+| `PAYPAL_*`, `RESEND_*`, `TWILIO_*` | Existing commerce/notification keys retained for the storefront.
 
 Notes:
+- Prisma now auto-loads `.env.local` and `.env` from the repo root, so `npm run db:push` works without manual `export` commands.
+- If your database password contains characters like `@`, `%`, `!`, `:` or `/`, URL-encode it inside `DATABASE_URL` and `DIRECT_URL`.
 
-- The production target is PostgreSQL.
-- `DATABASE_URL` should be your pooled/runtime connection string.
-- `DIRECT_URL` should be the direct connection string used by Prisma CLI operations.
-- Prisma Client generation is working in this repo.
-- For Vercel production, a hosted Postgres provider is the recommended path.
+## Documentation & processes
+- [`docs/architecture.md`](./docs/architecture.md) – data flow, observability, approval gates.
+- [`docs/agent-responsibilities.md`](./docs/agent-responsibilities.md) – each agent, inputs, outputs, test fixtures.
+- [`docs/risk-compliance.md`](./docs/risk-compliance.md) – policy-safe tactics, approval steps, audit logging.
+- [`docs/local-setup.md`](./docs/local-setup.md) – developer onboarding + fixture guidance.
+- [`docs/deployment-notes.md`](./docs/deployment-notes.md) – production checklist, database/perf notes.
 
-## Invoice API
+## Observability & governance
+- All runs are persisted via `agent_runs` and reference active `prompt_versions` to support audits, rollback, and dry-run reviews.
+- Publishing queue rows capture platform, scheduled date, external IDs, failure metadata, and human approval metadata before dispatch.
+- Engagement drafts are scored/risk-rated and blocked from approval until a compliance check passes.
+- Analytics imports feed daily rollups, top hook/product/platform reports, and underperforming content alerts so humans steer content adjustments.
 
-The web and mobile invoice flows now post to:
-
-- `GET /api/invoice-requests`
-- `POST /api/invoice-requests`
-
-Both clients still fall back to opening a manual email draft after submission, so launch-time ops stay unchanged while requests can also be captured server-side.
-
-## Mobile API Base URL
-
-For local mobile testing on a physical phone, `EXPO_PUBLIC_API_BASE_URL` should point to a reachable host such as your Mac's LAN IP or a deployed Vercel URL. `http://localhost:3000` only works from the simulator or the same machine.
-
-## Deploying To Vercel
-
-1. Push the repo to GitHub.
-2. Import the repo into Vercel.
-3. Keep the project root at the repository root.
-4. Add production env vars in Vercel:
-   - `DATABASE_URL`
-   - `DIRECT_URL`
-   - `NEXT_PUBLIC_SITE_URL`
-   - `NEXT_PUBLIC_COMPANY_NAME`
-   - `NEXT_PUBLIC_SUPPORT_EMAIL`
-   - `NEXT_PUBLIC_PROCUREMENT_EMAIL`
-5. Deploy the web app.
-6. Add your custom domain and update DNS in Vercel.
-7. Set the mobile app `EXPO_PUBLIC_API_BASE_URL` to the deployed production URL so the app talks to the same invoice API.
-
-Recommended production direction:
-
-- Use hosted Postgres for both development and production if possible.
-- Use the deployed Vercel URL as the mobile API base until a separate API domain is needed.
-
-## Recommended Multi-Platform Architecture
-
-To support web, iPhone, and Android without maintaining separate catalogs by hand:
-
-1. Keep this Next.js app as the main web storefront.
-2. Add an Expo app for iOS and Android in the same repository.
-3. Move shared catalog, branding, and invoice-flow logic into shared modules.
-4. Point both the web app and mobile app at the same data and backend endpoints.
-5. Roll out native checkout later only if the business/payment workflow supports it.
-
-This is the safest way to make updates once and have both the website and mobile apps stay aligned.
-
-## Next Build-Out
-
-- Convert the invoice request into a fully server-backed submission flow
-- Add invoice history/status reads from the database
-- Prepare Vercel deployment and production domain setup
-- Add App Store / Play Store icon and splash assets
+For more detail on responsibilities, compliance boundaries, and deployment notes follow the docs directory above.

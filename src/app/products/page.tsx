@@ -43,12 +43,12 @@ export default function ProductsPage() {
                 <p className="mt-2 text-sm text-neutral-200">Matched products run about 10% below major online pricing.</p>
               </div>
               <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/10 p-4">
-                <p className="text-xs font-semibold tracking-wide text-cyan-200">ORDER TIER 1</p>
-                <p className="mt-2 text-sm text-neutral-200">10% off orders over $100 plus free shipping.</p>
+                <p className="text-xs font-semibold tracking-wide text-cyan-200">VIAL BUNDLE</p>
+                <p className="mt-2 text-sm text-neutral-200">3+ Vial Discount – 15% Off eligible vial items.</p>
               </div>
               <div className="rounded-2xl border border-neutral-700 bg-neutral-950/60 p-4">
                 <p className="text-xs font-semibold tracking-wide text-neutral-300">SHIPPING</p>
-                <p className="mt-2 text-sm text-neutral-200">Free shipping stays active across the storefront.</p>
+                <p className="mt-2 text-sm text-neutral-200">$10.95 under $150; free shipping at $150+.</p>
               </div>
             </div>
           </div>

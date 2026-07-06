@@ -1,11 +1,16 @@
 import { NextResponse } from "next/server";
-import { getCartSummary, type CartItem } from "@elite-biotech/shared";
+import {
+  getCartSummary,
+  normalizeReferralCode,
+  type CartItem,
+} from "@elite-biotech/shared";
 import { createPayPalOrder } from "@/lib/paypal";
 
 export async function POST(request: Request) {
   try {
-    const body = (await request.json()) as { items?: CartItem[] };
+    const body = (await request.json()) as { items?: CartItem[]; referralCode?: string };
     const items = Array.isArray(body.items) ? body.items : [];
+    const referralCode = normalizeReferralCode(body.referralCode);
     const summary = getCartSummary(items);
 
     if (summary.lines.length === 0) {
@@ -26,7 +31,9 @@ export async function POST(request: Request) {
       })),
       subtotal: summary.subtotal.toFixed(2),
       discount: summary.discountAmount.toFixed(2),
+      shipping: summary.shipping.toFixed(2),
       total: summary.total.toFixed(2),
+      referralCode,
     });
 
     return NextResponse.json({
