@@ -16,46 +16,46 @@ export default async function ProductDetail({
 
   return (
     <SiteShell>
-      <div className="mb-6 flex flex-wrap items-center gap-2 text-sm text-neutral-500">
-        <Link href="/products" className="transition-colors hover:text-neutral-200">
+      <div className="mb-6 flex flex-wrap items-center gap-2 text-sm text-slate-500">
+        <Link href="/products" className="transition-colors hover:text-sky-700">
           Products
         </Link>
         <span>/</span>
-        <span className="text-neutral-300">{p.name}</span>
+        <span className="text-slate-700">{p.name}</span>
       </div>
 
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_420px]">
-        <div className="overflow-hidden rounded-3xl border border-neutral-800 bg-neutral-900">
+        <div className="overflow-hidden rounded-3xl border border-sky-100 bg-white shadow-sm">
           <div className="p-4">
             <ProductVisual product={p} />
           </div>
-          <div className="border-t border-neutral-800 p-7">
+          <div className="border-t border-sky-100 p-7">
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
-                <h1 className="text-3xl font-semibold">{p.name}</h1>
-                <p className="mt-2 text-sm text-neutral-400">{p.category}</p>
+                <h1 className="text-3xl font-bold text-slate-950">{p.name}</h1>
+                <p className="mt-2 text-sm text-slate-500">{p.category}</p>
               </div>
               <div className="text-right">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-300">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-sky-700">
                   Elite pricing
                 </p>
-                <p className="mt-1 text-2xl font-semibold text-neutral-100">{p.price}</p>
+                <p className="mt-1 text-2xl font-bold text-slate-950">{p.price}</p>
               </div>
             </div>
 
             <div className="mt-4 flex flex-wrap gap-2">
-              <span className="rounded-full border border-neutral-700 bg-neutral-950 px-3 py-1 text-xs font-semibold text-neutral-200">
+              <span className="rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-semibold text-slate-700">
                 {getProductFormat(p)}
               </span>
-              <span className="rounded-full border border-sky-500/30 bg-sky-500/10 px-3 py-1 text-xs font-semibold text-sky-200">
+              <span className="rounded-full border border-sky-200 bg-white px-3 py-1 text-xs font-semibold text-sky-700">
                 Elite Biotech label
               </span>
-              <span className="rounded-full border border-neutral-700 bg-neutral-950 px-3 py-1 text-xs font-semibold text-neutral-200">
+              <span className="rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-semibold text-slate-700">
                 Research use only
               </span>
             </div>
 
-            <p className="mt-5 text-neutral-300">{p.description}</p>
+            <p className="mt-5 text-slate-600">{p.description}</p>
 
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               <InfoChip label="Format" value={getProductFormat(p)} />
@@ -67,56 +67,56 @@ export default async function ProductDetail({
         </div>
 
         <div className="space-y-4">
-          <div className="rounded-3xl border border-neutral-800 bg-neutral-900 p-7">
+          <div className="rounded-3xl border border-sky-100 bg-white p-7 shadow-sm">
             <div className="flex items-center justify-between">
-              <p className="text-sm font-semibold text-neutral-200">Ready to order?</p>
-              <span className="rounded-full border border-neutral-700 bg-neutral-950 px-3 py-1 text-xs font-semibold text-neutral-200">
+              <p className="text-sm font-bold text-slate-800">Ready to order?</p>
+              <span className="rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-bold text-sky-800">
                 {p.price}
               </span>
             </div>
 
-            <p className="mt-3 text-sm leading-relaxed text-neutral-300">
+            <p className="mt-3 text-sm leading-relaxed text-slate-600">
               Choose a quantity, add this item to cart, and finish payment through Venmo. COA information stays available as
               a separate support request when buyers need it before checkout.
             </p>
-            <p className="mt-3 text-sm text-neutral-300">Selected format: {getProductFormat(p)}.</p>
+            <p className="mt-3 text-sm text-slate-600">Selected format: {getProductFormat(p)}.</p>
 
             <div className="mt-5 space-y-3">
               <AddToCartButton product={p} fullWidth showQuantity />
               <Link
                 href="/products"
-                className="block w-full rounded-xl border border-neutral-700 px-4 py-3 text-center text-sm font-semibold text-neutral-100 transition-colors hover:border-neutral-600 hover:bg-neutral-900/60"
+                className="block w-full rounded-xl border border-sky-200 px-4 py-3 text-center text-sm font-semibold text-slate-700 transition-colors hover:border-sky-300 hover:bg-sky-50"
               >
                 Keep Browsing
               </Link>
               <Link
                 href={`/request-documentation?product=${p.slug}`}
-                className="block w-full rounded-xl border border-sky-500/40 bg-sky-500/10 px-4 py-3 text-center text-sm font-semibold text-sky-100 transition-colors hover:border-sky-400 hover:bg-sky-500/20"
+                className="block w-full rounded-xl border border-sky-200 bg-sky-50 px-4 py-3 text-center text-sm font-semibold text-sky-700 transition-colors hover:border-sky-300 hover:bg-sky-100"
               >
                 Request COA Info
               </Link>
             </div>
 
-            <div className="mt-5 rounded-2xl border border-neutral-800 bg-neutral-950/50 p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-300">
+            <div className="mt-5 rounded-2xl border border-sky-100 bg-sky-50/70 p-4">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-sky-700">
                 Order incentives
               </p>
-              <p className="mt-2 text-sm text-neutral-300">
+              <p className="mt-2 text-sm text-slate-600">
                 3+ Vial Discount – 15% Off eligible vial items, with shipping calculated separately.
               </p>
             </div>
           </div>
 
-          <div className="rounded-3xl border border-neutral-800 bg-neutral-900 p-7">
-            <p className="text-sm font-semibold text-neutral-200">Handling and Storage</p>
-            <p className="mt-2 text-sm text-neutral-300">
+          <div className="rounded-3xl border border-sky-100 bg-white p-7 shadow-sm">
+            <p className="text-sm font-bold text-slate-800">Handling and Storage</p>
+            <p className="mt-2 text-sm text-slate-600">
               {p.storage ?? "Store refrigerated. Protect from light."}
             </p>
           </div>
 
-          <div className="rounded-3xl border border-neutral-800 bg-neutral-900 p-7">
-            <p className="text-sm font-semibold text-neutral-200">Documentation note</p>
-            <p className="mt-2 text-sm leading-relaxed text-neutral-400">
+          <div className="rounded-3xl border border-sky-100 bg-white p-7 shadow-sm">
+            <p className="text-sm font-bold text-slate-800">Documentation note</p>
+            <p className="mt-2 text-sm leading-relaxed text-slate-600">
               Pricing and format details are aligned to Elite’s current catalog. COA information is
               available on request instead of crowding the main buying path.
             </p>
@@ -129,11 +129,11 @@ export default async function ProductDetail({
 
 function InfoChip({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-neutral-800 bg-neutral-950/40 p-4">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-neutral-500">
+    <div className="rounded-2xl border border-sky-100 bg-sky-50/70 p-4">
+      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">
         {label}
       </p>
-      <p className="mt-2 text-sm font-semibold text-neutral-100">{value}</p>
+      <p className="mt-2 text-sm font-bold text-slate-900">{value}</p>
     </div>
   );
 }

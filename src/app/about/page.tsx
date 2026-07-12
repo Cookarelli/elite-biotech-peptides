@@ -1,32 +1,20 @@
-import Image from "next/image";
+import { BrandedVialShowcase } from "@/components/BrandedVialShowcase";
 import { SiteShell } from "@/components/SiteShell";
-
-const qualityImage =
-  "https://images.pexels.com/photos/3735709/pexels-photo-3735709.jpeg?cs=srgb&dl=pexels-polina-tankilevitch-3735709.jpg&fm=jpg";
 
 export default function About() {
   return (
     <SiteShell>
       <div className="space-y-6">
         <section className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-center">
-          <div className="rounded-3xl border border-neutral-800 bg-neutral-900/40 p-8">
-            <h1 className="text-3xl font-semibold">Quality Framework</h1>
-            <p className="mt-3 max-w-2xl text-neutral-300">
+          <div className="rounded-3xl border border-sky-100 bg-white p-8 shadow-sm">
+            <h1 className="text-3xl font-bold text-slate-950">Quality Framework</h1>
+            <p className="mt-3 max-w-2xl text-slate-600">
               Elite Biotech Peptides is positioned around clean operations, consistent product
               presentation, and responsive procurement support instead of overloaded technical pages.
             </p>
           </div>
 
-          <div className="relative overflow-hidden rounded-[2rem] border border-neutral-800 min-h-[280px]">
-            <Image
-              src={qualityImage}
-              alt="Laboratory workflow and sample preparation"
-              fill
-              className="object-cover"
-              sizes="(min-width: 1024px) 360px, 100vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-transparent" />
-          </div>
+          <BrandedVialShowcase compact title="Quality starts with clear product presentation" />
         </section>
 
         <div className="grid gap-4 md:grid-cols-2">
@@ -56,16 +44,16 @@ export default function About() {
               "Maintain research-use-only positioning and avoid therapeutic or medical efficacy claims.",
             ],
           ].map(([title, body]) => (
-            <div key={title} className="rounded-2xl border border-neutral-800 bg-neutral-900/30 p-6">
-              <h2 className="text-base font-semibold text-neutral-100">{title}</h2>
-              <p className="mt-2 text-sm text-neutral-300">{body}</p>
+            <div key={title} className="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm">
+              <h2 className="text-base font-bold text-slate-900">{title}</h2>
+              <p className="mt-2 text-sm text-slate-600">{body}</p>
             </div>
           ))}
         </div>
 
-        <div className="rounded-3xl border border-neutral-800 bg-neutral-900/40 p-8">
-          <h2 className="text-xl font-semibold">Compliance Note</h2>
-          <p className="mt-3 text-sm text-neutral-300">
+        <div className="rounded-3xl border border-sky-100 bg-white p-8 shadow-sm">
+          <h2 className="text-xl font-bold text-slate-950">Compliance Note</h2>
+          <p className="mt-3 text-sm text-slate-600">
             Products listed on this site are intended for laboratory research use only and are not
             for human consumption. No medical claims are made on this website.
           </p>

@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { products, getProductFormat } from "@elite-biotech/shared";
+import { BrandedVialShowcase } from "@/components/BrandedVialShowcase";
 import { ProductVisual } from "@/components/ProductVisual";
 import { SiteShell } from "@/components/SiteShell";
 import { SpecialsSignupForm } from "@/components/SpecialsSignupForm";
@@ -10,15 +10,6 @@ const popularProducts = popularSlugs
   .map((slug) => products.find((p) => p.slug === slug))
   .filter((p): p is NonNullable<typeof p> => Boolean(p));
 const newArrivals = products.slice(0, 4);
-
-const editorialImages = {
-  labWide:
-    "https://images.pexels.com/photos/3912481/pexels-photo-3912481.jpeg?cs=srgb&dl=pexels-thisisengineering-3912481.jpg&fm=jpg",
-  pipette:
-    "https://images.pexels.com/photos/3735709/pexels-photo-3735709.jpeg?cs=srgb&dl=pexels-polina-tankilevitch-3735709.jpg&fm=jpg",
-  flask:
-    "https://images.pexels.com/photos/3735706/pexels-photo-3735706.jpeg?cs=srgb&dl=pexels-polina-tankilevitch-3735706.jpg&fm=jpg",
-};
 
 const collections = [
   {
@@ -45,26 +36,26 @@ export default function Home() {
   return (
     <SiteShell>
       <section className="grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_420px] lg:items-stretch">
-        <div className="rounded-[2rem] border border-neutral-800 bg-neutral-900 p-8 sm:p-10 lg:p-12">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sky-300">Elite Biotech Peptides</p>
-          <h1 className="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
+        <div className="rounded-[2rem] border border-sky-100 bg-white p-8 shadow-sm sm:p-10 lg:p-12">
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-sky-700">Elite Biotech Peptides</p>
+          <h1 className="mt-4 text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
             Trusted Elite Research Peptides
           </h1>
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-neutral-300 sm:text-lg">
-            A cleaner, more familiar peptide storefront built for repeat buyers, fast checkout, and
-            a catalog that is easy to browse on desktop or mobile.
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
+            A brighter, product-first storefront built for repeat buyers, quick quantities, and a
+            catalog that is easy to browse on desktop or mobile.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="/products"
-              className="rounded-xl bg-sky-400 px-6 py-3 text-sm font-semibold text-neutral-950 transition-colors hover:bg-cyan-300"
+              className="rounded-xl bg-sky-500 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-sky-600"
             >
               Shop all products
             </Link>
             <Link
               href="/cart"
-              className="rounded-xl border border-neutral-700 px-6 py-3 text-sm font-semibold text-neutral-100 transition-colors hover:border-neutral-600 hover:bg-neutral-800"
+              className="rounded-xl border border-sky-200 bg-white px-6 py-3 text-sm font-semibold text-slate-800 transition-colors hover:border-sky-300 hover:bg-sky-50"
             >
               View cart
             </Link>
@@ -78,22 +69,10 @@ export default function Home() {
         </div>
 
         <div className="grid gap-4">
-          <div className="relative overflow-hidden rounded-[2rem] border border-neutral-800 min-h-[280px]">
-            <Image
-              src={editorialImages.labWide}
-              alt="Researcher working with precision instruments in a laboratory"
-              fill
-              className="object-cover"
-              sizes="(min-width: 1024px) 420px, 100vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/25 to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 p-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-300">Fast browsing</p>
-              <p className="mt-2 max-w-sm text-sm leading-relaxed text-neutral-200">
-                Familiar storefront structure, straightforward pricing, and quicker reorders.
-              </p>
-            </div>
-          </div>
+          <BrandedVialShowcase
+            title="Branded vial presentation"
+            body="Storefront visuals now focus on Elite Biotech labeled research vials instead of stock lab photography."
+          />
           <div className="grid gap-3 sm:grid-cols-3">
             <MetricBox title={productCountLabel} body="Broader catalog coverage." />
             <MetricBox title="US fulfillment" body="Handled from the business side." />
@@ -105,10 +84,10 @@ export default function Home() {
       <section className="mt-12">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
-            <p className="text-xs font-semibold tracking-[0.18em] text-neutral-500">BEST SELLERS</p>
-            <h2 className="mt-2 text-3xl font-semibold tracking-tight">Popular Right Now</h2>
+            <p className="text-xs font-bold tracking-[0.18em] text-sky-700">BEST SELLERS</p>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-950">Popular Right Now</h2>
           </div>
-          <div className="rounded-full border border-neutral-700 bg-neutral-900/50 px-4 py-2 text-xs font-semibold text-neutral-300">
+          <div className="rounded-full border border-sky-200 bg-white px-4 py-2 text-xs font-semibold text-slate-600 shadow-sm">
             {productCountLabel} with low-friction pricing and fast checkout
           </div>
         </div>
@@ -118,18 +97,18 @@ export default function Home() {
             <Link
               key={p.slug}
               href={`/products/${p.slug}`}
-              className="group overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/40 transition-colors hover:border-neutral-700 hover:bg-neutral-900/70"
+              className="group overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-sm transition-colors hover:border-sky-200 hover:bg-sky-50/50"
             >
               <ProductVisual product={p} compact />
               <div className="p-4">
                 <div className="flex items-start justify-between gap-2">
-                  <h3 className="text-sm font-semibold text-neutral-100">{p.name}</h3>
-                  <span className="rounded-full border border-neutral-700 bg-neutral-950/70 px-2.5 py-1 text-[11px] font-semibold text-neutral-200">
+                  <h3 className="text-sm font-bold text-slate-900">{p.name}</h3>
+                  <span className="rounded-full border border-sky-200 bg-sky-50 px-2.5 py-1 text-[11px] font-bold text-sky-800">
                     {p.price}
                   </span>
                 </div>
-                <p className="mt-2 text-xs text-neutral-400">{getProductFormat(p)} · {p.category}</p>
-                <p className="mt-2 text-xs text-sky-200">Documentation available on request</p>
+                <p className="mt-2 text-xs text-slate-500">{getProductFormat(p)} · {p.category}</p>
+                <p className="mt-2 text-xs font-semibold text-sky-700">Documentation available on request</p>
               </div>
             </Link>
           ))}
@@ -137,15 +116,15 @@ export default function Home() {
       </section>
 
       <section className="mt-12 grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
-        <div className="rounded-3xl border border-neutral-800 bg-neutral-900 p-8">
+        <div className="rounded-3xl border border-sky-100 bg-white p-8 shadow-sm">
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
-              <p className="text-xs font-semibold tracking-[0.18em] text-neutral-500">SHOP BY CATEGORY</p>
-              <h2 className="mt-2 text-3xl font-semibold tracking-tight">Popular Research Lanes</h2>
+              <p className="text-xs font-bold tracking-[0.18em] text-sky-700">SHOP BY CATEGORY</p>
+              <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-950">Popular Research Lanes</h2>
             </div>
             <Link
               href="/products"
-              className="rounded-xl border border-neutral-700 px-4 py-2 text-sm font-semibold text-neutral-200 transition-colors hover:border-neutral-600 hover:bg-neutral-800"
+              className="rounded-xl border border-sky-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:border-sky-300 hover:bg-sky-50"
             >
               Browse full catalog
             </Link>
@@ -153,56 +132,30 @@ export default function Home() {
 
           <div className="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {collections.map((item) => (
-              <div key={item.title} className="rounded-3xl border border-neutral-800 bg-neutral-950 p-6">
-                <p className="text-lg font-semibold text-neutral-100">{item.title}</p>
-                <p className="mt-3 text-sm leading-relaxed text-neutral-400">{item.body}</p>
+              <div key={item.title} className="rounded-3xl border border-sky-100 bg-sky-50/60 p-6">
+                <p className="text-lg font-bold text-slate-900">{item.title}</p>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">{item.body}</p>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="relative overflow-hidden rounded-[2rem] border border-neutral-800 min-h-[360px]">
-          <Image
-            src={editorialImages.flask}
-            alt="Laboratory glassware and research prep"
-            fill
-            className="object-cover"
-            sizes="(min-width: 1024px) 360px, 100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 p-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-300">Research support</p>
-            <h3 className="mt-2 text-2xl font-semibold text-white">Keep documentation available without cluttering the buy path</h3>
-            <p className="mt-3 text-sm leading-relaxed text-neutral-200">
-              Buyers can request COA information or product documentation when needed, while the storefront stays focused on products and checkout.
-            </p>
-            <div className="mt-5 flex flex-wrap gap-3">
-              <Link
-                href="/request-documentation"
-                className="rounded-xl bg-sky-400 px-5 py-2.5 text-sm font-semibold text-neutral-950 transition-colors hover:bg-cyan-300"
-              >
-                Request COA info
-              </Link>
-              <Link
-                href="/faq"
-                className="rounded-xl border border-white/20 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:border-white/30 hover:bg-white/10"
-              >
-                Read FAQ
-              </Link>
-            </div>
-          </div>
-        </div>
+        <BrandedVialShowcase
+          compact
+          title="Documentation stays simple"
+          body="COA requests stay available while the main path stays focused on finding products and building a cart."
+        />
       </section>
 
-      <section className="mt-12 rounded-[2rem] border border-neutral-800 bg-neutral-900 p-8">
+      <section className="mt-12 rounded-[2rem] border border-sky-100 bg-white p-8 shadow-sm">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
-            <p className="text-xs font-semibold tracking-[0.18em] text-neutral-500">NEW IN THE CATALOG</p>
-            <h2 className="mt-2 text-3xl font-semibold tracking-tight">New Arrivals</h2>
+            <p className="text-xs font-bold tracking-[0.18em] text-sky-700">NEW IN THE CATALOG</p>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-950">New Arrivals</h2>
           </div>
           <Link
             href="/products"
-            className="rounded-xl border border-neutral-700 px-4 py-2 text-sm font-semibold text-neutral-200 transition-colors hover:border-neutral-600 hover:bg-neutral-800"
+            className="rounded-xl border border-sky-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:border-sky-300 hover:bg-sky-50"
           >
             View all products
           </Link>
@@ -213,14 +166,14 @@ export default function Home() {
             <Link
               key={p.slug}
               href={`/products/${p.slug}`}
-              className="rounded-3xl border border-neutral-800 bg-neutral-950 p-5 transition-colors hover:border-sky-500/30"
+              className="rounded-3xl border border-sky-100 bg-sky-50/60 p-5 transition-colors hover:border-sky-300"
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-300">{p.category}</p>
-              <h3 className="mt-3 text-lg font-semibold text-neutral-100">{p.name}</h3>
-              <p className="mt-2 text-sm text-neutral-400">{getProductFormat(p)}</p>
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-sky-700">{p.category}</p>
+              <h3 className="mt-3 text-lg font-bold text-slate-900">{p.name}</h3>
+              <p className="mt-2 text-sm text-slate-500">{getProductFormat(p)}</p>
               <div className="mt-5 flex items-center justify-between">
-                <span className="text-lg font-semibold text-white">{p.price}</span>
-                <span className="text-xs font-semibold text-neutral-500">View product</span>
+                <span className="text-lg font-bold text-slate-950">{p.price}</span>
+                <span className="text-xs font-semibold text-sky-700">View product</span>
               </div>
             </Link>
           ))}
@@ -228,9 +181,9 @@ export default function Home() {
       </section>
 
       <section className="mt-12 grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_420px]">
-        <div className="rounded-3xl border border-neutral-800 bg-neutral-900 p-8">
-          <p className="text-xs font-semibold tracking-[0.18em] text-sky-300">WHY BUYERS COME BACK</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight">Cleaner shopping flow, easier repeat orders</h2>
+        <div className="rounded-3xl border border-sky-100 bg-white p-8 shadow-sm">
+          <p className="text-xs font-bold tracking-[0.18em] text-sky-700">WHY BUYERS COME BACK</p>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950">Cleaner shopping flow, easier repeat orders</h2>
           <div className="mt-5 grid gap-4 sm:grid-cols-2">
             {[
               "Straightforward category organization without overloading each card with technical clutter.",
@@ -238,15 +191,15 @@ export default function Home() {
               "Promotions and pricing are easy to understand before checkout starts.",
               "Support and documentation stay available without slowing down the storefront.",
             ].map((item) => (
-              <div key={item} className="rounded-2xl border border-neutral-800 bg-neutral-950 p-4 text-sm leading-relaxed text-neutral-300">
+              <div key={item} className="rounded-2xl border border-sky-100 bg-sky-50/60 p-4 text-sm leading-relaxed text-slate-600">
                 {item}
               </div>
             ))}
           </div>
         </div>
 
-        <div className="rounded-3xl border border-neutral-800 bg-neutral-900 p-8">
-          <p className="text-xs font-semibold tracking-[0.18em] text-sky-300">HOW ORDERING WORKS</p>
+        <div className="rounded-3xl border border-sky-100 bg-white p-8 shadow-sm">
+          <p className="text-xs font-bold tracking-[0.18em] text-sky-700">HOW ORDERING WORKS</p>
           <div className="mt-4 space-y-4">
             <StepCard number="01" title="Browse the catalog" body="Start with best sellers or shop by category and compare products without distractions." />
             <StepCard number="02" title="Build your cart" body="Add products from the catalog or product page and let discounts apply automatically." />
@@ -255,15 +208,15 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-12 grid gap-6 rounded-[2rem] border border-neutral-800 bg-neutral-900 p-6 sm:p-8 lg:grid-cols-[minmax(0,1fr)_460px] lg:items-start">
+      <section className="mt-12 grid gap-6 rounded-[2rem] border border-sky-100 bg-white p-6 shadow-sm sm:p-8 lg:grid-cols-[minmax(0,1fr)_460px] lg:items-start">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-300">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-sky-700">
             Birthday and Specials
           </p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight">
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950">
             Get optional updates without changing checkout
           </h2>
-          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-neutral-300 sm:text-base">
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base">
             Join the interest list for birthday notes, occasional specials, and product updates.
             Signup is optional and never required to browse, cart, or purchase.
           </p>
@@ -274,7 +227,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="rounded-3xl border border-neutral-800 bg-neutral-950/50 p-5 sm:p-6">
+        <div className="rounded-3xl border border-sky-100 bg-sky-50/70 p-5 sm:p-6">
           <SpecialsSignupForm />
         </div>
       </section>
@@ -284,18 +237,18 @@ export default function Home() {
 
 function ValueCard({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-neutral-800 bg-neutral-950 px-4 py-4">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-300">{label}</p>
-      <p className="mt-1 text-sm font-semibold text-neutral-100">{value}</p>
+    <div className="rounded-2xl border border-sky-100 bg-sky-50 px-4 py-4">
+      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-sky-700">{label}</p>
+      <p className="mt-1 text-sm font-bold text-slate-900">{value}</p>
     </div>
   );
 }
 
 function MetricBox({ title, body }: { title: string; body: string }) {
   return (
-    <div className="rounded-2xl border border-neutral-800 bg-neutral-900 p-4">
-      <p className="text-lg font-semibold text-white">{title}</p>
-      <p className="mt-1 text-sm text-neutral-400">{body}</p>
+    <div className="rounded-2xl border border-sky-100 bg-white p-4 shadow-sm">
+      <p className="text-lg font-bold text-slate-950">{title}</p>
+      <p className="mt-1 text-sm text-slate-500">{body}</p>
     </div>
   );
 }
@@ -310,14 +263,14 @@ function StepCard({
   body: string;
 }) {
   return (
-    <div className="rounded-2xl border border-neutral-800 bg-neutral-950/50 p-4">
+    <div className="rounded-2xl border border-sky-100 bg-sky-50/70 p-4">
       <div className="flex items-start gap-3">
-        <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-sky-500/30 bg-sky-500/10 text-xs font-semibold text-sky-200">
+        <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-sky-200 bg-white text-xs font-bold text-sky-700">
           {number}
         </span>
         <div>
-          <p className="text-sm font-semibold text-neutral-100">{title}</p>
-          <p className="mt-1 text-sm leading-relaxed text-neutral-400">{body}</p>
+          <p className="text-sm font-bold text-slate-900">{title}</p>
+          <p className="mt-1 text-sm leading-relaxed text-slate-600">{body}</p>
         </div>
       </div>
     </div>

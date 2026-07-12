@@ -22,7 +22,7 @@ export function AddToCartButton({
 
   const className = useMemo(
     () =>
-      `${fullWidth ? "w-full justify-center" : ""} inline-flex items-center justify-center rounded-xl bg-sky-400 px-4 py-3 text-sm font-semibold text-neutral-950 transition-colors hover:bg-cyan-300`,
+      `${fullWidth ? "w-full justify-center" : ""} inline-flex items-center justify-center rounded-xl bg-sky-500 px-4 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-sky-600`,
     [fullWidth]
   );
 
@@ -31,12 +31,12 @@ export function AddToCartButton({
   return (
     <div className={`${fullWidth ? "w-full" : ""} flex flex-col gap-2`}>
       {showQuantity ? (
-        <div className="grid grid-cols-[44px_minmax(0,1fr)_44px] overflow-hidden rounded-xl border border-neutral-700 bg-neutral-950">
+        <div className="grid grid-cols-[44px_minmax(0,1fr)_44px] overflow-hidden rounded-xl border border-sky-200 bg-white">
           <button
             type="button"
             aria-label={`Decrease ${product.name} quantity`}
             onClick={() => setSelectedQuantity((current) => clampQuantity(current - 1))}
-            className="min-h-11 border-r border-neutral-700 text-lg font-semibold text-neutral-200 transition-colors hover:bg-neutral-900"
+            className="min-h-11 border-r border-sky-100 text-lg font-bold text-slate-700 transition-colors hover:bg-sky-50"
           >
             -
           </button>
@@ -53,13 +53,13 @@ export function AddToCartButton({
             onChange={(event) =>
               setSelectedQuantity(clampQuantity(Number.parseInt(event.target.value, 10) || 1))
             }
-            className="min-h-11 w-full bg-neutral-950 px-2 text-center text-sm font-semibold text-neutral-100 outline-none"
+            className="min-h-11 w-full bg-white px-2 text-center text-sm font-bold text-slate-900 outline-none"
           />
           <button
             type="button"
             aria-label={`Increase ${product.name} quantity`}
             onClick={() => setSelectedQuantity((current) => clampQuantity(current + 1))}
-            className="min-h-11 border-l border-neutral-700 text-lg font-semibold text-neutral-200 transition-colors hover:bg-neutral-900"
+            className="min-h-11 border-l border-sky-100 text-lg font-bold text-slate-700 transition-colors hover:bg-sky-50"
           >
             +
           </button>
