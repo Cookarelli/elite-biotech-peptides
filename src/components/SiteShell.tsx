@@ -21,14 +21,14 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         </div>
 
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4">
-          <Link href="/" className="flex min-w-0 items-center gap-3">
-            <span className="relative h-16 w-20 shrink-0 overflow-hidden">
+          <Link href="/" className="flex min-w-0 items-center gap-4">
+            <span className="relative h-20 w-32 shrink-0 sm:h-24 sm:w-36">
               <Image
                 src="/brand/elite-biotech-peptides-logo.png"
                 alt="Elite Biotech Peptides"
                 fill
-                sizes="80px"
-                className="object-contain scale-[2.35]"
+                sizes="(min-width: 640px) 144px, 128px"
+                className="object-contain"
                 priority
               />
             </span>
@@ -72,13 +72,13 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
 
       <footer className="border-t border-sky-200 bg-white/90">
         <div className="mx-auto grid max-w-7xl gap-6 px-4 py-10 md:grid-cols-[auto_1fr] md:items-center">
-          <div className="relative h-24 w-36 overflow-hidden">
+          <div className="relative h-28 w-44">
             <Image
               src="/brand/elite-biotech-peptides-logo.png"
               alt="Elite Biotech Peptides"
               fill
-              sizes="144px"
-              className="object-contain scale-[2.2]"
+              sizes="176px"
+              className="object-contain"
             />
           </div>
           <div className="text-xs text-slate-500">
