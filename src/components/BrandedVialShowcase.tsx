@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function BrandedVialShowcase({
   title = "Elite Biotech labeled vials",
-  body = "Clean product visuals focused on branded research vial presentation.",
+  body = "Clear vial labels, simple product names, and research-use-only packaging.",
   compact = false,
 }: {
   title?: string;
@@ -20,13 +20,13 @@ export function BrandedVialShowcase({
 
       <div className="absolute inset-x-0 bottom-14 flex items-end justify-center gap-2 sm:gap-4">
         <ShowcaseVial size="small" label="Reta" />
-        <ShowcaseVial size="large" label="Tirzepatide" />
+        <ShowcaseVial size="large" label="Trizepatide" />
         <ShowcaseVial size="medium" label="Semaglutide" />
       </div>
 
       <div className="absolute inset-x-0 top-0 p-6">
         <div className="inline-flex rounded-full border border-sky-300 bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-sky-800 shadow-sm">
-          Product-first visuals
+          Elite Biotech Peptides
         </div>
       </div>
 

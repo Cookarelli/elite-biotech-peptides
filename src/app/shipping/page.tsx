@@ -8,7 +8,7 @@ export default function Shipping() {
           <h1 className="text-3xl font-semibold">Shipping & Handling</h1>
           <p className="mt-3 max-w-2xl text-neutral-300">
             Standard US shipping is $10.95 for orders under $150 and free at $150 or more.
-            Timelines can be refined after operations sign-off.
+            Most in-stock orders process in 1 to 2 business days.
           </p>
         </div>
 
@@ -28,12 +28,12 @@ export default function Shipping() {
         </div>
 
         <div className="rounded-3xl border border-neutral-800 bg-neutral-900/40 p-8">
-          <h2 className="text-xl font-semibold">Shipping Coverage (Demo Policy)</h2>
+          <h2 className="text-xl font-semibold">Shipping Coverage</h2>
           <div className="mt-4 space-y-3 text-sm text-neutral-300">
             <p>$10.95 standard shipping applies to orders under $150.</p>
             <p>Shipping is free for orders at $150 or more.</p>
             <p>Domestic US shipping with standard and expedited options.</p>
-            <p>International requests handled through procurement review and destination checks.</p>
+            <p>International requests are reviewed by destination before ordering.</p>
             <p>Cold-chain or specialty handling is disclosed per product as needed.</p>
           </div>
         </div>
@@ -42,8 +42,8 @@ export default function Shipping() {
           <h2 className="text-xl font-semibold">Returns & Resolution</h2>
           <div className="mt-4 space-y-3 text-sm text-neutral-300">
             <p>Report shipping damage within 48 hours of delivery with photos.</p>
-            <p>Batch or documentation issues are reviewed through procurement support and fulfillment records.</p>
-            <p>Replacement and credit decisions are handled by the procurement support desk.</p>
+            <p>Batch or documentation issues are reviewed through support and fulfillment records.</p>
+            <p>Replacement and credit decisions are handled by support.</p>
           </div>
           <p className="mt-5 text-xs text-neutral-500">
             Products are listed for laboratory research use only.

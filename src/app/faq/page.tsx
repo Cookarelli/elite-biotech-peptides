@@ -7,15 +7,15 @@ const faqs = [
   },
   {
     q: "Who is this catalog for?",
-    a: "The Elite Biotech Peptides catalog is presented for laboratory researchers and procurement teams evaluating research materials.",
+    a: "The Elite Biotech Peptides catalog is for laboratory researchers reviewing research-use-only materials.",
   },
   {
     q: "Are products standardized?",
-    a: "Most live products are presented with one primary format per listing so the storefront stays easier to browse and compare.",
+    a: "Most products are listed with one primary format so they are easy to browse and compare.",
   },
   {
     q: "Is documentation available?",
-    a: "Yes. Documentation can be provided upon request during procurement review rather than being pushed into every product page.",
+    a: "Yes. COA information can be requested from product pages or the documentation page.",
   },
   {
     q: "How do I place an order?",
@@ -34,7 +34,7 @@ export default function FAQPage() {
         <div className="rounded-3xl border border-neutral-800 bg-neutral-900/40 p-8">
           <h1 className="text-3xl font-semibold">Research FAQ</h1>
           <p className="mt-3 max-w-2xl text-neutral-300">
-            Core answers for cofounders, buyers, and operations partners reviewing the storefront.
+            Quick answers about products, ordering, documentation, and research-use-only terms.
           </p>
         </div>
 

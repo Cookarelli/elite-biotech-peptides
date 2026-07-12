@@ -5,7 +5,7 @@ import { ProductVisual } from "@/components/ProductVisual";
 import { SiteShell } from "@/components/SiteShell";
 import { SpecialsSignupForm } from "@/components/SpecialsSignupForm";
 
-const popularSlugs = ["tirzepatide", "reta", "semaglutide", "bpc-157"];
+const popularSlugs = ["trizepatide", "reta", "semaglutide", "bpc-157"];
 const popularProducts = popularSlugs
   .map((slug) => products.find((p) => p.slug === slug))
   .filter((p): p is NonNullable<typeof p> => Boolean(p));
@@ -14,19 +14,19 @@ const newArrivals = products.slice(0, 4);
 const collections = [
   {
     title: "Metabolic Research",
-    body: "GLP, mitochondrial, and appetite-related compounds presented in a way that is easier to scan and compare.",
+    body: "GLP, incretin, and metabolic pathway research peptides.",
   },
   {
     title: "Recovery & Repair",
-    body: "Repair-focused peptides, blends, and support compounds grouped into one straightforward lane.",
+    body: "Peptides commonly reviewed for recovery and repair research.",
   },
   {
     title: "Cognitive & Focus",
-    body: "Neuro and nootropic compounds with cleaner naming, friendlier product cards, and consistent call-to-action flow.",
+    body: "Neuro, nootropic, and focus-related research compounds.",
   },
   {
     title: "Specialty Research",
-    body: "High-interest specialty compounds and blends grouped into a cleaner section for repeat buyers.",
+    body: "Specialty peptides, blends, and support products.",
   },
 ];
 
@@ -39,11 +39,11 @@ export default function Home() {
         <div className="rounded-[2rem] border border-sky-200 bg-white p-8 shadow-[0_18px_45px_rgba(15,23,42,0.08)] sm:p-10 lg:p-12">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-sky-700">Elite Biotech Peptides</p>
           <h1 className="mt-4 text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-            Trusted Elite Research Peptides
+            Research Peptides Made Easy
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-700 sm:text-lg">
-            A brighter, product-first storefront built for repeat buyers, quick quantities, and a
-            catalog that is easy to browse on desktop or mobile.
+            Shop labeled research peptides, choose quantities, and pay with Venmo. COA information
+            is available on request.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -70,12 +70,12 @@ export default function Home() {
 
         <div className="grid gap-4">
           <BrandedVialShowcase
-            title="Branded vial presentation"
-            body="Storefront visuals now focus on Elite Biotech labeled research vials instead of stock lab photography."
+            title="Labeled research vials"
+            body="Products are shown as clear Elite Biotech research vials so the page stays focused on what you are ordering."
           />
           <div className="grid gap-3 sm:grid-cols-3">
             <MetricBox title={productCountLabel} body="Broader catalog coverage." />
-            <MetricBox title="US fulfillment" body="Handled from the business side." />
+            <MetricBox title="US fulfillment" body="Ships from the US." />
             <MetricBox title="Documentation" body="Available on request." />
           </div>
         </div>
@@ -88,7 +88,7 @@ export default function Home() {
             <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-950">Popular Right Now</h2>
           </div>
           <div className="rounded-full border border-sky-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700 shadow-sm">
-            {productCountLabel} with low-friction pricing and fast checkout
+            {productCountLabel} available to shop
           </div>
         </div>
 
@@ -120,7 +120,7 @@ export default function Home() {
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
               <p className="text-xs font-bold tracking-[0.18em] text-sky-700">SHOP BY CATEGORY</p>
-              <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-950">Popular Research Lanes</h2>
+              <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-950">Popular Research Topics</h2>
             </div>
             <Link
               href="/products"
@@ -142,8 +142,8 @@ export default function Home() {
 
         <BrandedVialShowcase
           compact
-          title="Documentation stays simple"
-          body="COA requests stay available while the main path stays focused on finding products and building a cart."
+          title="COA information on request"
+          body="Need documentation before ordering? Send a request and we will follow up."
         />
       </section>
 
@@ -180,30 +180,22 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-12 grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_420px]">
+      <section className="mt-12 grid gap-6 lg:grid-cols-[minmax(0,1fr)_420px]">
         <div className="rounded-3xl border border-sky-200 bg-white p-8 shadow-[0_18px_45px_rgba(15,23,42,0.08)]">
-          <p className="text-xs font-bold tracking-[0.18em] text-sky-700">WHY BUYERS COME BACK</p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950">Cleaner shopping flow, easier repeat orders</h2>
-          <div className="mt-5 grid gap-4 sm:grid-cols-2">
-            {[
-              "Straightforward category organization without overloading each card with technical clutter.",
-              "Consistent add-to-cart flow across desktop and mobile.",
-              "Promotions and pricing are easy to understand before checkout starts.",
-              "Support and documentation stay available without slowing down the storefront.",
-            ].map((item) => (
-              <div key={item} className="rounded-2xl border border-sky-200 bg-sky-100/60 p-4 text-sm leading-relaxed text-slate-700">
-                {item}
-              </div>
-            ))}
+          <p className="text-xs font-bold tracking-[0.18em] text-sky-700">HOW TO ORDER</p>
+          <div className="mt-4 space-y-4">
+            <StepCard number="01" title="Find your product" body="Search by name or shop by research topic." />
+            <StepCard number="02" title="Choose quantity" body="Add the number of vials or supplies you need." />
+            <StepCard number="03" title="Pay with Venmo" body="Open Venmo from the cart and send the exact total shown." />
           </div>
         </div>
 
         <div className="rounded-3xl border border-sky-200 bg-white p-8 shadow-[0_18px_45px_rgba(15,23,42,0.08)]">
-          <p className="text-xs font-bold tracking-[0.18em] text-sky-700">HOW ORDERING WORKS</p>
-          <div className="mt-4 space-y-4">
-            <StepCard number="01" title="Browse the catalog" body="Start with best sellers or shop by category and compare products without distractions." />
-            <StepCard number="02" title="Build your cart" body="Add products from the catalog or product page and let discounts apply automatically." />
-            <StepCard number="03" title="Pay with Venmo" body="Checkout opens Venmo with the exact cart total and order note." />
+          <p className="text-xs font-bold tracking-[0.18em] text-sky-700">ORDER NOTES</p>
+          <div className="mt-4 space-y-3 text-sm leading-relaxed text-slate-700">
+            <p>$10.95 shipping applies under $150. Orders at $150+ ship free.</p>
+            <p>Order 3 or more eligible vials and the 15% vial discount applies automatically.</p>
+            <p>Products are for laboratory research use only and are not for human consumption.</p>
           </div>
         </div>
       </section>
@@ -214,14 +206,14 @@ export default function Home() {
             Birthday and Specials
           </p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950">
-            Get optional updates without changing checkout
+            Specials and birthday notes
           </h2>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate-700 sm:text-base">
-            Join the interest list for birthday notes, occasional specials, and product updates.
-            Signup is optional and never required to browse, cart, or purchase.
+            Join the list for occasional specials, product updates, and birthday notes. Signup is
+            optional and never required to order.
           </p>
           <div className="mt-6 grid gap-3 sm:grid-cols-3">
-            <ValueCard label="Optional" value="Purchase flow stays open" />
+            <ValueCard label="Optional" value="Not required to order" />
             <ValueCard label="Birthday" value="Month and day only" />
             <ValueCard label="Consent" value="Promos require opt-in" />
           </div>

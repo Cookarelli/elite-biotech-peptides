@@ -21,8 +21,8 @@ export default function CartPage() {
             Review your cart and pay with Venmo
           </h1>
           <p className="mt-4 text-sm leading-relaxed text-neutral-300 sm:text-base">
-            Your cart applies the same order incentives shown across the site. Documentation stays
-            available on request, and payment now opens through Venmo.
+            Review quantities, check your total, and open Venmo when you are ready to pay. COA
+            information is available on request.
           </p>
           <div className="mt-6 flex flex-wrap gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-200">
             <span className="rounded-full border border-white/10 bg-white/8 px-3 py-1">

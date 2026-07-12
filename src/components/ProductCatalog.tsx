@@ -63,7 +63,7 @@ export function ProductCatalog({ products }: { products: Product[] }) {
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search by name, e.g. Tirzepatide"
+            placeholder="Search by name, e.g. Trizepatide"
             className="mt-3 w-full rounded-2xl border border-sky-300 bg-sky-50 px-4 py-4 text-base font-semibold text-slate-950 outline-none transition-colors placeholder:text-slate-500 focus:border-sky-500 focus:bg-white"
           />
         </label>

@@ -199,11 +199,11 @@ export function CartClient({ venmoUrl }: { venmoUrl: string }) {
               body="Use the Venmo button with the exact total and order note shown below."
             />
             <TrustNote
-              title="Promo logic applied"
+              title="Discount applied"
               body="Eligible vial discounts are already reflected in the total shown here."
             />
             <TrustNote
-              title="Manual fulfillment"
+              title="Shipping"
               body="$10.95 standard shipping applies under $150; orders at $150+ ship free."
             />
           </div>
@@ -216,8 +216,7 @@ export function CartClient({ venmoUrl }: { venmoUrl: string }) {
             Need documentation first?
           </p>
           <p className="mt-3 text-sm leading-relaxed text-neutral-300">
-            COA and supporting product documentation can still be requested before purchase if a
-            buyer needs a closer review.
+            COA and supporting product documentation can be requested before purchase when needed.
           </p>
           <Link
             href="/request-documentation"

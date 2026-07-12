@@ -33,16 +33,16 @@ export default async function RequestDocumentationPage({
                 Request COA Information
               </h1>
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-neutral-300">
-                Documentation is available upon request. Use this page when a buyer wants a closer
-                review before checking out.
+                Documentation is available upon request. Use this page when you want a closer review
+                before ordering.
               </p>
             </div>
 
             <div className="grid gap-4 p-6 sm:grid-cols-3">
               <DetailCard
-                label="Focus"
-                value="Product-first"
-                note="COA stays secondary to checkout"
+                label="Product"
+                value="Selected item"
+                note="Request details before ordering"
               />
               <DetailCard
                 label="Turnaround"
@@ -51,8 +51,8 @@ export default async function RequestDocumentationPage({
               />
               <DetailCard
                 label="Ordering"
-                value="Cart stays live"
-                note="Buyers can still check out in Venmo"
+                value="Shop when ready"
+                note="You can order after review"
               />
             </div>
           </div>
@@ -97,8 +97,7 @@ export default async function RequestDocumentationPage({
             Open a support email with the details prefilled
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-neutral-300">
-            This keeps documentation requests available without pushing every buyer into a separate
-            ordering workflow.
+            Send the product details to support and we will follow up with the information available.
           </p>
 
           <div className="mt-6">

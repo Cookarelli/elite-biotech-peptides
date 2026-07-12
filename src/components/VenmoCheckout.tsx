@@ -58,8 +58,8 @@ export function VenmoCheckout({
       </a>
 
       <p className="mt-3 text-xs leading-relaxed text-neutral-400">
-        This is a temporary Venmo payment link. The final Venmo QR or profile URL can be swapped in
-        without changing the cart flow.
+        Use Venmo to send payment with the note above. If you have questions before paying, contact
+        support.
       </p>
     </div>
   );

@@ -9,12 +9,12 @@ export default function About() {
           <div className="rounded-3xl border border-sky-200 bg-white p-8 shadow-[0_18px_45px_rgba(15,23,42,0.08)]">
             <h1 className="text-3xl font-bold text-slate-950">Quality Framework</h1>
             <p className="mt-3 max-w-2xl text-slate-700">
-              Elite Biotech Peptides is positioned around clean operations, consistent product
-              presentation, and responsive procurement support instead of overloaded technical pages.
+              Elite Biotech Peptides keeps product information clear, organized, and easy to review
+              before ordering.
             </p>
           </div>
 
-          <BrandedVialShowcase compact title="Quality starts with clear product presentation" />
+          <BrandedVialShowcase compact title="Clear labels and organized product information" />
         </section>
 
         <div className="grid gap-4 md:grid-cols-2">
@@ -29,11 +29,11 @@ export default function About() {
             ],
             [
               "3. Inventory Traceability",
-              "Keep internal lot mapping organized so support questions can be answered quickly during procurement review.",
+              "Keep lot details organized so support questions can be answered quickly.",
             ],
             [
               "4. Documentation Requests",
-              "Provide documentation during procurement conversations when buyers need batch or supplier support.",
+              "Provide documentation when customers need batch or supplier support before ordering.",
             ],
             [
               "5. Customer Communication",

@@ -131,12 +131,10 @@ export function InvoiceRequestForm({ product }: { product?: Product }) {
 
       <div className="rounded-2xl border border-neutral-800 bg-neutral-950/60 p-4">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-300">
-          Invoice flow
+          Manual payment request
         </p>
         <p className="mt-2 text-sm text-neutral-300">
-          Submit this request and we can send manual payment details off-site after review. This
-          keeps checkout off the storefront for launch while still giving buyers a clean payment
-          path.
+          Submit this request and we can send payment details after review.
         </p>
       </div>
 

@@ -7,37 +7,38 @@ export default function Contact() {
       <div className="space-y-6">
         <section className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-center">
           <div className="rounded-3xl border border-sky-200 bg-white p-8 shadow-[0_18px_45px_rgba(15,23,42,0.08)]">
-            <h1 className="text-3xl font-bold text-slate-950">Procurement Contact</h1>
+            <h1 className="text-3xl font-bold text-slate-950">Contact Elite Biotech</h1>
             <p className="mt-3 max-w-2xl text-slate-700">
-              Clear inquiry channels, response expectations, and launch-time support for research buyers.
+              Questions about products, documentation, bulk requests, or an order? Reach out and we
+              will follow up.
             </p>
           </div>
 
-          <BrandedVialShowcase compact title="Clear support around each order" />
+          <BrandedVialShowcase compact title="Product questions and order support" />
         </section>
 
         <div className="grid gap-4 md:grid-cols-3">
           <Card
             title="General Inquiries"
             value="support@elitebiotechpeptides.com"
-            note="Catalog questions, account setup, and order workflow."
+            note="Product questions, order help, and account support."
           />
           <Card
-            title="Procurement Desk"
+            title="Bulk Orders"
             value="procurement@elitebiotechpeptides.com"
             note="Bulk quotes, documentation requests, and checkout support."
           />
           <Card
             title="Response Window"
             value="< 1 business day"
-            note="Priority response for active procurement conversations."
+            note="Priority response for active order conversations."
           />
         </div>
 
         <div className="rounded-3xl border border-sky-200 bg-white p-8 shadow-[0_18px_45px_rgba(15,23,42,0.08)]">
-          <h2 className="text-xl font-bold text-slate-950">Inquiry Intake Template</h2>
+          <h2 className="text-xl font-bold text-slate-950">Helpful Details to Include</h2>
           <p className="mt-2 text-sm text-slate-600">
-            Use this structure for faster procurement routing.
+            Include these details so support can answer faster.
           </p>
           <div className="mt-5 grid gap-3 sm:grid-cols-2">
             {[

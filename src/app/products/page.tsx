@@ -14,7 +14,7 @@ export default function ProductsPage() {
               Shop Elite Biotech
             </h1>
             <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-700">
-              Search first, choose quantities, and check out through Venmo.
+              Search by product name, choose quantity, and pay with Venmo.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">

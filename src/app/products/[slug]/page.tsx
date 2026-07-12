@@ -76,8 +76,8 @@ export default async function ProductDetail({
             </div>
 
             <p className="mt-3 text-sm leading-relaxed text-slate-700">
-              Choose a quantity, add this item to cart, and finish payment through Venmo. COA information stays available as
-              a separate support request when buyers need it before checkout.
+              Choose a quantity, add this item to cart, and finish payment through Venmo. COA
+              information is available on request before checkout.
             </p>
             <p className="mt-3 text-sm text-slate-700">Selected format: {getProductFormat(p)}.</p>
 
@@ -118,7 +118,7 @@ export default async function ProductDetail({
             <p className="text-sm font-bold text-slate-800">Documentation note</p>
             <p className="mt-2 text-sm leading-relaxed text-slate-700">
               Pricing and format details are aligned to Elite’s current catalog. COA information is
-              available on request instead of crowding the main buying path.
+              available on request before ordering.
             </p>
           </div>
         </div>

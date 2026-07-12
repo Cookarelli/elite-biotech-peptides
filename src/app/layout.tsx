@@ -11,7 +11,7 @@ const GA_MEASUREMENT_ID = "G-T5EEZ86LCN";
 export const metadata: Metadata = {
   title: "Elite Biotech Peptides",
   description:
-    "Elite Biotech Peptides research catalog with competitive pricing, approachable product browsing, and Venmo checkout.",
+    "Shop Elite Biotech Peptides research products with clear pricing, product search, and Venmo checkout.",
   manifest: "/manifest.webmanifest",
   icons: {
     apple: "/apple-touch-icon.png",
