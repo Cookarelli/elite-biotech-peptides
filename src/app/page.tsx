@@ -72,7 +72,7 @@ export default function Home() {
 
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
             <ValueCard label="Pricing" value="About 10% below major online pricing" />
-            <ValueCard label="Checkout" value="PayPal and card ready" />
+            <ValueCard label="Checkout" value="Venmo payment ready" />
             <ValueCard label="Support" value="COA info on request" />
           </div>
         </div>
@@ -250,7 +250,7 @@ export default function Home() {
           <div className="mt-4 space-y-4">
             <StepCard number="01" title="Browse the catalog" body="Start with best sellers or shop by category and compare products without distractions." />
             <StepCard number="02" title="Build your cart" body="Add products from the catalog or product page and let discounts apply automatically." />
-            <StepCard number="03" title="Pay with PayPal" body="Checkout finishes in PayPal while fulfillment and support stay handled from the business side." />
+            <StepCard number="03" title="Pay with Venmo" body="Checkout opens Venmo with the exact cart total and order note." />
           </div>
         </div>
       </section>

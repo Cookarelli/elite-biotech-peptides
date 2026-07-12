@@ -35,10 +35,10 @@ export const env = {
     "NEXT_PUBLIC_PROCUREMENT_EMAIL",
     "procurement@elitebiotechpeptides.com"
   ),
-  NEXT_PUBLIC_PAYPAL_CLIENT_ID: optional("NEXT_PUBLIC_PAYPAL_CLIENT_ID"),
-  PAYPAL_CLIENT_ID: optional("PAYPAL_CLIENT_ID") ?? optional("NEXT_PUBLIC_PAYPAL_CLIENT_ID"),
-  PAYPAL_CLIENT_SECRET: optional("PAYPAL_CLIENT_SECRET"),
-  PAYPAL_ENVIRONMENT: (optional("PAYPAL_ENVIRONMENT", "sandbox") ?? "sandbox").toLowerCase(),
+  NEXT_PUBLIC_VENMO_CHECKOUT_URL: optional(
+    "NEXT_PUBLIC_VENMO_CHECKOUT_URL",
+    "https://venmo.com/u/elitebiotechpeptides"
+  )!,
   RESEND_API_KEY: optional("RESEND_API_KEY"),
   RESEND_FROM_EMAIL: optional("RESEND_FROM_EMAIL"),
   NOTIFY_EMAIL_TO: optional("NOTIFY_EMAIL_TO"),

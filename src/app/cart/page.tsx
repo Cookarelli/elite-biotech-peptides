@@ -18,15 +18,15 @@ export default function CartPage() {
         <div className="max-w-3xl">
           <p className="text-xs font-semibold tracking-[0.22em] text-sky-300">CHECKOUT</p>
           <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-            Review your cart and pay with PayPal
+            Review your cart and pay with Venmo
           </h1>
           <p className="mt-4 text-sm leading-relaxed text-neutral-300 sm:text-base">
             Your cart applies the same order incentives shown across the site. Documentation stays
-            available on request, but the storefront now supports a real checkout path for launch.
+            available on request, and payment now opens through Venmo.
           </p>
           <div className="mt-6 flex flex-wrap gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-200">
             <span className="rounded-full border border-white/10 bg-white/8 px-3 py-1">
-              Secure PayPal checkout
+              Venmo payment link
             </span>
             <span className="rounded-full border border-white/10 bg-white/8 px-3 py-1">
               Free shipping at $150+
@@ -38,7 +38,7 @@ export default function CartPage() {
         </div>
       </section>
 
-      <CartClient clientId={env.NEXT_PUBLIC_PAYPAL_CLIENT_ID} />
+      <CartClient venmoUrl={env.NEXT_PUBLIC_VENMO_CHECKOUT_URL} />
     </SiteShell>
   );
 }

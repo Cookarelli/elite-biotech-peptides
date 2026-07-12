@@ -13,17 +13,17 @@ export default async function CartSuccessPage({
       <section className="mx-auto max-w-3xl rounded-[2rem] border border-neutral-800 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.16),transparent_30%),linear-gradient(140deg,#0b1326_0%,#09111f_52%,#050916_100%)] p-8 text-center sm:p-10">
         <p className="text-xs font-semibold tracking-[0.22em] text-sky-300">PAYMENT CONFIRMED</p>
         <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-          Your order was sent to PayPal successfully
+          Your Venmo payment details were opened
         </h1>
         <p className="mt-4 text-sm leading-relaxed text-neutral-300 sm:text-base">
-          We can now handle fulfillment from the business side. Keep the order ID below for your
-          records while shipping is processed manually.
+          If you completed payment in Venmo, our team can match it to your cart note and handle
+          fulfillment from the business side.
         </p>
 
         {orderId ? (
           <div className="mt-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 p-4">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
-              PayPal order ID
+              Order reference
             </p>
             <p className="mt-2 break-all text-sm font-semibold text-neutral-100">{orderId}</p>
           </div>

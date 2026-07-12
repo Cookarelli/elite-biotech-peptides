@@ -40,15 +40,10 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
 
           <nav className="hidden items-center gap-6 md:flex">
             <NavLink href="/products">Shop</NavLink>
-            <NavLink href="/products">Compounds</NavLink>
             <NavLink href="/cart">Cart</NavLink>
-            <NavLink href="/about">Quality</NavLink>
             <NavLink href="/faq">FAQ</NavLink>
             <NavLink href="/request-documentation">COA Request</NavLink>
             <NavLink href="/contact">Contact</NavLink>
-            <NavLink href="/privacy-policy">Privacy</NavLink>
-            <NavLink href="/data-deletion">Data Deletion</NavLink>
-            <NavLink href="/terms-of-service">Terms</NavLink>
           </nav>
 
           <div className="flex items-center gap-3">
@@ -65,14 +60,10 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         <div className="border-t border-neutral-800/60 md:hidden">
           <div className="mx-auto flex max-w-7xl gap-4 overflow-x-auto px-4 py-3">
             <NavLink href="/products">Shop</NavLink>
-            <NavLink href="/products">Compounds</NavLink>
             <NavLink href="/cart">Cart</NavLink>
             <NavLink href="/request-documentation">COA Request</NavLink>
             <NavLink href="/faq">FAQ</NavLink>
             <NavLink href="/contact">Contact</NavLink>
-            <NavLink href="/privacy-policy">Privacy</NavLink>
-            <NavLink href="/data-deletion">Data Deletion</NavLink>
-            <NavLink href="/terms-of-service">Terms</NavLink>
           </div>
         </div>
       </header>

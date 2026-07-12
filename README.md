@@ -62,7 +62,7 @@ Keep `.env.local` out of source control and populate the list below:
 | `WORKER_INTERVAL_MS` | Milliseconds between worker ticks (default `60000`). |
 | `WORKER_LOG_LEVEL` | Worker logger level (`info`, `warn`, `debug`). |
 | `HUMAN_APPROVER_EMAILS` | CSV of allowed approvers for risky content. |
-| `PAYPAL_*`, `RESEND_*`, `TWILIO_*` | Existing commerce/notification keys retained for the storefront.
+| `NEXT_PUBLIC_VENMO_CHECKOUT_URL`, `RESEND_*`, `TWILIO_*` | Commerce handoff and notification keys retained for the storefront.
 
 Notes:
 - Prisma now auto-loads `.env.local` and `.env` from the repo root, so `npm run db:push` works without manual `export` commands.

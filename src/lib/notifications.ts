@@ -5,7 +5,6 @@ type NotificationInput = {
   orderId: string;
   items: CartItem[];
   referralCode?: string;
-  paypalOrder?: unknown;
 };
 
 function getOrderSummaryLines(items: CartItem[]) {
@@ -17,61 +16,6 @@ function getOrderSummaryLines(items: CartItem[]) {
       (line) =>
         `- ${line.product.name} x${line.quantity} @ ${line.product.price} (${line.product.formatLabel})`
     ),
-  };
-}
-
-function extractPayerDetails(paypalOrder?: unknown) {
-  const order =
-    paypalOrder && typeof paypalOrder === "object"
-      ? (paypalOrder as {
-          payer?: {
-            name?: { given_name?: string; surname?: string };
-            email_address?: string;
-          };
-          purchase_units?: Array<{
-            custom_id?: string;
-            shipping?: {
-              name?: { full_name?: string };
-              address?: {
-                address_line_1?: string;
-                admin_area_2?: string;
-                admin_area_1?: string;
-                postal_code?: string;
-                country_code?: string;
-              };
-            };
-          }>;
-        })
-      : undefined;
-
-  const payerName = [order?.payer?.name?.given_name, order?.payer?.name?.surname]
-    .filter(Boolean)
-    .join(" ")
-    .trim();
-  const payerEmail = order?.payer?.email_address?.trim();
-  const purchaseUnit = order?.purchase_units?.[0];
-  const shipping = purchaseUnit?.shipping;
-  const customId = purchaseUnit?.custom_id?.trim();
-  const paypalReferralCode = customId?.startsWith("REF:")
-    ? customId.slice(4)
-    : undefined;
-  const shippingName = shipping?.name?.full_name?.trim();
-  const shippingAddress = [
-    shipping?.address?.address_line_1,
-    shipping?.address?.admin_area_2,
-    shipping?.address?.admin_area_1,
-    shipping?.address?.postal_code,
-    shipping?.address?.country_code,
-  ]
-    .filter(Boolean)
-    .join(", ");
-
-  return {
-    payerName: payerName || undefined,
-    payerEmail: payerEmail || undefined,
-    referralCode: paypalReferralCode || undefined,
-    shippingName: shippingName || undefined,
-    shippingAddress: shippingAddress || undefined,
   };
 }
 
@@ -146,26 +90,19 @@ export async function sendOrderNotifications({
   orderId,
   items,
   referralCode,
-  paypalOrder,
 }: NotificationInput) {
   const { summary, lines } = getOrderSummaryLines(items);
-  const payer = extractPayerDetails(paypalOrder);
-  const orderReferralCode = referralCode || payer.referralCode;
 
   const subject = `New Elite Biotech order ${orderId}`;
   const text = [
-    `A PayPal checkout was captured successfully.`,
+    `A checkout notification was created.`,
     ``,
     `Order ID: ${orderId}`,
     `Total: $${summary.total.toFixed(2)}`,
     `Subtotal: $${summary.subtotal.toFixed(2)}`,
     `Discount: $${summary.discountAmount.toFixed(2)}`,
     `Shipping: $${summary.shipping.toFixed(2)}`,
-    orderReferralCode ? `Referral Code: ${orderReferralCode}` : null,
-    payer.payerName ? `Buyer: ${payer.payerName}` : null,
-    payer.payerEmail ? `Buyer Email: ${payer.payerEmail}` : null,
-    payer.shippingName ? `Ship To: ${payer.shippingName}` : null,
-    payer.shippingAddress ? `Shipping Address: ${payer.shippingAddress}` : null,
+    referralCode ? `Referral Code: ${referralCode}` : null,
     ``,
     `Items:`,
     ...lines,
@@ -177,8 +114,7 @@ export async function sendOrderNotifications({
     `New Elite Biotech order`,
     `Order ${orderId}`,
     `Total $${summary.total.toFixed(2)}`,
-    orderReferralCode ? `Referral ${orderReferralCode}` : null,
-    payer.payerName ? payer.payerName : null,
+    referralCode ? `Referral ${referralCode}` : null,
   ]
     .filter(Boolean)
     .join(" · ");

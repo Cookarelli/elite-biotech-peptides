@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { SHIPPING_RATE, VIAL_BUNDLE_DISCOUNT, formatUsd } from "@elite-biotech/shared";
-import { PayPalCheckout } from "@/components/PayPalCheckout";
 import { useCart } from "@/components/CartProvider";
+import { VenmoCheckout } from "@/components/VenmoCheckout";
 
-export function CartClient({ clientId }: { clientId?: string }) {
+export function CartClient({ venmoUrl }: { venmoUrl: string }) {
   const {
     items,
     summary,
@@ -53,7 +53,7 @@ export function CartClient({ clientId }: { clientId?: string }) {
             <div>
               <p className="text-lg font-semibold text-neutral-100">Cart items</p>
               <p className="mt-1 text-sm text-neutral-400">
-                Adjust quantities here before opening PayPal.
+                Adjust quantities here before opening Venmo.
               </p>
             </div>
             <button
@@ -195,8 +195,8 @@ export function CartClient({ clientId }: { clientId?: string }) {
 
           <div className="mt-5 grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
             <TrustNote
-              title="Secure payment"
-              body="Checkout is handled by PayPal with card and wallet options."
+              title="Venmo payment"
+              body="Use the Venmo button with the exact total and order note shown below."
             />
             <TrustNote
               title="Promo logic applied"
@@ -209,7 +209,7 @@ export function CartClient({ clientId }: { clientId?: string }) {
           </div>
         </div>
 
-        <PayPalCheckout items={items} clientId={clientId} referralCode={referralCode} />
+        <VenmoCheckout items={items} venmoUrl={venmoUrl} referralCode={referralCode} />
 
         <div className="rounded-3xl border border-neutral-800 bg-neutral-900/40 p-5">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-300">

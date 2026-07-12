@@ -134,7 +134,7 @@ export function InvoiceRequestForm({ product }: { product?: Product }) {
           Invoice flow
         </p>
         <p className="mt-2 text-sm text-neutral-300">
-          Submit this request and we can send a manual PayPal invoice off-site after review. This
+          Submit this request and we can send manual payment details off-site after review. This
           keeps checkout off the storefront for launch while still giving buyers a clean payment
           path.
         </p>

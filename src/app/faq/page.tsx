@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: "How do I place an order?",
-    a: "Add products to cart and complete payment through PayPal. If you need COA information first, request it separately from the product page or documentation page.",
+    a: "Add products to cart, choose quantities, and complete payment through Venmo. If you need COA information first, request it separately from the product page or documentation page.",
   },
   {
     q: "Are any medical claims made on this website?",

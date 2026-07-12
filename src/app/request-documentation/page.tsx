@@ -52,7 +52,7 @@ export default async function RequestDocumentationPage({
               <DetailCard
                 label="Ordering"
                 value="Cart stays live"
-                note="Buyers can still check out in PayPal"
+                note="Buyers can still check out in Venmo"
               />
             </div>
           </div>

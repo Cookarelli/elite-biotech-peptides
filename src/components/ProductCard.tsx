@@ -11,12 +11,12 @@ export function ProductCard({ p }: { p: Product }) {
 
   return (
     <>
-      <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-neutral-800 bg-neutral-900 transition-all hover:-translate-y-0.5 hover:border-sky-500/40 hover:shadow-[0_18px_40px_rgba(14,165,233,0.08)]">
+      <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/80 transition-colors hover:border-sky-500/40">
         <Link href={`/products/${p.slug}`} className="block">
           <ProductVisual product={p} compact />
         </Link>
 
-        <div className="flex flex-1 flex-col p-5">
+        <div className="flex flex-1 flex-col p-4">
           <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-300">{p.category}</p>
 
           <div className="mt-2 flex items-start justify-between gap-3">
@@ -27,21 +27,22 @@ export function ProductCard({ p }: { p: Product }) {
               {p.price}
             </span>
           </div>
-          <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-neutral-400">{p.description}</p>
+          <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-neutral-400">{p.description}</p>
 
-          <div className="mt-4 grid gap-2 rounded-2xl border border-neutral-800 bg-neutral-950/70 p-3 text-xs">
+          <div className="mt-4 grid gap-2 rounded-xl border border-neutral-800 bg-neutral-950/70 p-3 text-xs">
             <span className="font-medium text-neutral-300">{getProductFormat(p)}</span>
             <span className="text-neutral-500">Research use only</span>
             <span className="text-neutral-500">Documentation available on request</span>
           </div>
 
-          <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-neutral-800 pt-4 text-xs">
-            <AddToCartButton product={p} />
+          <div className="mt-auto grid gap-2 border-t border-neutral-800 pt-4 text-xs">
+            <AddToCartButton product={p} showQuantity fullWidth />
+            <div className="grid grid-cols-2 gap-2">
             <Link
               href={`/products/${p.slug}`}
-              className="rounded-xl border border-neutral-700 px-3 py-2 font-semibold text-neutral-100 transition-colors hover:border-neutral-500 hover:bg-neutral-800"
+              className="rounded-xl border border-neutral-700 px-3 py-2 text-center font-semibold text-neutral-100 transition-colors hover:border-neutral-500 hover:bg-neutral-800"
             >
-              View product
+              Details
             </Link>
             <button
               type="button"
@@ -50,6 +51,7 @@ export function ProductCard({ p }: { p: Product }) {
             >
               Quick view
             </button>
+            </div>
           </div>
         </div>
       </article>
@@ -91,7 +93,7 @@ export function ProductCard({ p }: { p: Product }) {
             </p>
 
             <div className="mt-6 flex flex-wrap gap-2">
-              <AddToCartButton product={p} />
+              <AddToCartButton product={p} showQuantity />
               <Link
                 href={`/products/${p.slug}`}
                 className="rounded-xl bg-sky-400 px-4 py-2 text-sm font-semibold text-neutral-950 transition-colors hover:bg-cyan-300"

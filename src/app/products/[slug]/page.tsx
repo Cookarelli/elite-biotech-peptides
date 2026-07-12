@@ -76,13 +76,13 @@ export default async function ProductDetail({
             </div>
 
             <p className="mt-3 text-sm leading-relaxed text-neutral-300">
-              Add this item to cart and finish payment in PayPal. COA information stays available as
+              Choose a quantity, add this item to cart, and finish payment through Venmo. COA information stays available as
               a separate support request when buyers need it before checkout.
             </p>
             <p className="mt-3 text-sm text-neutral-300">Selected format: {getProductFormat(p)}.</p>
 
             <div className="mt-5 space-y-3">
-              <AddToCartButton product={p} fullWidth />
+              <AddToCartButton product={p} fullWidth showQuantity />
               <Link
                 href="/products"
                 className="block w-full rounded-xl border border-neutral-700 px-4 py-3 text-center text-sm font-semibold text-neutral-100 transition-colors hover:border-neutral-600 hover:bg-neutral-900/60"
