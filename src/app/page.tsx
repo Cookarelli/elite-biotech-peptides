@@ -184,9 +184,9 @@ export default function Home() {
         <div className="rounded-3xl border border-sky-200 bg-white p-8 shadow-[0_18px_45px_rgba(15,23,42,0.08)]">
           <p className="text-xs font-bold tracking-[0.18em] text-sky-700">HOW TO ORDER</p>
           <div className="mt-4 space-y-4">
-            <StepCard number="01" title="Find your product" body="Search by name or shop by research topic." />
-            <StepCard number="02" title="Choose quantity" body="Add the number of vials or supplies you need." />
-            <StepCard number="03" title="Pay with Venmo" body="Open Venmo from the cart and send the exact total shown." />
+            <StepCard number="1" title="Find your product" body="Search by name or shop by research topic." />
+            <StepCard number="2" title="Choose quantity" body="Add the number of vials or supplies you need." />
+            <StepCard number="3" title="Pay with Venmo" body="Open Venmo from the cart and send the exact total shown." />
           </div>
         </div>
 
