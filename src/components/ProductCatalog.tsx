@@ -53,7 +53,7 @@ export function ProductCatalog({ products }: { products: Product[] }) {
 
   return (
     <div className="mt-6 space-y-5">
-      <section className="rounded-2xl border border-sky-100 bg-white p-4 shadow-sm sm:p-5">
+      <section className="rounded-2xl border border-sky-200 bg-white p-4 shadow-[0_14px_36px_rgba(15,23,42,0.08)] sm:p-5">
         <label htmlFor="catalog-search" className="block">
           <span className="text-xs font-bold uppercase tracking-[0.18em] text-sky-700">
             Search products
@@ -64,7 +64,7 @@ export function ProductCatalog({ products }: { products: Product[] }) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search by name, e.g. Tirzepatide"
-            className="mt-3 w-full rounded-2xl border border-sky-200 bg-sky-50/60 px-4 py-4 text-base text-slate-950 outline-none transition-colors placeholder:text-slate-400 focus:border-sky-400 focus:bg-white"
+            className="mt-3 w-full rounded-2xl border border-sky-300 bg-sky-50 px-4 py-4 text-base font-semibold text-slate-950 outline-none transition-colors placeholder:text-slate-500 focus:border-sky-500 focus:bg-white"
           />
         </label>
         <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -98,7 +98,7 @@ export function ProductCatalog({ products }: { products: Product[] }) {
         </div>
       </section>
 
-      <section className="rounded-2xl border border-sky-100 bg-white/80 p-4 shadow-sm">
+      <section className="rounded-2xl border border-sky-200 bg-white/90 p-4 shadow-[0_10px_28px_rgba(15,23,42,0.06)]">
         <div className="grid gap-4 lg:grid-cols-[1fr_220px] lg:items-end">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">
@@ -116,7 +116,7 @@ export function ProductCatalog({ products }: { products: Product[] }) {
                     className={`shrink-0 rounded-full border px-3 py-2 text-xs font-semibold transition-colors ${
                       isActive
                         ? "border-sky-400 bg-sky-100 text-sky-800"
-                        : "border-sky-100 bg-white text-slate-600 hover:border-sky-300 hover:bg-sky-50"
+                        : "border-sky-200 bg-white text-slate-700 hover:border-sky-300 hover:bg-sky-50"
                     }`}
                   >
                     {category} ({count})
@@ -152,7 +152,7 @@ export function ProductCatalog({ products }: { products: Product[] }) {
           ))}
         </section>
       ) : (
-        <section className="rounded-2xl border border-sky-100 bg-white p-10 text-center shadow-sm">
+        <section className="rounded-2xl border border-sky-200 bg-white p-10 text-center shadow-[0_14px_36px_rgba(15,23,42,0.07)]">
           <p className="text-sm font-bold text-slate-900">No products match that search.</p>
           <p className="mt-2 text-sm text-slate-500">
             Try another product name or clear the search to browse the full catalog.

@@ -11,7 +11,7 @@ export function ProductCard({ p }: { p: Product }) {
 
   return (
     <>
-      <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-sm transition-colors hover:border-sky-300">
+      <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-sky-200 bg-white shadow-[0_14px_36px_rgba(15,23,42,0.08)] transition-colors hover:border-sky-400">
         <Link href={`/products/${p.slug}`} className="block">
           <ProductVisual product={p} compact />
         </Link>
@@ -27,15 +27,15 @@ export function ProductCard({ p }: { p: Product }) {
               {p.price}
             </span>
           </div>
-          <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-slate-600">{p.description}</p>
+          <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-slate-700">{p.description}</p>
 
-          <div className="mt-4 grid gap-2 rounded-xl border border-sky-100 bg-sky-50/70 p-3 text-xs">
-            <span className="font-semibold text-slate-700">{getProductFormat(p)}</span>
-            <span className="text-slate-500">Research use only</span>
-            <span className="text-slate-500">Documentation available on request</span>
+          <div className="mt-4 grid gap-2 rounded-xl border border-sky-200 bg-sky-50 p-3 text-xs">
+            <span className="font-bold text-slate-800">{getProductFormat(p)}</span>
+            <span className="text-slate-600">Research use only</span>
+            <span className="text-slate-600">Documentation available on request</span>
           </div>
 
-          <div className="mt-auto grid gap-2 border-t border-sky-100 pt-4 text-xs">
+          <div className="mt-auto grid gap-2 border-t border-sky-200 pt-4 text-xs">
             <AddToCartButton product={p} showQuantity fullWidth />
             <div className="grid grid-cols-2 gap-2">
             <Link
@@ -63,7 +63,7 @@ export function ProductCard({ p }: { p: Product }) {
           role="presentation"
         >
           <div
-            className="w-full max-w-xl rounded-3xl border border-sky-100 bg-white p-6 shadow-2xl"
+            className="w-full max-w-xl rounded-3xl border border-sky-200 bg-white p-6 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
             role="dialog"
             aria-modal="true"
@@ -82,7 +82,7 @@ export function ProductCard({ p }: { p: Product }) {
 
             <p className="mt-4 text-sm leading-relaxed text-slate-600">{p.description}</p>
 
-            <div className="mt-4 flex flex-wrap items-center gap-3 border-y border-sky-100 py-3 text-xs">
+            <div className="mt-4 flex flex-wrap items-center gap-3 border-y border-sky-200 py-3 text-xs">
               <span className="font-semibold text-slate-700">{getProductFormat(p)}</span>
               <span className="h-3.5 w-px bg-sky-100" aria-hidden="true" />
               <span className="text-slate-500">COA on request</span>

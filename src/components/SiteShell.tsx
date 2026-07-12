@@ -10,9 +10,9 @@ const NavLink = ({ href, children }: { href: string; children: React.ReactNode }
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-[linear-gradient(180deg,#f5fbff_0%,#eaf7ff_48%,#ffffff_100%)] text-slate-950">
-      <header className="sticky top-0 z-50 border-b border-sky-100 bg-white/92 shadow-sm backdrop-blur">
-        <div className="border-b border-sky-100 bg-sky-50">
+    <div className="min-h-screen bg-[linear-gradient(180deg,#e6f7ff_0%,#d8effb_48%,#f8fcff_100%)] text-slate-950">
+      <header className="sticky top-0 z-50 border-b border-sky-200 bg-white/95 shadow-[0_10px_28px_rgba(15,23,42,0.08)] backdrop-blur">
+        <div className="border-b border-sky-200 bg-sky-100/70">
           <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-600">
             <p>$10.95 shipping under $150</p>
             <p className="text-sky-700">3+ Vial Discount - 15% Off</p>
@@ -57,7 +57,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
           </div>
         </div>
 
-        <div className="border-t border-sky-100 md:hidden">
+        <div className="border-t border-sky-200 md:hidden">
           <div className="mx-auto flex max-w-7xl gap-4 overflow-x-auto px-4 py-3">
             <NavLink href="/products">Shop</NavLink>
             <NavLink href="/cart">Cart</NavLink>
@@ -70,7 +70,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
 
       <main className="mx-auto max-w-7xl px-4 py-10">{children}</main>
 
-      <footer className="border-t border-sky-100 bg-white/80">
+      <footer className="border-t border-sky-200 bg-white/90">
         <div className="mx-auto grid max-w-7xl gap-6 px-4 py-10 md:grid-cols-[auto_1fr] md:items-center">
           <div className="relative h-24 w-36 overflow-hidden">
             <Image

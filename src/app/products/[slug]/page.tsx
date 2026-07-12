@@ -16,7 +16,7 @@ export default async function ProductDetail({
 
   return (
     <SiteShell>
-      <div className="mb-6 flex flex-wrap items-center gap-2 text-sm text-slate-500">
+      <div className="mb-6 flex flex-wrap items-center gap-2 text-sm text-slate-600">
         <Link href="/products" className="transition-colors hover:text-sky-700">
           Products
         </Link>
@@ -25,15 +25,15 @@ export default async function ProductDetail({
       </div>
 
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_420px]">
-        <div className="overflow-hidden rounded-3xl border border-sky-100 bg-white shadow-sm">
+        <div className="overflow-hidden rounded-3xl border border-sky-200 bg-white shadow-[0_14px_36px_rgba(15,23,42,0.07)]">
           <div className="p-4">
             <ProductVisual product={p} />
           </div>
-          <div className="border-t border-sky-100 p-7">
+          <div className="border-t border-sky-200 p-7">
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
                 <h1 className="text-3xl font-bold text-slate-950">{p.name}</h1>
-                <p className="mt-2 text-sm text-slate-500">{p.category}</p>
+                <p className="mt-2 text-sm text-slate-600">{p.category}</p>
               </div>
               <div className="text-right">
                 <p className="text-xs font-bold uppercase tracking-[0.18em] text-sky-700">
@@ -55,7 +55,7 @@ export default async function ProductDetail({
               </span>
             </div>
 
-            <p className="mt-5 text-slate-600">{p.description}</p>
+            <p className="mt-5 text-slate-700">{p.description}</p>
 
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               <InfoChip label="Format" value={getProductFormat(p)} />
@@ -67,7 +67,7 @@ export default async function ProductDetail({
         </div>
 
         <div className="space-y-4">
-          <div className="rounded-3xl border border-sky-100 bg-white p-7 shadow-sm">
+          <div className="rounded-3xl border border-sky-200 bg-white p-7 shadow-[0_14px_36px_rgba(15,23,42,0.07)]">
             <div className="flex items-center justify-between">
               <p className="text-sm font-bold text-slate-800">Ready to order?</p>
               <span className="rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-bold text-sky-800">
@@ -75,11 +75,11 @@ export default async function ProductDetail({
               </span>
             </div>
 
-            <p className="mt-3 text-sm leading-relaxed text-slate-600">
+            <p className="mt-3 text-sm leading-relaxed text-slate-700">
               Choose a quantity, add this item to cart, and finish payment through Venmo. COA information stays available as
               a separate support request when buyers need it before checkout.
             </p>
-            <p className="mt-3 text-sm text-slate-600">Selected format: {getProductFormat(p)}.</p>
+            <p className="mt-3 text-sm text-slate-700">Selected format: {getProductFormat(p)}.</p>
 
             <div className="mt-5 space-y-3">
               <AddToCartButton product={p} fullWidth showQuantity />
@@ -97,26 +97,26 @@ export default async function ProductDetail({
               </Link>
             </div>
 
-            <div className="mt-5 rounded-2xl border border-sky-100 bg-sky-50/70 p-4">
+            <div className="mt-5 rounded-2xl border border-sky-200 bg-sky-100/70 p-4">
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-sky-700">
                 Order incentives
               </p>
-              <p className="mt-2 text-sm text-slate-600">
+              <p className="mt-2 text-sm text-slate-700">
                 3+ Vial Discount – 15% Off eligible vial items, with shipping calculated separately.
               </p>
             </div>
           </div>
 
-          <div className="rounded-3xl border border-sky-100 bg-white p-7 shadow-sm">
+          <div className="rounded-3xl border border-sky-200 bg-white p-7 shadow-[0_14px_36px_rgba(15,23,42,0.07)]">
             <p className="text-sm font-bold text-slate-800">Handling and Storage</p>
-            <p className="mt-2 text-sm text-slate-600">
+            <p className="mt-2 text-sm text-slate-700">
               {p.storage ?? "Store refrigerated. Protect from light."}
             </p>
           </div>
 
-          <div className="rounded-3xl border border-sky-100 bg-white p-7 shadow-sm">
+          <div className="rounded-3xl border border-sky-200 bg-white p-7 shadow-[0_14px_36px_rgba(15,23,42,0.07)]">
             <p className="text-sm font-bold text-slate-800">Documentation note</p>
-            <p className="mt-2 text-sm leading-relaxed text-slate-600">
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">
               Pricing and format details are aligned to Elite’s current catalog. COA information is
               available on request instead of crowding the main buying path.
             </p>
@@ -129,8 +129,8 @@ export default async function ProductDetail({
 
 function InfoChip({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-sky-100 bg-sky-50/70 p-4">
-      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">
+    <div className="rounded-2xl border border-sky-200 bg-sky-100/70 p-4">
+      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-600">
         {label}
       </p>
       <p className="mt-2 text-sm font-bold text-slate-900">{value}</p>
