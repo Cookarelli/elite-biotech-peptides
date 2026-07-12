@@ -1,15 +1,25 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { Product } from "@elite-biotech/shared";
 import { ProductCard } from "@/components/ProductCard";
 
 type SortKey = "featured" | "price-low" | "price-high" | "name";
 
-export function ProductCatalog({ products }: { products: Product[] }) {
-  const [query, setQuery] = useState("");
+export function ProductCatalog({
+  products,
+  initialQuery = "",
+}: {
+  products: Product[];
+  initialQuery?: string;
+}) {
+  const [query, setQuery] = useState(initialQuery);
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const [sortKey, setSortKey] = useState<SortKey>("featured");
+
+  useEffect(() => {
+    setQuery(initialQuery);
+  }, [initialQuery]);
 
   const categories = useMemo(
     () => ["All", ...Array.from(new Set(products.map((p) => p.category)))],

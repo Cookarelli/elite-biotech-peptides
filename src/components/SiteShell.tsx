@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CartLink } from "@/components/CartLink";
+import { HeaderProductSearch } from "@/components/HeaderProductSearch";
 
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
   <Link href={href} className="whitespace-nowrap text-sm font-semibold text-slate-600 transition-colors hover:text-sky-700">
@@ -55,6 +56,10 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
               Shop Now
             </Link>
           </div>
+        </div>
+
+        <div className="border-t border-sky-200 bg-sky-50/80 px-4 py-3">
+          <HeaderProductSearch />
         </div>
 
         <div className="border-t border-sky-200 md:hidden">

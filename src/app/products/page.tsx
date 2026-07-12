@@ -3,7 +3,13 @@ import { products } from "@elite-biotech/shared";
 import { SiteShell } from "@/components/SiteShell";
 import { ProductCatalog } from "@/components/ProductCatalog";
 
-export default function ProductsPage() {
+export default async function ProductsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ search?: string }>;
+}) {
+  const { search = "" } = await searchParams;
+
   return (
     <SiteShell>
       <section className="rounded-2xl border border-sky-200 bg-white p-5 shadow-[0_14px_36px_rgba(15,23,42,0.07)] sm:p-6">
@@ -34,7 +40,7 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      <ProductCatalog products={products} />
+      <ProductCatalog products={products} initialQuery={search} />
     </SiteShell>
   );
 }
